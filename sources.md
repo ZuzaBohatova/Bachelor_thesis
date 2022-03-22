@@ -1,9 +1,9 @@
-#Učebnice
+# Učebnice
 https://www.imysleni.cz/ucebnice/
 
 
-#Aplikace
+# Aplikace
 https://www.umimeinformatiku.cz/
 
-#Videa
+# Videa
 Datová lhota
