@@ -1,11 +1,14 @@
 <h2>Úvod</h2>
 <p>Vítáme vás ve výukovové aplikaci Začínáme s informatikou.
     <br>Aplikace má sloužit převážně dětem na druhém stupni základní školy. Její obsah byl přizpůsoben podle RVP od MŠMT.
-    Obsahuje jak teorii, tak i hry, které prověří zábavnou formou vaše znalosti.</br>
+    Každá oblast obsahuje nejprve základní teorii, a poté hru, která prověří vaše nově nabité znalosti.
+</p>
 <hr>
+<p>
     Výukou vás budou provádět Robíci - bla, dla, mla, a kla.
     Tak hurá do toho!!!
-
 </p>
 
-<img src="https://webik.ms.mff.cuni.cz/~86974125/informatika/rob01.svg" alt="Robot" width="100">
+<img src="../../pictures/rob01.svg" alt="Robot1" width="150">
+<img src="../../pictures/rob03.svg" alt="Robot3" width="150">
+

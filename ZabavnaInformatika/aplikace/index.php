@@ -31,6 +31,9 @@
             case "ciselne-soustavy":
                 require_once __DIR__ . '/ciselne-soustavy.php';
                 break; 
+            case "hra3":
+                require_once __DIR__ . '/hra3.php';
+                break; 
             default:
                 error(404, "Page not found");
                 break;

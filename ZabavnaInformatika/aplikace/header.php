@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
     <head>
         <meta charset="utf-8">
         <title>Začínáme s informatikou</title>
-        <link rel="stylesheet" href="/~86974125/informatika/styly.css" type="text/css">
+        <link rel="stylesheet" href="../styly.css" type="text/css">
 
     </head>
     <body>
