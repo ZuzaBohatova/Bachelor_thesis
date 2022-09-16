@@ -1,6 +1,6 @@
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
-    max-width: 1024px;
+    max-width: 1400px;
     min-width: 560px;
     width: 50%;
     margin: auto;
@@ -31,6 +31,11 @@ nav li {
     top: 20 px;
 }
 
+#hra3 {
+    left: 0;
+    width: 50%;
+}
+
 a {
     color: rgb(27, 54, 143); 
     text-decoration: none;
@@ -45,3 +50,5 @@ a:hover {
 i {
     font-size:small;
 }
+
+

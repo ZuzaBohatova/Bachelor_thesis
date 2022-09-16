@@ -9,6 +9,7 @@
     Tak hurá do toho!!!
 </p>
 
-<img src="../../pictures/rob01.svg" alt="Robot1" width="150">
-<img src="../../pictures/rob03.svg" alt="Robot3" width="150">
+<img src="../../pictures/rob01.svg" alt="Robot1" width="200">
+<img src="../../pictures/rob02.svg" alt="Robot2" width="200">
+<img src="../../pictures/rob03.svg" alt="Robot3" width="200">
 

@@ -1,46 +1,82 @@
 <h2>Přiřazovačka</h2>
 <h3>Orientuješ se ve vnějších pamětích?</h3>
-<p>V následujícím cvičení tě čeká několik popisů jednotlivých pamětí a tvým úkolem bude ke každému popisu přiřadit správný název. 
+<p>V následujícím cvičení tě čeká několik popisů jednotlivých pamětí a tvým úkolem bude ke každému popisu přiřadit správný název a správný obrázek. 
 <br><i><strong>Rada:</strong> pokud si s nějakou otázkou nebudeš vědět rady, pokračuj na další. 
 Vylučovací metodou se určitě dostaneš ke správné odpovědi i bez použití nápovědy. 
-<br>Na každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p>
+<br>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p>
 
-
+<div id="hra3Obr">
+<img src="../../pictures/hdd.png" alt="Pevný disk" width="120">
+<img src="../../pictures/cd.png" alt="CD" width="120">
+<img src="../../pictures/magPaska.png" alt="Magnetická páska" width="120">
+<img src="../../pictures/ssd.jpg" alt="SSD" width="120">
+<img src="../../pictures/usb.png" alt="USB flash disk" width="120">
+</div><br>
+<div id="hra3">
 <form action="hra3" method="get">
-  <p>Používám magnetický zápis. Jsem ideální pro archivaci velkého množství dat. Kdo jsem?</p>
-  <input type="radio" id="hdd" name="pamet1" value="hdd">
-  <label for="hdd">Pevný disk (HDD)</label><br>
-  <input type="radio" id="usb" name="pamet1" value="usb">
-  <label for="usb">USB</label><br>
-  <input type="radio" id="SSD" name="pamet1" value="ssd">
-  <label for="ssd">SSD</label><br>
-  <input type="radio" id="magnetPaska" name="pamet1" value="magnetPaska">
-  <label for="magnetPaska">Magnetická páska</label>
-  <p>Můžeš mě použít k přehrání hudby a data se na mě zapisují pomocí laserového paprsku. A říkají mi:</p>
-  <input type="radio" id="usb" name="pamet2" value="usb">
-  <label for="usb">USB</label><br>
-  <input type="radio" id="ssd" name="pamet2" value="ssd">
-  <label for="ssd">SSD</label><br>
-  <input type="radio" id="dvd" name="pamet2" value="dvd">
-  <label for="dvd">DVD</label><br>  
-  <input type="radio" id="cd" name="pamet2" value="cd">
-  <label for="cd">CD</label>
-  <p>Pravděpodobně mě najdeš uvnitř svého notebooku. Jsem tižší a rychlejší než můj předchůdce, proto si za mě taky musíš připlatit. </p>
-  <input type="radio" id="usb" name="pamet3" value="usb">
-  <label for="usb">USB</label><br>
-  <input type="radio" id="ssd" name="pamet3" value="ssd">
-  <label for="ssd">SSD</label><br>
-  <input type="radio" id="dvd" name="pamet3" value="dvd">
-  <label for="hdd">Pevný disk (HDD)</label><br>  
-  <input type="radio" id="cd" name="pamet3" value="cd">
-  <label for="cd">CD</label>
-  <p>Pravděpodobně mě najdeš uvnitř svého notebooku. Jsem tižší a rychlejší než můj předchůdce, proto si za mě taky musíš připlatit. </p>
-  <input type="radio" id="usb" name="pamet3" value="usb">
-  <label for="usb">USB</label><br>
-  <input type="radio" id="ssd" name="pamet3" value="ssd">
-  <label for="ssd">SSD</label><br>
-  <input type="radio" id="dvd" name="pamet3" value="dvd">
-  <label for="hdd">Pevný disk (HDD)</label><br>  
-  <input type="radio" id="cd" name="pamet3" value="cd">
-  <label for="cd">CD</label>
+  <label for="pamet1">1. Používám magnetický zápis. Jsem ideální pro archivaci velkého množství dat, ale pomalu už se blížím do důchodu. Kdo jsem?</label>
+  <select id="pamet1" name="pamet1">
+    <option value="free"></option>
+    <option value="hdd">Pevný disk (HDD)</option>
+    <option value="usb">USB flash disk</option>
+    <option value="ssd">SSD</option>
+    <option value="magPaska">Magnetická páska</option>
+    <option value="dvd">DVD</option>
+    <option value="cd">CD</option>
+  </select><br>
+  <label for="ansObr1">Obrázek číslo:</label>
+  <input type="number" id="ansObr1" name="ansObr1" min="1" max="5"><br><br>
+  <label for="pamet2">2. Můžeš mě použít k přehrání hudby a data se na mě zapisují pomocí laserového paprsku. A říkají mi:</label>
+  <select id="pamet2" name="pamet2">
+    <option value="free"></option>
+    <option value="hdd">Pevný disk (HDD)</option>
+    <option value="usb">USB flash disk</option>
+    <option value="ssd">SSD</option>
+    <option value="magPaska">Magnetická páska</option>
+    <option value="dvd">DVD</option>
+    <option value="cd">CD</option>
+  </select><br>
+  <label for="ansObr1">Obrázek číslo:</label>
+  <input type="number" id="ansObr2" name="ansObr2" min="1" max="5"><br><br>
+  <label for="pamet3">3. Pravděpodobně mě najdeš uvnitř svého notebooku. Jsem tižší a rychlejší než můj předchůdce, proto si za mě taky musíš připlatit. </label>
+  <select id="pamet3" name="pamet3">
+    <option value="free"></option>
+    <option value="hdd">Pevný disk (HDD)</option>
+    <option value="usb">USB flash disk</option>
+    <option value="ssd">SSD</option>
+    <option value="magPaska">Magnetická páska</option>
+    <option value="dvd">DVD</option>
+    <option value="cd">CD</option>
+  </select><br>
+  <label for="ansObr3">Obrázek číslo:</label>
+  <input type="number" id="ansObr3" name="ansObr3" min="1" max="5"><br><br>
+  <label for="pamet4">4. Jsem uložen uvnitř počítače. Skládám se z několika kotoučů, zapisuju data pomocí magnetického pole. 
+    Poslední dobou se mě snaží nahradit, ale pořád jsem ta nejlevnější varianta. </label>
+  <select id="pamet4" name="pamet4">
+    <option value="free"></option>
+    <option value="hdd">Pevný disk (HDD)</option>
+    <option value="usb">USB flash disk</option>
+    <option value="ssd">SSD</option>
+    <option value="magPaska">Magnetická páska</option>
+    <option value="dvd">DVD</option>
+    <option value="cd">CD</option>
+  </select><br>
+  <label for="ansObr4">Obrázek číslo:</label>
+  <input type="number" id="ansObr4" name="ansObr4" min="1" max="5"><br><br>
+  <label for="pamet5">4. Data se na mě ukládají pomocí elektrických obvodů. Myslím, že už jsme se spolu nejspíš setkali. Určitě víš, že mi říkají:  </label>
+  <select id="pamet5" name="pamet5">
+    <option value="free"></option>
+    <option value="hdd">Pevný disk (HDD)</option>
+    <option value="usb">USB flash disk</option>
+    <option value="ssd">SSD</option>
+    <option value="magPaska">Magnetická páska</option>
+    <option value="dvd">DVD</option>
+    <option value="cd">CD</option>
+  </select><br>
+  <label for="ansObr5">Obrázek číslo:</label>
+  <input type="number" id="ansObr5" name="ansObr4" min="1" max="5"><br><br>
+  <input type="reset" id="formReset">
+  <input type="button" id="kontrola" onclick="alert('Dvě chyby')" value="Kontrola">
 </form>
+</div>
+
