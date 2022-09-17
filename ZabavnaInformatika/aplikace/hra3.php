@@ -1,16 +1,50 @@
 <script>
   function check(){
-    output.innerHTML = "Ahoj" ;  
+    let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
+    let correctPic = ["2","3","4","1","5"];
+    let ans = ["pamet1", "pamet2", "pamet3", "pamet4", "pamet5"];
+    let pic = ["ansObr1", "ansObr2", "ansObr3", "ansObr4", "ansObr5"];
+    let missPic = 0;
+    let missAns = 0;
+    let chybyAns = "Chyboval jsi v otázkách:";
+    let chybyPic = "Špatně jsi přiřadil obrázky:";
+
+    for(let i = 0; i < 5; i++){
+      if(correctAns[i] != document.getElementById(ans[i]).value){
+        chybyAns += " "+(i+1);
+        ++missAns; 
+      }
+      if(correctPic[i] != document.getElementById(pic[i]).value){
+        chybyPic += " "+(i+1);
+        ++missPic; 
+      }
+
+    } 
+    if(missAns > 0){
+      output.innerHTML = "<br>"+chybyAns;
+    }
+    if(missPic > 0){
+      output.innerHTML += "<br>"+chybyPic;
+    }
+    if((missPic+missAns) == 0){
+      alert("Neudělal jsi jedinou chybu dobrá práce!!!")
+      output.innerHTML = "Výborně, jen tak dál"
+    }
+    else{
+      alert("Nějaké chyby tam byly, koukni kde, resetuj hru a zkus to znovu!")
+    }
+    
   }
 
   function allOptions(){
-    var options = `<option value="free"></option><option value="hdd">Pevný disk (HDD)</option>
+    var options = `<option value="free"></option>
+    <option value="hdd">Pevný disk (HDD)</option>
     <option value="usb">USB flash disk</option>
     <option value="ssd">SSD</option>
     <option value="magPaska">Magnetická páska</option>
     <option value="dvd">DVD</option>
     <option value="cd">CD</option>
-  </select><br>`;
+    </select><br>`;
     document.write(options);
   }
 </script>
@@ -60,6 +94,29 @@
 #hra3 {
     grid-area:kviz;
 }
+
+#formReset {
+  background-color: red;
+  border: 1px solid black;
+  border-radius:10px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#kontrola {
+  background-color: #A7C7E7;
+  border: 1px solid black;
+  border-radius:10px;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+
+}
 </style>
 <div id="prirazovacka">
 <div id="textHra3">
@@ -84,7 +141,8 @@ Vylučovací metodou se určitě dostaneš ke správné odpovědi i bez použit�
 </div>
 
 <div id="hra3">
-<form id="formHra3" action="hra3" method="post">
+
+<form name="formHra3" action="hra3" method="post">
   <label for="pamet1">1. Používám magnetický zápis. Jsem ideální pro archivaci velkého množství dat, ale pomalu už se blížím do důchodu. Kdo jsem?</label>
   <select id="pamet1" name="pamet1">
     <script>allOptions()</script>
@@ -114,10 +172,7 @@ Vylučovací metodou se určitě dostaneš ke správné odpovědi i bez použit�
   <input type="reset" id="formReset">
   <input type="button" id="kontrola" onclick="check()" value="Kontrola">
 </form>
-</div>
-
-
-<span id="output"></span>
+</div><span id="output"></span>
 </div>
 
 
