@@ -34,6 +34,12 @@
             case "hra3":
                 require_once __DIR__ . '/hra3.php';
                 break; 
+            case "hra4":
+                require_once __DIR__ . '/hra4.php';
+                break;
+            case "hry":
+                require_once __DIR__ . '/hry.php';
+                break;  
             default:
                 error(404, "Page not found");
                 break;

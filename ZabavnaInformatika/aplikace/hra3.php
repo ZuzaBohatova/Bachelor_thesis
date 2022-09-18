@@ -54,10 +54,10 @@
 #prirazovacka {
   display:grid;
   grid-template-columns: 60% 10% 30%;
-  grid-template-rows: 40% auto;
+  grid-template-rows: 38% auto;
   grid-template-areas: 
     "text text robot"
-    "kviz sidebar sidebar";
+    "kviz sidebar sidebar"
 
 
 }
@@ -67,10 +67,9 @@
 
 #speech-bubble { 
    background: #A7C7E7;
-   height: 72%;
    border-radius: 50px;
    text-align:center;
-   padding: 3px 25px 3px 10px;
+   padding: 1px 25px 1px 10px;
    font-size: 18px;
 
 }
@@ -133,7 +132,7 @@ ol {
 <h3>Orientuješ se ve vnějších pamětích?</h3>
 <p>V následujícím cvičení tě čeká několik popisů jednotlivých pamětí. <br>
 Tvým úkolem bude ke každému popisu přiřadit správný název a obrázek. 
-<br><br><i><strong>Rada:</strong> pokud si s nějakou otázkou nebudeš vědět rady, pokračuj na další. 
+<br><i><strong>Rada:</strong> pokud si s nějakou otázkou nebudeš vědět rady, pokračuj na další. 
 Vylučovací metodou se určitě dostaneš ke správné odpovědi. 
 <br>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
 
@@ -142,7 +141,7 @@ Vylučovací metodou se určitě dostaneš ke správné odpovědi.
 <div id="hra3Obr">
 <ol>
 <li><img src="../../pictures/hdd.png" alt="Pevný disk" width="180"></li>
-<li><img src="../../pictures/magPaska.png" alt="Magnetická páska" width="150"></li>
+<li><img src="../../pictures/magPaska.png" alt="Magnetická páska" width="180"></li>
 <li><img src="../../pictures/cd.png" alt="CD" width="120"></li>
 <li><img src="../../pictures/ssd.jpg" alt="SSD" width="180"></li>
 <li><img src="../../pictures/usb.png" alt="USB flash disk" width="150"></li>

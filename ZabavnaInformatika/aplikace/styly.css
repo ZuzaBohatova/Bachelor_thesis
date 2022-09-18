@@ -1,5 +1,5 @@
 body {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Verdana,sans-serif;
     max-width: 1024px;
     min-width: 560px;
     width:75%;
@@ -43,6 +43,6 @@ a:hover {
 }
 
 i {
-    font-size:small;
+    font-size:14px;
 }
 

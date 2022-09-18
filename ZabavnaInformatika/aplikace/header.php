@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Začínáme s informatikou</title>
-        <link rel="stylesheet" href="../../styly.css" type="text/css">
+        <link rel="stylesheet" href="../styly.css" type="text/css">
 
     </head>
     <body>
@@ -19,6 +19,8 @@
         <li><a href="ukladani-dat">Ukládání dat</a></li>
         <li><a href="ciselne-soustavy">Číselné soustavy</a></li>
         <li><a href="site">Sítě</a></li>
+        <li><a href="hry">Hry</a></li>
+
     </ul>
     </nav>
     </div>
