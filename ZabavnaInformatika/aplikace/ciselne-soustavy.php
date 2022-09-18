@@ -50,7 +50,7 @@
 <div id="bubbleCisS">
     <p><strong>Ahooj!</strong> Určitě znáš čísla v desítkové soustavě - 3, 42, 907 ... 
 Ale ve světě počítačů hraje prim dvojková soustava, tedy čísla z 0 a 1.<br>
-<strong>Ale proč? </strong>Abychom data mohly přenášet a ukládat, musí jim rozumět přenosová media - kabely a různé elektrické obvody. 
+<strong>Ale proč? </strong>Abychom data mohli přenášet a ukládat, musí jim rozumět přenosová media - kabely a různé elektrické obvody. 
 Kdybychom měli převádět čísla 0-9 do elektrické podoby, naše systémy by byly složité, pomalé a hlavně poruchové. 
 Proto používáme jen 0 a 1, elektrickým obvodům pak stačí rozeznávat jen dva stavy, např. vypnuto/zapnuto.</p>
 </div>

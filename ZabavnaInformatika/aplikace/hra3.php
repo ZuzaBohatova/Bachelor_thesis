@@ -54,10 +54,9 @@
 #prirazovacka {
   display:grid;
   grid-template-columns: 60% 10% 30%;
-  grid-template-rows: 40% 10% auto;
+  grid-template-rows: 40% auto;
   grid-template-areas: 
     "text text robot"
-    "kviz . robot"
     "kviz sidebar sidebar";
 
 
@@ -84,7 +83,7 @@
    border-top: 13px solid transparent;
    border-left: 55px solid #A7C7E7;
    border-bottom: 13px solid transparent;
-   margin: 120px -74px 25px 0px;
+   margin: 90px -80px 25px 0px;
 }
 
 #hra3Obr {
@@ -120,8 +119,12 @@
   text-align: center;
   display: inline-block;
   font-size: 16px;
-
 }
+
+ol {
+  display:inline-block;
+}
+
 </style>
 <div id="prirazovacka">
 <div id="textHra3">
@@ -137,11 +140,13 @@ Vylučovací metodou se určitě dostaneš ke správné odpovědi.
 </div>
 <div id="hra03robot"><img src="../../pictures/rob03.svg" alt="Robot3" width="250"></div>
 <div id="hra3Obr">
-<img src="../../pictures/hdd.png" alt="Pevný disk" width="180">
-<img src="../../pictures/magPaska.png" alt="Magnetická páska" width="150">
-<img src="../../pictures/cd.png" alt="CD" width="120">
-<img src="../../pictures/ssd.jpg" alt="SSD" width="150">
-<img src="../../pictures/usb.png" alt="USB flash disk" width="150">
+<ol>
+<li><img src="../../pictures/hdd.png" alt="Pevný disk" width="180"></li>
+<li><img src="../../pictures/magPaska.png" alt="Magnetická páska" width="150"></li>
+<li><img src="../../pictures/cd.png" alt="CD" width="120"></li>
+<li><img src="../../pictures/ssd.jpg" alt="SSD" width="180"></li>
+<li><img src="../../pictures/usb.png" alt="USB flash disk" width="150"></li>
+<ol>
 
 </div>
 
