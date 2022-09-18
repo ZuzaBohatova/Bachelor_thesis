@@ -5,10 +5,10 @@
     #ciselneSoustavy {
         display:grid;
         grid-template-columns: 65% 5% 30%;
-        grid-template-rows: 50% auto;
+        grid-template-rows: 35% auto;
         grid-template-areas: 
             "text text robot"
-            "animace animace animace";
+            "animace animace robot";
     }
 
     #textCisS {
@@ -41,6 +41,10 @@
 
     }
 
+    #prevodDo2 {
+        grid-area:animace;
+    }
+
 
 </style>
 
@@ -58,5 +62,9 @@ Proto používáme jen 0 a 1, elektrickým obvodům pak stačí rozeznávat jen 
 </div>
 <img id="robCisS" src="../../pictures/rob02.svg" alt="Robot2" width="300">
 
-
+<div id="prevodDo2">
+<h2>Jak převádět čísla do desítkové soustavy? </h2>
+<p>Princip je jednoduchý. Číslo dělíme 2, dokud je to možné. Zapisujeme si zbytek po dělení, který je vždy 1 nebo 0. 
+Tato řada 1 a 0 s posledním zbytkem na začátku je naše původní číslo ve dvojkové soustavě. </p>
+<img id="prevod2" src="../../pictures/prevod2zel.svg" alt="Převod do dvojkové soustavy" width="300">
 </div>
