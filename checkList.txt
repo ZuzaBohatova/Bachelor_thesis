@@ -1,0 +1,12 @@
+All
+ - přidat oddíl čtení dat z grafů ??
+ - změna barvy vrchní navigace podle stránky
+
+Uvod 
+ - odkazy na rvp
+
+Hra3
+ - nechat tam díru nebo nechat větší bublinu? 
+ - čísla u obrázků
+ - style kvízových otázek a bublin na odpovědi
+ - style vypsání chyb - napsat je do alertu?
