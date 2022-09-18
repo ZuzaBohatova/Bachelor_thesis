@@ -1,4 +1,7 @@
 <script>
+    document.getElementById("menu").style.border = "5px solid rgb(27, 54, 143)";
+  
+
   function check(){
     let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
     let correctPic = ["2","3","4","1","5"];
@@ -31,7 +34,7 @@
       output.innerHTML = "Výborně, jen tak dál"
     }
     else{
-      alert("Nějaké chyby tam byly, koukni kde, resetuj hru a zkus to znovu!")
+      alert("Nějaké chyby tam byly, koukni kde, zkus to znovu!")
     }
     
   }
@@ -42,7 +45,6 @@
     <option value="usb">USB flash disk</option>
     <option value="ssd">SSD</option>
     <option value="magPaska">Magnetická páska</option>
-    <option value="dvd">DVD</option>
     <option value="cd">CD</option>
     </select><br>`;
     document.write(options);
@@ -51,10 +53,11 @@
 <style type="text/css">
 #prirazovacka {
   display:grid;
-  grid-template-columns: 55% 20% 25%;
-  grid-template-rows: 35% auto;
+  grid-template-columns: 60% 10% 30%;
+  grid-template-rows: 40% 10% auto;
   grid-template-areas: 
     "text text robot"
+    "kviz . robot"
     "kviz sidebar sidebar";
 
 
@@ -65,11 +68,12 @@
 
 #speech-bubble { 
    background: #A7C7E7;
-   padding: 10px 25px 5px 25px;
-   -moz-border-radius: 10px; 
-   -webkit-border-radius: 10px; 
+   height: 72%;
    border-radius: 50px;
    text-align:center;
+   padding: 3px 25px 3px 10px;
+   font-size: 18px;
+
 }
 
 #speech-bubble:before {
@@ -89,6 +93,7 @@
 }
 #hra3robot {
   grid-area: robot;
+  padding-right:20%;
 }
 
 #hra3 {
@@ -96,10 +101,10 @@
 }
 
 #formReset {
-  background-color: red;
-  border: 1px solid black;
+  background-color: yellow;
+  border: 1px solid navy;
   border-radius:10px;
-  color: white;
+  color: navy;
   padding: 15px 32px;
   text-align: center;
   display: inline-block;
@@ -108,9 +113,9 @@
 
 #kontrola {
   background-color: #A7C7E7;
-  border: 1px solid black;
+  border: 1px solid navy;
   border-radius:10px;
-  color: black;
+  color: navy;
   padding: 15px 32px;
   text-align: center;
   display: inline-block;
@@ -120,18 +125,18 @@
 </style>
 <div id="prirazovacka">
 <div id="textHra3">
+  <h1>Přiřazovačka</h1>
 <div id="speech-bubble">
-<h2>Orientuješ se ve vnějších pamětích?</h2>
+<h3>Orientuješ se ve vnějších pamětích?</h3>
 <p>V následujícím cvičení tě čeká několik popisů jednotlivých pamětí. <br>
-Tvým úkolem bude ke každému popisu přiřadit správný název a správný obrázek. 
+Tvým úkolem bude ke každému popisu přiřadit správný název a obrázek. 
 <br><br><i><strong>Rada:</strong> pokud si s nějakou otázkou nebudeš vědět rady, pokračuj na další. 
-Vylučovací metodou se určitě dostaneš ke správné odpovědi i bez použití nápovědy. 
+Vylučovací metodou se určitě dostaneš ke správné odpovědi. 
 <br>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
-<h3>Přiřazovačka</h3>
+
 </div>
-<div id="hra03robot"><img src="../../pictures/rob03.svg" alt="Robot3" width="200"></div>
+<div id="hra03robot"><img src="../../pictures/rob03.svg" alt="Robot3" width="250"></div>
 <div id="hra3Obr">
-<br>
 <img src="../../pictures/hdd.png" alt="Pevný disk" width="180">
 <img src="../../pictures/magPaska.png" alt="Magnetická páska" width="150">
 <img src="../../pictures/cd.png" alt="CD" width="120">
@@ -169,10 +174,10 @@ Vylučovací metodou se určitě dostaneš ke správné odpovědi i bez použit�
     <script>allOptions()</script>
   <label for="ansObr5">Obrázek číslo:</label>
   <input type="number" id="ansObr5" name="ansObr5" min="1" max="5" required><br><br>
-  <input type="reset" id="formReset">
-  <input type="button" id="kontrola" onclick="check()" value="Kontrola">
+  <input type="reset" id="formReset" value="Začít znovu">
+  <input type="button" id="kontrola" onclick="check()" value="Zkontrolovat">
 </form>
-</div><span id="output"></span>
+<span id="output"></span></div>
 </div>
 
 

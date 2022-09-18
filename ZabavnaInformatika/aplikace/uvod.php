@@ -1,3 +1,6 @@
+<script>
+    document.getElementById("menu").style.border = "5px solid darkcyan";
+</script>
 <h2>Úvod</h2>
 <p>Vítáme vás ve výukovové aplikaci Začínáme s informatikou.
     <br>Aplikace má sloužit převážně dětem na druhém stupni základní školy. Její obsah byl přizpůsoben podle RVP od MŠMT.

@@ -1,3 +1,6 @@
+<script>
+    document.getElementById("menu").style.border = "5px solid rgb(27, 54, 143)";
+</script>
 <h2>Ukládání dat </h2>
 <p>Každý na svém počítači pracujeme s velkým množstvím souborů, ať už jsou to fotky, hudba nebo různé dokumenty. 
     Abychom o tyto data nepřišli, potřebujeme je někam ukládat. 
