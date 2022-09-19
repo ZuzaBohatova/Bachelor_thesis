@@ -6,4 +6,6 @@ Ale proč to tak je? Abychom data mohly přenášet a ukládat, musí jim rozum�
 Jak převádět čísla do desítkové soustavy? 
 Princip je jednoduchý. Číslo dělíme 2, dokud je to možné. Zapisujeme si zbytek po dělení, který je vždy 1 nebo 0. Tato řada 1 a 0 s posledním zbytkem na začátku je naše původní číslo ve dvojkové soustavě. 
 
-
+# Hardware a software
+Hardware označuje všechny fyzické komponenty, z nichž se skládá počítač (můžeme se jich dotknout).
+Software jsou pak všechny programy a data. 
