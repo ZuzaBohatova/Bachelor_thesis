@@ -1,12 +1,15 @@
-All
+# All
  - přidat oddíl čtení dat z grafů a na rozeznání několika základních algoritmů??
  - změna barvy vrchní navigace podle stránky
  - u každé hry tlačítko zpět na teorii
 
-Uvod 
+# Uvod 
  - odkazy na rvp
 
-Hra3
+# Hra3
  - čísla u obrázků
  - style kvízových otázek a bublin na odpovědi
  - style vypsání chyb - napsat je do alertu?
+
+# Ukladani dat
+ - v maximalni velikosti ujizdi trojuhelnik bubliny
