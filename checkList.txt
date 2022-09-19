@@ -1,6 +1,7 @@
 All
  - přidat oddíl čtení dat z grafů a na rozeznání několika základních algoritmů??
  - změna barvy vrchní navigace podle stránky
+ - u každé hry tlačítko zpět na teorii
 
 Uvod 
  - odkazy na rvp

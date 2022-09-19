@@ -2,7 +2,7 @@
     document.getElementById("menu").style.border = "5px solid rgb(27, 54, 143)";
   
 
-  function check(){
+  function checkHra3(){
     let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
     let correctPic = ["2","3","4","1","5"];
     let ans = ["pamet1", "pamet2", "pamet3", "pamet4", "pamet5"];
@@ -145,7 +145,7 @@ Vylučovací metodou se určitě dostaneš ke správné odpovědi.
 <li><img src="../../pictures/cd.png" alt="CD" width="120"></li>
 <li><img src="../../pictures/ssd.jpg" alt="SSD" width="180"></li>
 <li><img src="../../pictures/usb.png" alt="USB flash disk" width="150"></li>
-<ol>
+</ol>
 
 </div>
 
@@ -179,7 +179,7 @@ Vylučovací metodou se určitě dostaneš ke správné odpovědi.
   <label for="ansObr5">Obrázek číslo:</label>
   <input type="number" id="ansObr5" name="ansObr5" min="1" max="5" required><br><br>
   <input type="reset" id="formReset" value="Začít znovu">
-  <input type="button" id="kontrola" onclick="check()" value="Zkontrolovat">
+  <input type="button" id="kontrola" onclick="checkHra3()" value="Zkontrolovat">
 </form>
 <span id="output"></span></div>
 </div>
