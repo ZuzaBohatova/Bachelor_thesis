@@ -1,5 +1,5 @@
 All
- - přidat oddíl čtení dat z grafů ??
+ - přidat oddíl čtení dat z grafů a na rozeznání několika základních algoritmů??
  - změna barvy vrchní navigace podle stránky
 
 Uvod 
