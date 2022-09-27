@@ -7,7 +7,14 @@
             for(i = 0; i < ele.length; i++) {
                 if(ele[i].checked){
                     if(ele[i].value != corrAns){
-                        check.innerHTML = "<p>Chybička se vloudila, správná odpověď je <strong>1001110</strong></p>";
+                        var hlaska = "<p>Chybička se vloudila, správná odpověď je ";
+                        if(corrAns == 62){
+                            hlaska +="<strong>62</strong></p>";
+                        }
+                        else{
+                            hlaska +="<strong>1001110</strong></p>";
+                        }
+                        check.innerHTML = hlaska;
                         document.getElementById(ans).style.color = "darkred";
                     }
                     else {

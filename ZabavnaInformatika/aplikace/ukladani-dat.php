@@ -29,7 +29,7 @@
         border-top: 13px solid transparent;
         border-left: 55px solid #A7C7E7;
         border-bottom: 13px solid transparent;
-        margin: 90px -60px 25px 0px;
+        margin: 70px -56px 50px 0px;
     }
 
     #textUD {
