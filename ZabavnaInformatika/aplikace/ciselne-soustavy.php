@@ -79,7 +79,7 @@ Proto používáme jen 0 a 1, elektrickým obvodům stačí rozeznávat dva stav
 </div>
 
 </div>
-<img id="robCisS" src="../../pictures/rob02.svg" alt="Robot2" width="290">
+<img id="robCisS" src="../../pictures/rob02.png" alt="Robot2" width="290">
 
 <div id="prevodDo2">
 <h3>Jak převádět čísla do dvojkové soustavy? </h3>

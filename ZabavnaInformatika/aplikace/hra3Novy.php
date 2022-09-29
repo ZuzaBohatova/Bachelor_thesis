@@ -47,12 +47,17 @@
     <option value="magPaska">Magnetická páska</option>
     <option value="cd">CD</option>
     </select><br>`;
-    document.write(options);
+    return options;
   }
 
   function zacniHru(){
-   textHra3.innerHTML = "";
-   hra03robot.innerHTML = "";
+   textHra3.innerHTML = `<h2>Přiřazovačka</h2><form name="formHra3" action="hra3" method="post">
+  <label for="pamet1">1. Používám magnetický zápis. Jsem ideální pro archivaci velkého množství dat, ale pomalu už se blížím do důchodu. Kdo jsem?</label>
+  <select id="pamet1" name="pamet1">`+allOptions()+`
+  <label for="ansObr1">Obrázek číslo:</label>
+  <input type="number" id="ansObr1" name="ansObr1" min="1" max="5" required><br>
+  </form>`;
+
   }
 </script>
 <style type="text/css">
@@ -60,7 +65,7 @@
   display:grid;
   grid-template-columns: 60% 10% 30%;
   grid-template-rows: 50% auto;
-  grid-template-areas: 
+  grid-template-areas:
     "text text robot"
     "obrazky obrazky obrazky";
 }
@@ -97,6 +102,7 @@
   grid-area: robot;
   padding-right:20%;
 }
+
 
 #hra3 {
     grid-area:kviz;
@@ -137,8 +143,8 @@ ol li {
 
 </style>
 <div id="prirazovacka">
-<div id="textHra3">
-  <h1>Přiřazovačka</h1>
+<div id="textHra3">  
+<h2>Přiřazovačka</h2>
 <div id="speech-bubble">
 <h3>Orientuješ se ve vnějších pamětích?</h3>
 <p>V následujícím cvičení tě čeká několik popisů jednotlivých pamětí. <br>
@@ -146,10 +152,10 @@ Tvým úkolem bude ke každému popisu přiřadit správný název a obrázek.
 <br><i><strong>Rada:</strong> pokud si s nějakou otázkou nebudeš vědět rady, pokračuj na další. 
 Vylučovací metodou se určitě dostaneš ke správné odpovědi. 
 <br>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
-
-</div>
-<div id="hra03robot"><img src="../../pictures/rob03.svg" alt="Robot3" width="250"></div>
 <div id="zacniHru"><button onclick="zacniHru()">Začni hru</button></div>
+</div>
+<img id="hra03robot" src="../../pictures/rob03.png" alt="Robot3" width="250">
+
 <div id="hra3Obr">
 <ol>
 <li><img src="../../pictures/hdd.png" alt="Pevný disk" width="180"></li>

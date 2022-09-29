@@ -59,7 +59,7 @@
 </p>
 </div>
 </div>
-<img id="robotUD" src="../../pictures/rob03.svg" alt="Robot3" width="270">
+<img id="robotUD" src="../../pictures/rob03.png" alt="Robot3" width="270">
 <div id="vnejsiPameti">
 <h3>Vnější paměti</h3>
 <p>Vnější paměti máme pro dlouhodobější ukládání dat. Liší se velikostí a také způsobem, jak na ně data zapisujeme:</p>
