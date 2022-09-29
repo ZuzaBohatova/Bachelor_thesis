@@ -11,8 +11,6 @@
  - style kvízových otázek a bublin na odpovědi
  - style vypsání chyb - napsat je do alertu?
 
-# Ukladani dat
- - v maximalni velikosti ujizdi trojuhelnik bubliny
 
-# Hra4
- - pri chybe v druhe otazce vypisuje spatnou odpoved
+
+

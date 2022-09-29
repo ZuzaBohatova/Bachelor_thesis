@@ -23,6 +23,8 @@
         grid-area: robot;
     }
 
+
+
     #bubbleCisS { 
         background: lightgreen;
         padding: 1px 25px 1px 10px;
@@ -69,6 +71,7 @@
 
 <div id="ciselneSoustavy">
 <div id="textCisS">
+
 <h2>Číselné soustavy</h2>
 <div id="bubbleCisS">
     <p><strong>Ahooj!</strong> Jistě znáš čísla v desítkové soustavě - 3, 42, 907 ... 

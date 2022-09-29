@@ -59,6 +59,10 @@
     font-size:20px;
 }
 
+#zpetCS {
+    color: darkgreen;
+} 
+
 input[type=button] {
     background-color:lightgreen;
     border: 2px solid darkgreen;
@@ -77,6 +81,8 @@ input[type=button] {
     font-size: 20px;
 }
 </style>
+<br> 
+<a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a>
 <h2>Převody mezi dvojkovou a desítkovou soustavou</h2>
 <p>Vyzkoušej si, jestli zvládneš tyto dva příkladypár příkladů (i s řešením) nebo si vymysli svoje a výsledek si zkontroluj na převodové kalkulačce.</p>
 <div id="hra4">

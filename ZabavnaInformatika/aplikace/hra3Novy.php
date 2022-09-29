@@ -51,27 +51,40 @@
   }
 
   function zacniHru(){
-   textHra3.innerHTML = `<h2>Přiřazovačka</h2><form name="formHra3" action="hra3" method="post">
-  <label for="pamet1">1. Používám magnetický zápis. Jsem ideální pro archivaci velkého množství dat, ale pomalu už se blížím do důchodu. Kdo jsem?</label>
-  <select id="pamet1" name="pamet1">`+allOptions()+`
-  <label for="ansObr1">Obrázek číslo:</label>
-  <input type="number" id="ansObr1" name="ansObr1" min="1" max="5" required><br>
-  </form>`;
-
+    textHra3.innerHTML = `<br><a id="zpetUD" href="ukladani-dat">Zpět na teorii</a><h2>Přiřazovačka</h2><br><form id="formHra3" name="formHra3" action="hra3" method="post">
+    <label for="pamet1">Používám magnetický zápis. Jsem ideální pro archivaci velkého množství dat, ale pomalu už se blížím do důchodu. Kdo jsem?</label>
+    <select id="pamet1" name="pamet1">`+allOptions()+`
+    <label for="ansObr1">Obrázek číslo:</label>
+    <input type="number" id="ansObr1" name="ansObr1" min="1" max="5" required><br>
+    </form><br>`;
+    document.getElementById("hra3robot").style.visibility = "hidden";
+    dalsiOtazka();
+    
   }
+
+  function dalsiOtazka(){
+    //document.getElementById("formHra3").style.textAlign = "center";
+    dalsi.innerHTML += `<button id="dalsiBut"><strong>Další</strong></button>`;
+  }
+
 </script>
 <style type="text/css">
 #prirazovacka {
   display:grid;
-  grid-template-columns: 60% 10% 30%;
-  grid-template-rows: 50% auto;
+  grid-template-columns: auto  20%;
   grid-template-areas:
-    "text text robot"
-    "obrazky obrazky obrazky";
+    "text robot"
 }
 
+#formHra3 {
+  font-size: 18px;
+}
 #textHra3 {
    grid-area:text;
+}
+
+#hra3Obr {
+  visibility: hidden;
 }
 
 #speech-bubble { 
@@ -91,18 +104,40 @@
    border-top: 13px solid transparent;
    border-left: 55px solid #A7C7E7;
    border-bottom: 13px solid transparent;
-   margin: 90px -80px 25px 0px;
+   margin: 50px -80px 25px 0px;
 }
 
-#hra3Obr {
-  grid-area: obrazky;
-  text-align:center; 
+#zpetUD {
+  color: rgb(27, 54, 143);
 }
 #hra3robot {
   grid-area: robot;
   padding-right:20%;
 }
 
+#dalsiBut {
+  background-color: #A7C7E7;
+  border: 1px solid #A7C7E7;
+  border-radius:20px;
+  color: navy;
+  padding: 15px 25px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  float: right;
+}
+
+#zacniHru {
+  background-color: #A7C7E7;
+  border: 1px solid #A7C7E7;
+  border-radius:20px;
+  color: rgb(27, 54, 143);
+  padding: 15px 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 18px;
+  float: right;
+}
 
 #hra3 {
     grid-area:kviz;
@@ -143,7 +178,9 @@ ol li {
 
 </style>
 <div id="prirazovacka">
-<div id="textHra3">  
+<div id="textHra3">
+<br> 
+<a id="zpetUD" href="ukladani-dat"><strong>Zpět na teorii</strong></a>
 <h2>Přiřazovačka</h2>
 <div id="speech-bubble">
 <h3>Orientuješ se ve vnějších pamětích?</h3>
@@ -152,9 +189,9 @@ Tvým úkolem bude ke každému popisu přiřadit správný název a obrázek.
 <br><i><strong>Rada:</strong> pokud si s nějakou otázkou nebudeš vědět rady, pokračuj na další. 
 Vylučovací metodou se určitě dostaneš ke správné odpovědi. 
 <br>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
-<div id="zacniHru"><button onclick="zacniHru()">Začni hru</button></div>
+<br><button id="zacniHru" onclick="zacniHru()"><strong>Začni hru</strong></button>
 </div>
-<img id="hra03robot" src="../../pictures/rob03.png" alt="Robot3" width="250">
+<img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="250">
 
 <div id="hra3Obr">
 <ol>
@@ -163,9 +200,10 @@ Vylučovací metodou se určitě dostaneš ke správné odpovědi.
 <li><img src="../../pictures/cd.png" alt="CD" width="120"></li>
 <li><img src="../../pictures/ssd.jpg" alt="SSD" width="180"></li>
 <li><img src="../../pictures/usb.png" alt="USB flash disk" width="150"></li>
-</ol>
+</ol></div>
+<div id="dalsi"></div>
 
-</div>
+
 <!--
 <div id="hra3">
 
