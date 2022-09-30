@@ -1,44 +1,68 @@
 <script>
   document.getElementById("menu").style.border = "5px solid rgb(27, 54, 143)";
-  let kolo = 1;
+
+  let kolo = 0;
+  let chyby = 0;
+  let otazky = ["Používám magnetický zápis. Jsem ideální pro archivaci velkého množství dat, ale pomalu už se blížím do důchodu. Kdo jsem a jak asi vypadám?",
+    "Můžeš mě použít k přehrání hudby a data se na mě zapisují pomocí laserového paprsku. A říkají mi:",
+    "Pravděpodobně mě najdeš uvnitř svého notebooku. Jsem tižší a rychlejší než můj předchůdce, proto si za mě taky musíš připlatit.",
+    "Jsem uložen uvnitř počítače. Skládám se z několika kotoučů, zapisuju data pomocí magnetického pole.Poslední dobou se mě snaží nahradit, ale pořád jsem ta nejlevnější varianta.",
+    "Data se na mě ukládají pomocí elektrických obvodů. Myslím, že už jsme se spolu nejspíš setkali. Určitě víš, že mi říkají:"  
+  ];
 
   function checkAns() {
     let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
     for(let i = 0; i < correctAns.length; i++){
-      if((kolo-1) == i){
-        document.getElementById(correctAns[i]).onclick = function(){document.getElementById(id).style.border = "2px solid green";}
+      if(kolo == i){
+        document.getElementById(correctAns[i]).onclick = function(){document.getElementById(correctAns[i]).style.border = "3px solid green";}
+        document.getElementById(correctAns[i]+"Obr").onclick = function(){document.getElementById(correctAns[i]+"Obr").style.border = "3px solid green";}
       }
       else {
-        document.getElementById(correctAns[i]).onclick = function(){document.getElementById(id).style.border = "2px solid red";}
+        document.getElementById(correctAns[i]).onclick = function(){
+          document.getElementById(correctAns[i]).style.border = "3px solid red";
+          ++chyby;
+        }
+        document.getElementById(correctAns[i]+"Obr").onclick = function(){
+          document.getElementById(correctAns[i]+"Obr").style.border = "3px solid red";
+          ++chyby;
+        }
       }
     }
   }
 
-  function allOptions(){
-    var options = `<div id="ans"><button id="hdd">Pevný disk (HDD)</button>
-      <button id="usb" onclick="checkAns('true', 'usb')">USB flash disk</button>
-      <button id="ssd">SSD</button>
-      <button id="magPaska">Magnetická páska</button>
-      <button id="cd">CD</button></div>`;
-    return options;
+  function resetAns(){
+    let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
+    for(let i = 0; i < correctAns.length; i++){
+      document.getElementById(correctAns[i]).style.border = "3px solid #A7C7E7";
+      document.getElementById(correctAns[i]+"Obr").style.border = "";
+    }
   }
 
   function zacniHru(){
-    textHra3.innerHTML = `<br><a id="zpetUD" href="ukladani-dat">Zpět na teorii</a><h2>Přiřazovačka</h2><p class="ot" id="ot1">Používám magnetický zápis. 
-    Jsem ideální pro archivaci velkého množství dat, ale pomalu už se blížím do důchodu. Kdo jsem a jak asi vypadám?</label>
-      </p>`+allOptions()+"<br>";
-    dalsiOtazka();
-    textHra3.innerHTML += `<div id="hra3Obr"><input type="image" src="../../pictures/hdd.png" alt="Pevný disk" width="180"/>
-      <input type="image" src="../../pictures/magPaska.png" alt="Magnetická páska" width="180"/>
-      <input type="image" src="../../pictures/cd.png" alt="CD" width="180"/>
-      <input type="image" src="../../pictures/ssd.jpg" alt="SSD" width="180"/>
-      <input type="image" src="../../pictures/usb.png" alt="USB flash disk" width="180"/></div>`;
-    
+    textHra3.innerHTML = `<br><a id="zpetUD" href="ukladani-dat"><strong>Zpět na teorii</strong></a>
+      <h2>Přiřazovačka</h2>
+      <p id="ot">`+otazky[kolo]+
+      `</p><div class="ans">
+      <button id="hdd">Pevný disk (HDD)</button>
+      <button id="usb">USB flash disk</button>
+      <button id="ssd">SSD</button>
+      <button id="magPaska">Magnetická páska</button>
+      <button id="cd">CD</button>
+      </div><br>`;
+    dalsi.innerHTML += `<button id="dalsiBut" onclick="dalsiOt()"><strong>Další</strong></button>`
+    textHra3.innerHTML += `<div id="hra3Obr"><input type="image" id="hddObr" src="../../pictures/hdd.png" alt="Pevný disk" width="180"/>
+      <input type="image" id="magPaskaObr" src="../../pictures/magPaska.png" alt="Magnetická páska" width="180"/>
+      <input type="image" id="cdObr" src="../../pictures/cd.png" alt="CD" width="180"/>
+      <input type="image" id="ssdObr" src="../../pictures/ssd.jpg" alt="SSD" width="180"/>
+      <input type="image" id="usbObr" src="../../pictures/usb.png" alt="USB flash disk" width="180"/></div>`;
+    checkAns();
   }
 
-  function dalsiOtazka(){
-    //document.getElementById("formHra3").style.textAlign = "center";
-    dalsi.innerHTML += `<button id="dalsiBut"><strong>Další</strong></button>`;
+  function dalsiOt() {
+    ++kolo;
+    ot.innerHTML = otazky[kolo]; 
+    resetAns();
+    checkAns();
   }
 
 </script>
@@ -49,17 +73,18 @@
   grid-template-rows: 60% auto;
   grid-template-areas:
     "text robot"
-    "obrazky dalsi";
-
+    "text dalsi";
 }
 
-.ot {
-  font-size: 18px;
+#ot {
+  font-size: 20px;
 }
+
 #textHra3 {
    grid-area:text;
 
 }
+
 #hra3Obr {
   
 }
@@ -93,14 +118,12 @@
 }
 
 #dalsiBut {
-    justify-items: center;
   background-color: #A7C7E7;
   border: 1px solid #A7C7E7;
   border-radius:20px;
   color: navy;
   padding: 15px 25px;
   text-align: center;
-  display: inline-block;
   font-size: 16px;
   float: right;
 }
@@ -117,9 +140,18 @@
   color: rgb(27, 54, 143);
   padding: 15px 15px;
   text-align: center;
-  display: inline-block;
   font-size: 18px;
   float: right;
+}
+
+.ans button{
+  background-color: white;
+  border: 3px solid #A7C7E7;
+  border-radius:10px;
+  color: rgb(27, 54, 143);
+  padding: 15px 15px;
+  text-align: center;
+  font-size: 18px;
 }
 
 
