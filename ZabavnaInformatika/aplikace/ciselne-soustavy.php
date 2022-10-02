@@ -12,6 +12,7 @@
             "animace animace prevod prevod"
             "desitka desitka desitka mocniny";
         font-size: 18px;
+        margin-left: 10px;
 
     }
 

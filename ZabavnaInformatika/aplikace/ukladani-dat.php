@@ -5,11 +5,12 @@
     #ukladaniDat {  
         display:grid;
         grid-template-columns: 50% 20% 30%;
-        grid-template-rows: 25% 5% auto;
+        grid-template-rows: 26% 5% auto;
         grid-template-areas: 
             "text text robot"
             "info info robot"
             "info info obrazky";
+        margin-left: 10px;
     }
 
     #bubbleUD { 

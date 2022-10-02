@@ -1,0 +1,138 @@
+body {
+    font-family: Verdana,sans-serif;
+    max-width: 1024px;
+    min-width: 560px;
+    width:75%;
+    margin: auto;
+    background-color: white;
+    padding: 20px 25px 20px 25px;
+
+}
+
+
+nav ul {
+    list-style-type: none;
+    background-color: white;
+    text-align:center;
+    padding: 2%;
+}
+
+nav li {
+    display: inline;
+    padding: 2%;
+}  
+
+#hlavni-nadpis {
+    text-align: center;
+}
+
+#test-robot {
+    right: 0;
+    top: 20 px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 18px;
+    color:black;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: rgba(31, 162, 238, 0.904);
+}
+
+i {
+    font-size:14px;
+}
+
+/* hra 3 */
+#hra3 {
+  display:grid;
+  grid-template-columns: auto 30%;
+  grid-template-areas:
+    "text robot";
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#ot {
+  font-size: 20px;
+}
+
+#hra3text {
+  grid-area:text;
+
+}
+
+.hra3Obr {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#hra3bubbleUvod { 
+   background: #A7C7E7;
+   border-radius: 50px;
+   text-align:center;
+   padding: 1px 25px 1px 10px;
+   font-size: 18px;
+
+}
+
+#hra3bubbleUvod:before {
+   content:"";
+   float:right;
+   width: 0;
+   height: 0;
+   border-top: 13px solid transparent;
+   border-left: 85px solid #A7C7E7;
+   border-bottom: 13px solid transparent;
+   margin: 105px -90px 30px 0px;
+}
+
+#zpetUD {
+  color: rgb(27, 54, 143);
+  font-weight: bold;
+}
+
+#hra3robotUvod {
+  grid-area: robot;
+}
+
+#dalsiBut, #vyhodnotitBut, #zacniHru{
+  background-color: #A7C7E7;
+  border: 2px solid #A7C7E7;
+  border-radius:20px;
+  color: navy;
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 18px;
+  float: right;
+  font-weight: bold;
+  width: 200px;
+  margin-top: 10px;
+}
+
+
+.ans button:hover, .hra3Obr input:hover, #dalsiBut:hover, #vyhodnotitBut:hover, #zacniHru:hover {
+  border: 2px solid navy;
+}
+
+.ans button{
+  background-color: white;
+  border: 3px solid #A7C7E7;
+  border-radius:10px;
+  color: navy;
+  padding: 15px 15px;
+  text-align: center;
+  font-size: 18px;
+  margin: 5px 5px 5px 5px;
+  font-weight: bold;
+  min-width: 90px;
+}
+
+.ans {
+  text-align: center;
+  margin-left: -15px;
+}
+
