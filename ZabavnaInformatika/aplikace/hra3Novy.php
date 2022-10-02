@@ -86,12 +86,12 @@
   }
 
   function vyhodnotit() {
-    var hodnoceniText = ["To bylo bez chybičky! Jen tak dál", "Chybička se vloudila, zkus to znovu!", "Jej, to se nepovedlo. Pročti si znovu teorii a zkus to ještě jednou!"];
+    var hodnoceniText = ["<strong>Výborně!</strong><br>To bylo bez chybičky, jen tak dál!<br>Hurá na další téma.", "<strong>To bylo o fous!</strong><br>Nějaká ta chybička se vloudila, zkus to znovu nebo pokračuj na další téma.", 
+    "<strong>Jej, to se nepovedlo!</strong><br>Pročti si teorii a zkus to znovu"];
     hra3.innerHTML = `
-    <div><div id="hra3bubbleZaver">
-    <p id="hodnoceni"></p>
+    <div><h4><a id="zpetUD" href="ukladani-dat">Zpět na teorii</a></h4><div id="hra3bubbleZaver">
+    <p id="hodnoceni"></p><p id="pocetChyb"></p>
     </div><div class="hra3kamDal">
-    <button id="hra3zpet" onclick="location.href='ukladani-dat'">Zpět na teorii</button>
     <button id="hra3reset" onclick="location.href='hra3'">Začít znovu</button>
     <button id="dalsiHry" onclick="location.href='hry'">Další hry</button>
     </div></div>
@@ -103,7 +103,8 @@
         hodnoceni.innerHTML = hodnoceniText[0];
         document.getElementById("hra3robotZaver").src = happy;
         break;
-      case(chyby < 2):
+      case 1:
+      case 2:
         hodnoceni.innerHTML = hodnoceniText[1];
         document.getElementById("hra3robotZaver").src = normal;
         break;
@@ -111,16 +112,9 @@
         hodnoceni.innerHTML = hodnoceniText[2];
         document.getElementById("hra3robotZaver").src = sad;
     }
+    pocetChyb.innerHTML += "Tvůj počet chyb byl: "+chyby;
 
     document.getElementById("hra3").style.gridTemplateColumns = "60% auto";
-    document.getElementById("hra3robotZaver").style.float = "left";
-
-
-    
-
-
-
-    
 
   }
 
@@ -130,14 +124,12 @@
 <h4><a id="zpetUD" href="ukladani-dat">Zpět na teorii</a></h4>
 <div id="hra3bubbleUvod">
 <h3>Orientuješ se ve vnějších pamětích?</h3>
-<p>V následujícím cvičení tě čeká několik popisů jednotlivých pamětí. <br>
-Tvým úkolem bude ke každému popisu přiřadit správný název a obrázek. 
-<br><i><strong>Rada:</strong> pokud si s nějakou otázkou nebudeš vědět rady, pokračuj na další. 
-Vylučovací metodou se určitě dostaneš ke správné odpovědi. 
-<br>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
+<p>V následujícím cvičení tě čeká několik popisů jednotlivých pamětí.
+Tvým úkolem bude ke každému popisu vybrat správný název a obrázek.</p> <p><strong>Pokud odpovíš správně, tvá odpověď zezelená. </strong></p>
+<p><i>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
 <button id="zacniHru" onclick="zacniHru()">Začni hru</button>
 </div>
-<div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="270">
+<div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="320">
 <div id="dalsi"></div>
 </div>
 
