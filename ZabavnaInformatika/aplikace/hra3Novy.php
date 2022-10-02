@@ -10,21 +10,33 @@
     "Data se na mě ukládají pomocí elektrických obvodů. Myslím, že už jsme se spolu nejspíš setkali. Určitě víš, že mi říkají:"  
   ];
 
+  let happy = "../../pictures/rob02.png";
+  let sad = "../../pictures/rob01.png"
+  let normal = "../../pictures/rob03.png";
+
   function checkAns() {
     let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
     for(let i = 0; i < correctAns.length; i++){
       if(kolo == i){
-        document.getElementById(correctAns[i]).onclick = function(){document.getElementById(correctAns[i]).style.border = "3px solid green";}
-        document.getElementById(correctAns[i]+"Obr").onclick = function(){document.getElementById(correctAns[i]+"Obr").style.border = "3px solid green";}
+        document.getElementById(correctAns[i]).onclick = function(){
+          document.getElementById("hra3robot").src = happy;
+          document.getElementById(correctAns[i]).style.border = "3px solid green";
+        }
+        document.getElementById(correctAns[i]+"Obr").onclick = function(){
+          document.getElementById(correctAns[i]+"Obr").style.border = "3px solid green";
+          document.getElementById("hra3robot").src = happy;
+        }
       }
       else {
         document.getElementById(correctAns[i]).onclick = function(){
           document.getElementById(correctAns[i]).style.border = "3px solid red";
           ++chyby;
+          document.getElementById("hra3robot").src = sad;
         }
         document.getElementById(correctAns[i]+"Obr").onclick = function(){
           document.getElementById(correctAns[i]+"Obr").style.border = "3px solid red";
           ++chyby;
+          document.getElementById("hra3robot").src = sad;
         }
       }
     }
@@ -32,9 +44,10 @@
 
   function resetAns(){
     let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
+    document.getElementById("hra3robot").src = normal;
     for(let i = 0; i < correctAns.length; i++){
-      document.getElementById(correctAns[i]).style.border = "3px solid #A7C7E7";
-      document.getElementById(correctAns[i]+"Obr").style.border = "";
+      document.getElementById(correctAns[i]).style.border = "";
+      document.getElementById(correctAns[i]+"Obr").style.border = "";   
     }
   }
 
@@ -51,13 +64,13 @@
       <button id="ssd">SSD disk</button>
       <button id="hdd">Pevný disk (HDD)</button>
       <button id="magPaska">Magnetická páska</button>    
-      </p>`;
+      </p><div class="hra3obr">
+      <input type="image" id="magPaskaObr" src="../../pictures/magPaska.png" alt="Magnetická páska">
+      <input type="image" id="cdObr" src="../../pictures/cd.png" alt="CD">
+      <input type="image" id="usbObr" src="../../pictures/usb.png" alt="USB flash disk">
+      <input type="image" id="ssdObr" src="../../pictures/ssd.jpg" alt="SSD">
+      <input type="image" id="hddObr" src="../../pictures/hdd.png" alt="Pevný disk"></div>`;
     dalsi.innerHTML = `<button id="dalsiBut" onclick="dalsiOt()">Další</button>`;
-    hra3text.innerHTML += `<p class="hra3Obr"><input type="image" id="hddObr" src="../../pictures/hdd.png" alt="Pevný disk" width="180">
-      <input type="image" id="magPaskaObr" src="../../pictures/magPaska.png" alt="Magnetická páska" width="180">
-      <input type="image" id="cdObr" src="../../pictures/cd.png" alt="CD" width="180">
-      <input type="image" id="ssdObr" src="../../pictures/ssd.jpg" alt="SSD" width="180">
-      <input type="image" id="usbObr" src="../../pictures/usb.png" alt="USB flash disk" width="180"></p>`;
     checkAns();
   }
 
@@ -66,21 +79,48 @@
     ot.innerHTML = otazky[kolo]; 
     resetAns();
     checkAns();
+    
     if(kolo == 4){
       dalsi.innerHTML = `<button id="vyhodnotitBut" onclick="vyhodnotit()">Vyhodnotit</button>`;
     }
   }
 
   function vyhodnotit() {
-    let hodnoceni = 
-
+    var hodnoceniText = ["To bylo bez chybičky! Jen tak dál", "Chybička se vloudila, zkus to znovu!", "Jej, to se nepovedlo. Pročti si znovu teorii a zkus to ještě jednou!"];
     hra3.innerHTML = `
-    <div id="hra3bubbleZaver"><p id="hodnoceni"></p></div>
-    <a id="hra3zpet" href="ukladani-dat">Zpět na teorii</a>
-    <a id="hra3reset" href="hra3">Začít znovu</a>
-    <a id="dalsiHry" href="hry">Další hry</a>
+    <div><div id="hra3bubbleZaver">
+    <p id="hodnoceni"></p>
+    </div><div class="hra3kamDal">
+    <button id="hra3zpet" onclick="location.href='ukladani-dat'">Zpět na teorii</button>
+    <button id="hra3reset" onclick="location.href='hra3'">Začít znovu</button>
+    <button id="dalsiHry" onclick="location.href='hry'">Další hry</button>
+    </div></div>
+    <img id="hra3robotZaver" src="../../pictures/rob03.png" alt="Robot3" width="350">
+    
     `;
+    switch (chyby) {
+      case 0:
+        hodnoceni.innerHTML = hodnoceniText[0];
+        document.getElementById("hra3robotZaver").src = happy;
+        break;
+      case(chyby < 2):
+        hodnoceni.innerHTML = hodnoceniText[1];
+        document.getElementById("hra3robotZaver").src = normal;
+        break;
+      default:
+        hodnoceni.innerHTML = hodnoceniText[2];
+        document.getElementById("hra3robotZaver").src = sad;
+    }
 
+    document.getElementById("hra3").style.gridTemplateColumns = "60% auto";
+    document.getElementById("hra3robotZaver").style.float = "left";
+
+
+    
+
+
+
+    
 
   }
 
@@ -97,8 +137,7 @@ Vylučovací metodou se určitě dostaneš ke správné odpovědi.
 <br>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
 <button id="zacniHru" onclick="zacniHru()">Začni hru</button>
 </div>
-<div id="hra3sidebar">
-<img id="hra3robotUvod" src="../../pictures/rob03.png" alt="Robot3" width="270">
+<div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="270">
 <div id="dalsi"></div>
 </div>
 
