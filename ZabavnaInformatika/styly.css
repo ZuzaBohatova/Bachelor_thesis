@@ -1,6 +1,6 @@
 body {
   font-family: Verdana,sans-serif;
-  max-width: 1024px;
+  max-width: 1000px;
   min-width: 560px;
   width:75%;
   margin: auto;
@@ -112,7 +112,7 @@ i {
 }
 
 #dalsi {
-  margin-top: 30%;
+  margin-top: 10%;
 }
 
 #dalsiBut, #vyhodnotitBut, #zacniHru{
@@ -126,7 +126,7 @@ i {
   float: right;
   font-weight: bold;
   width: 200px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 
@@ -144,7 +144,7 @@ i {
   font-size: 18px;
   margin: 5px 5px 5px 5px;
   font-weight: bold;
-  min-width: 90px;
+  min-width: 100px;
 }
 
 .ans {

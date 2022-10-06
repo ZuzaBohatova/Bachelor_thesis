@@ -35,7 +35,7 @@
                 require_once __DIR__ . '/hra3Novy.php';
                 break; 
             case "hra4":
-                require_once __DIR__ . '/hra4.php';
+                require_once __DIR__ . '/hra4Novy.php';
                 break;
             case "hry":
                 require_once __DIR__ . '/hry.php';
