@@ -92,7 +92,7 @@ input[type=button] {
 <h2>Převody mezi dvojkovou a desítkovou soustavou</h2>
 <p>Vyzkoušej si, jestli zvládneš tyto dva příkladypár příkladů (i s řešením) nebo si vymysli svoje a výsledek si zkontroluj na převodové kalkulačce.</p>
 
-<!--
+
 <form name="formHra4" action="hra4" method="post">
     <p id="pr1">1. Číslo 78 v desítkové soustavě zapíšeme ve dvojkové jako: </p>
     <input type="radio" id="68" name="pr1" value="68">
