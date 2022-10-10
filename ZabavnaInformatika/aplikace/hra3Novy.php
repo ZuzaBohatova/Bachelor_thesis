@@ -12,7 +12,7 @@
 
   let happy = "../../pictures/rob02.png";
   let sad = "../../pictures/rob03sad.png"
-  let normal = "../../pictures/rob03.png";
+  let normal = "../../pictures/rob03happy.png";
 
   function checkAns() {
     let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
