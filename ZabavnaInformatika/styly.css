@@ -1,21 +1,19 @@
 body {
+  background-color: white;
   font-family: Verdana,sans-serif;
+  margin: auto;
   max-width: 1000px;
   min-width: 560px;
+  padding: 20px 25px;
   width:75%;
-  margin: auto;
-  background-color: white;
-  padding: 20px 25px 20px 25px;
-
 }
 
-
 nav ul {
-  list-style-type: none;
   background-color: white;
-  text-align:center;
-  padding: 2%;
   font-weight: 500;
+  list-style-type: none;
+  padding: 2%;
+  text-align:center;
 }
 
 nav li {
@@ -27,20 +25,15 @@ nav li {
   text-align: center;
 }
 
-#test-robot {
-  right: 0;
-  top: 20 px;
-}
-
 a {
-  text-decoration: none;
-  font-size: 18px;
   color:black;
+  font-size: 18px;
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
   color: rgba(31, 162, 238, 0.904);
+  text-decoration: none;
 }
 
 i {
@@ -53,8 +46,7 @@ i {
   grid-template-columns: auto 35%;
   grid-template-areas:
     "text robot";
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0px 10px;
 }
 
 #ot {
@@ -66,40 +58,38 @@ i {
 }
 
 .hra3obr {
-  text-align: center;
   margin-top: 30px;
+  text-align: center;
 }
 
 .hra3obr input {
-  height: 100px;
   background-color: white;
   border: 3px solid #A7C7E7;
   border-radius:10px;
   color: navy;
-  padding: 15px 15px;
+  height: 100px;
+  margin: 5px;
+  padding: 15px;
   text-align: center;
-  margin: 5px 5px 5px 5px;
-
 }
 
 #hra3bubbleUvod { 
   background: #A7C7E7;
-  border-radius: 50px;
-  text-align:center;
-  padding: 20px 25px 20px 25px;
+  border-radius: 75px;
   font-size: 18px;
-
+  padding: 20px 25px;
+  text-align:center;
 }
 
 #hra3bubbleUvod:before {
-  content:"";
-  float:right;
-  width: 0;
-  height: 0;
   border-top: 13px solid transparent;
   border-left: 85px solid #A7C7E7;
   border-bottom: 13px solid transparent;
+  content:"";
+  float:right;
+  height: 0;
   margin: 140px -90px 30px 0px;
+  width: 0;
 }
 
 #zpetUD {
@@ -120,13 +110,13 @@ i {
   border: 2px solid #A7C7E7;
   border-radius:20px;
   color: navy;
+  float: right;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
   padding: 15px 25px;
   text-align: center;
-  font-size: 18px;
-  float: right;
-  font-weight: bold;
   width: 200px;
-  margin-top: 20px;
 }
 
 
@@ -139,56 +129,56 @@ i {
   border: 3px solid #A7C7E7;
   border-radius:10px;
   color: navy;
-  padding: 15px 15px;
-  text-align: center;
   font-size: 18px;
-  margin: 5px 5px 5px 5px;
   font-weight: bold;
+  margin: 5px;
   min-width: 100px;
+  padding: 15px;
+  text-align: center;
+  
 }
 
 .ans {
-  text-align: center;
   margin-left: -15px;
+  text-align: center;
 }
 
 .hra3kamDal {
-  margin-top:50px;
   float:right;
-
+  margin-top:50px;
 }
+
 .hra3kamDal button{
   background-color: #A7C7E7;
   border: 2px solid #A7C7E7;
   border-radius:20px;
   color: navy;
-  padding: 15px 25px;
-  text-align: center;
   font-size: 18px;
   font-weight: bold;
-  width: 180px;
   margin-top: 10px;
+  padding: 15px 25px;
+  text-align: center;
+  width: 180px;
 }
 
 #hra3bubbleZaver { 
   background: #A7C7E7;
   border-radius: 50px;
-  text-align:center;
-  padding: 20px 25px 20px 25px;
   font-size: 20px;
   margin-top:20px;
-
+  padding: 20px 25px;
+  text-align:center;
 }
 
 #hra3bubbleZaver:before {
+  border-bottom: 13px solid transparent;
+  border-left: 85px solid #A7C7E7;
+  border-top: 13px solid transparent;
   content:"";
   float:right;
-  width: 0;
   height: 0;
-  border-top: 13px solid transparent;
-  border-left: 85px solid #A7C7E7;
-  border-bottom: 13px solid transparent;
   margin: 40px -90px 30px 0px;
+  width: 0;
 }
 
 #hra3robotZaver {

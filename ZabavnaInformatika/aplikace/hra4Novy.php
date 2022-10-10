@@ -1,158 +1,114 @@
 <script>
     document.getElementById("menu").style.border = "5px solid darkgreen";
-
-    function checkPr(corrAns, q, check, ans){
-        check.innerHTML = "";
-        var ele = document.getElementsByName(q);
-            for(i = 0; i < ele.length; i++) {
-                if(ele[i].checked){
-                    if(ele[i].value != corrAns){
-                        var hlaska = "<p>Chybička se vloudila, správná odpověď je ";
-                        if(corrAns == 62){
-                            hlaska +="<strong>62</strong></p>";
-                        }
-                        else{
-                            hlaska +="<strong>1001110</strong></p>";
-                        }
-                        check.innerHTML = hlaska;
-                        document.getElementById(ans).style.color = "darkred";
-                    }
-                    else {
-                        check.innerHTML = "<p><strong>Výborně, jen tak dál</strong></p>";
-                        document.getElementById(ans).style.color = "darkgreen";
-                    }
-                }
-            }
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    function dec2bin(dec) {
-        return (dec >>> 0).toString(2);
+    async function hra4animace() {
+        hra4bubbleUvod.innerHTML = `<p id="hra4robotText">Základní krok převodu do dvojkové soustavy je dělení dvěma a zapisování zbytku po dělení.</p>`;
+        hra4buttons.innerHTML = "";
+        document.getElementById("hra4robot").width = "250";
+        document.getElementById("hra4bubbleUvod").style.padding = "10px";
+        document.getElementById("hra4bubbleUvod").className = "second";
+        await sleep(2000);
+        hra4bubbleUvod.innerHTML += `<p>My budeme do dvojkové soustavy převádět číslo <a href="https://cs.wikipedia.org/wiki/42_(odpov%C4%9B%C4%8F)" target="_blank">42</a>`;
+        await sleep(2000);
+        console.log("Goodbye!");
+
     }
 
-    function clearScreen() {
-        document.getElementById("result").value = "";
-        document.getElementById("zadani").value = "";
-    }
-    
-    function display(value) {
-        document.getElementById("zadani").value += value;
-    }
-    
-    function calculate() {
-        var p = document.getElementById("zadani").value;
-        document.getElementById("result").value = dec2bin(p);
-    }
-   
+
 </script>
 <style type="text/css">
-#hra4 {
-    margin-left: 10px;
-}
+    #hra4 {
+        display:grid;
+        grid-template-columns: 60%  auto;
+        grid-template-areas: 
+            "text robot";
+        font-size: 18px;
+        margin: 0px 10px;
 
-.kalkulacka {
-    background-color: darkgreen;
-    border: 2px solid lightgreen;
-    border-radius:10px;
-    
-}
+    }
 
-.kalkulacka td input[type=button]{
-    background-color:lightgreen;
-    border: 2px solid darkgreen;
-    border-radius: 5px;
-    font-size:20px;
-}
+    #hra4text {
+        grid-area: text;
+    }
 
-#zpetCS {
-    color: darkgreen;
-    font-weight: bold;
-} 
+    #hra4robot {
+        grid-area: robot;
+        margin:auto;
+    }
 
-input[type=button] {
-    background-color:lightgreen;
-    border: 2px solid darkgreen;
-    font-size:16px;
-    border-radius: 5px;
-    color:darkgreen;
-}
+    #hra4bubbleUvod { 
+        background: lightgreen;
+        padding: 25px;
+        -moz-border-radius: 10px; 
+        -webkit-border-radius: 10px; 
+        border-radius: 50px;
+        text-align:center;
+        font-size: 18px;
+    }
 
-#postup {
-    background-color:darkgreen;
-    color:lightgreen;
-}
+    #hra4bubbleUvod:before {
+        content:"";
+        float:right;
+        width: 0;
+        height: 0;
+        border-top: 13px solid transparent;
+        border-left: 75px solid lightgreen;
+        border-bottom: 13px solid transparent;
+        margin: 120px -90px 25px 0px;
 
-.display-box {
-    background-color: white;
-    font-size: 20px;
-}
+    }
+
+    #hra4bubbleUvod.second:before {
+        content:"";
+        float:right;
+        width: 0;
+        height: 0;
+        border-top: 16px solid transparent;
+        border-left: 120px solid lightgreen;
+        border-bottom: 16px solid transparent;
+        margin: 55px -98px 25px 0px;
+
+    }
+
+    #zpetCS {
+        color: darkgreen;
+        font-weight: bold;
+        margin-top: 10px;
+    } 
+
+    #hra4zacniHru, #hra4animace {
+        background-color: lightgreen;
+        border: 2px solid lightgreen;
+        border-radius:20px;
+        color: darkgreen;
+        font-size: 18px;
+        font-weight: bold;
+        float: right;
+        margin: 15px 5px 0px 5px;
+        padding: 15px 25px;
+        text-align: center;
+        width: 200px;
+    }
+
+    #hra4zacniHru:hover, #hra4animace:hover {
+        border: 2px solid darkgreen;
+    }
+
 </style>
-<br> 
 <div id="hra4">
-<a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a>
-<h2>Převody mezi dvojkovou a desítkovou soustavou</h2>
-<p>Vyzkoušej si, jestli zvládneš tyto dva příkladypár příkladů (i s řešením) nebo si vymysli svoje a výsledek si zkontroluj na převodové kalkulačce.</p>
-
-
-<form name="formHra4" action="hra4" method="post">
-    <p id="pr1">1. Číslo 78 v desítkové soustavě zapíšeme ve dvojkové jako: </p>
-    <input type="radio" id="68" name="pr1" value="68">
-    <label for="68">1000100</label><br>
-    <input type="radio" id="79" name="pr1" value="79">
-    <label for="79">1001111</label><br>
-    <input type="radio" id="78" name="pr1" value="78">
-    <label for="78">1001110</label><br><br>
-    <input type="button" id="checkPr1" onclick="checkPr('78', 'pr1', check1, 'check1')" value="Zkontrolovat">
-    <input type="button" id="postup" onclick="postupPr1()" value="Postup">
-    <p id="check1"></p>
-    <p id="pr2"><br>2. Kterému číslu v desítkové soustavě se rovná 111110 v dvojkové soustavě? </p>
-    <input type="radio" id="62" name="pr2" value="62">
-    <label for="62">62</label><br>
-    <input type="radio" id="61" name="pr2" value="61">
-    <label for="61">61</label><br>
-    <input type="radio" id="63" name="pr2" value="63">
-    <label for="63">63</label><br><br>
-    <input type="button" id="checkPr2" onclick="checkPr(62, 'pr2', check2, 'check2')" value="Zkontrolovat">
-    <input type="button" id="postup" onclick="postupPr2()" value="Postup">
-    <p id="check2"></p>
-</form>
-<form name="formNar" action="hra4" method="post">
-    <p><br>3. Své narozeniny:
-    <!--Type date není použit protože není podporován v Internet Explorer 11 -->
-    <input type="number" id="narDen" name="narDen" min="1" max="31" required>.
-    <input type="number" id="narMesic" name="narMesic" min="1" max="12" required>. zapíšeš ve dvojkové soustavě jako: </p>
-    <input type="text" id="den" placeholder="den" pattern="[0-1]+" required>
-    <input type="text" id="měsíc" placeholder="měsíc" pattern="[0-1]+" required>
-    <input type="button" id="checkNar" onclick="checkNar()" value="Zkontrolovat">
-</form>
-<br>
+<div id="hra4text">
+<h4><a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a></h4>
+<div id="hra4bubbleUvod">
+<h3>Zvládáš převody mezi dvojkovou a desítkovou soustavou?</h3>
+<p id="hra4robotText"><strong>Myslíš si, že už se vyznáš v jedničkách a nulách? </strong>
+    Tak můžeš rovnou vykoušet hru, která ti ukáže, jak na tom doopravdy jsi.</p> 
+<p><strong>Pořád si nejsi převody jistý?</strong> Koukni se na animaci, která ti ukáže, jak na to!</p></div>
+<div id="hra4buttons"><button id="hra4zacniHru" onclick="zacniHru4()">Začni hru</button>
+<button id="hra4animace" onclick="hra4animace()">Animace</button></div>
 </div>
-<h3>Chceš se otestovat sám? </h3>
-<p>Vymysli si vlastní příklady a pro kontrolu použij převodovou kalkulačku.</p>
-<table class="kalkulacka">
-    <tr>
-        <td colspan="2"> <input class="display-box" type="text" id="zadani" disabled /> </td>
-        <td rowspan="2"> <input type="button" value="C" onclick="clearScreen()" id="btn" /> </td>
-    </tr>
-    <tr>
-        <td colspan="2"> <input class="display-box" type="text" id="result" disabled /> </td>
-    </tr>
-    <tr>
-        <td> <input type="button" value="1" onclick="display('1')" /> </td>
-        <td> <input type="button" value="2" onclick="display('2')" /> </td>
-        <td> <input type="button" value="3" onclick="display('3')" /> </td>
-    </tr>
-    <tr>
-        <td> <input type="button" value="4" onclick="display('4')" /> </td>
-        <td> <input type="button" value="5" onclick="display('5')" /> </td>
-        <td> <input type="button" value="6" onclick="display('6')" /> </td>
-    </tr>
-    <tr>
-        <td> <input type="button" value="7" onclick="display('7')" /> </td>
-        <td> <input type="button" value="8" onclick="display('8')" /> </td>
-        <td> <input type="button" value="9" onclick="display('9')" /> </td>
-    </tr>
-    <tr>
-        <td> <input type="button" value="0" onclick="display('0')" /> </td>
-        <td colspan="2"> <input type="button" value="2bin" onclick="calculate()" id="btn" /> </td>
-    </tr>
-</table>
+<img id="hra4robot" src="../../pictures/rob02.png" alt="Robot2" width="300">
+</div>
+
