@@ -11,7 +11,7 @@
   ];
 
   let happy = "../../pictures/rob02.png";
-  let sad = "../../pictures/rob01.png"
+  let sad = "../../pictures/rob03sad.png"
   let normal = "../../pictures/rob03.png";
 
   function checkAns() {
@@ -129,7 +129,7 @@ Tvým úkolem bude ke každému popisu vybrat správný název a obrázek.</p> <
 <p><i>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
 <button id="zacniHru" onclick="zacniHru()">Začni hru</button>
 </div>
-<div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="320">
+<div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="300">
 <div id="dalsi"></div>
 </div>
 
