@@ -5,16 +5,20 @@
     }
 
     async function hra4animace() {
-        hra4bubbleUvod.innerHTML = `<p id="hra4robotText">Základní krok převodu do dvojkové soustavy je dělení dvěma a zapisování zbytku po dělení.</p>`;
+        hra4bubbleUvod.innerHTML = `<p id="hra4robotText">Základní krok převodu do dvojkové soustavy je <strong>dělení dvěma</strong> a zapisování
+         <strong>zbytku po dělení</strong>.</p>`;
         hra4buttons.innerHTML = "";
         document.getElementById("hra4robot").width = "250";
-        document.getElementById("hra4bubbleUvod").style.padding = "10px";
+        document.getElementById("hra4bubbleUvod").style.height = "120px";
         document.getElementById("hra4bubbleUvod").className = "second";
         await sleep(2000);
-        hra4bubbleUvod.innerHTML += `<p>My budeme do dvojkové soustavy převádět číslo <a href="https://cs.wikipedia.org/wiki/42_(odpov%C4%9B%C4%8F)" target="_blank">42</a>`;
-        await sleep(2000);
-        console.log("Goodbye!");
-
+        hra4bubbleUvod.innerHTML += `<p>My budeme do dvojkové soustavy převádět číslo <strong><a href="https://cs.wikipedia.org/wiki/42_(odpov%C4%9B%C4%8F)" target="_blank">42</a></strong>`;
+        await sleep(5000)
+        hra4bubbleUvod.innerHTML = "42 vydělíme 2"
+        hra4animaceVypoctu.innerHTML = "42 : 2 ="
+        await sleep(1000);
+        hra4animaceVypoctu += "21"
+        
     }
 
 
@@ -40,13 +44,14 @@
     }
 
     #hra4bubbleUvod { 
-        background: lightgreen;
-        padding: 25px;
         -moz-border-radius: 10px; 
         -webkit-border-radius: 10px; 
+        background: lightgreen;
         border-radius: 50px;
-        text-align:center;
         font-size: 18px;
+        padding: 25px;
+        text-align:center;
+        
     }
 
     #hra4bubbleUvod:before {
@@ -108,6 +113,7 @@
 <p><strong>Pořád si nejsi převody jistý?</strong> Koukni se na animaci, která ti ukáže, jak na to!</p></div>
 <div id="hra4buttons"><button id="hra4zacniHru" onclick="zacniHru4()">Začni hru</button>
 <button id="hra4animace" onclick="hra4animace()">Animace</button></div>
+<div id="hra4animaceVypoctu"></div>
 </div>
 <img id="hra4robot" src="../../pictures/rob02.png" alt="Robot2" width="300">
 </div>

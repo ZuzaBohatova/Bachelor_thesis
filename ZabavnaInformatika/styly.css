@@ -57,6 +57,10 @@ i {
   grid-area:text;
 }
 
+#hra3robot {
+  margin-left: 20px;;
+} 
+
 .hra3obr {
   margin-top: 30px;
   text-align: center;
@@ -163,10 +167,10 @@ i {
 
 #hra3bubbleZaver { 
   background: #A7C7E7;
-  border-radius: 50px;
+  border-radius: 60px;
   font-size: 20px;
   margin-top:20px;
-  padding: 20px 25px;
+  padding: 20px 20px;
   text-align:center;
 }
 
@@ -177,7 +181,7 @@ i {
   content:"";
   float:right;
   height: 0;
-  margin: 40px -90px 30px 0px;
+  margin: 120px -70px 30px 0px;
   width: 0;
 }
 

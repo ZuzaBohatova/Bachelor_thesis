@@ -10,9 +10,9 @@
     "Data se na mě ukládají pomocí elektrických obvodů. Myslím, že už jsme se spolu nejspíš setkali. Určitě víš, že mi říkají:"  
   ];
 
-  let happy = "../../pictures/rob02.png";
+  let happy = "../../pictures/rob03happy.png";
   let sad = "../../pictures/rob03sad.png"
-  let normal = "../../pictures/rob03happy.png";
+  let normal = "../../pictures/rob03.png";
 
   function checkAns() {
     let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
@@ -95,7 +95,7 @@
     <button id="hra3reset" onclick="location.href='hra3'">Začít znovu</button>
     <button id="dalsiHry" onclick="location.href='hry'">Další hry</button>
     </div></div>
-    <img id="hra3robotZaver" src="../../pictures/rob03.png" alt="Robot3" width="350">
+    <img id="hra3robotZaver" src="" alt="Robot3" width="350">
     
     `;
     switch (chyby) {
@@ -106,12 +106,13 @@
       case 1:
       case 2:
         hodnoceni.innerHTML = hodnoceniText[1];
-        document.getElementById("hra3robotZaver").src = normal;
+        document.getElementById("hra3robotZaver").src = happy;
         break;
       default:
         hodnoceni.innerHTML = hodnoceniText[2];
         document.getElementById("hra3robotZaver").src = sad;
     }
+    document.getElementById("hra3robotZaver").style.margin = "0px 35px";
     pocetChyb.innerHTML += "Tvůj počet chyb byl: "+chyby;
 
     document.getElementById("hra3").style.gridTemplateColumns = "60% auto";
@@ -129,7 +130,7 @@ Tvým úkolem bude ke každému popisu vybrat správný název a obrázek.</p> <
 <p><i>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
 <button id="zacniHru" onclick="zacniHru()">Začni hru</button>
 </div>
-<div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="300">
+<div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="320">
 <div id="dalsi"></div>
 </div>
 
