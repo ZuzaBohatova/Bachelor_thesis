@@ -5,10 +5,9 @@
     #ciselneSoustavy {
         display:grid;
         grid-template-columns: 55% 5% 14% auto;
-        grid-template-rows: 36% 2% 22% auto;
+        grid-template-rows: 40% 22% auto;
         grid-template-areas: 
             "text . robot robot"
-            "animace animace prevod prevod"
             "animace animace prevod prevod"
             "desitka desitka desitka mocniny";
         font-size: 18px;
