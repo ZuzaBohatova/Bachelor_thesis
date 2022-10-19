@@ -17,24 +17,24 @@
             <td>`+deleni[2]+`</td> 
             <td></td>
             <td>Zbytek</td>
-            <td><strong>`+deleni[3]+`</strong></td></tr>`;
+            <td class="zbytky">`+deleni[3]+`</td></tr>`;
     }
 
     async function hra4vypocet(deleni) {
-        await sleep(4000);
+        //await sleep(4000);
         document.getElementById("hra4bubbleUvod").style.height = "70px";
         hra4bubbleUvod.innerHTML = "<strong>"+deleni[0]+"</strong> dělíme <strong>"+deleni[1]+"</strong>";  
-        await sleep(2500); //1500
+        //await sleep(2500); //1500
         hra4bubbleUvod.innerHTML += "<p>Dostaneme <strong>"+deleni[2]+"</strong> a <strong>zbytek "+deleni[3]+"</strong></p>"
-        await sleep(1000); //1000
+        //await sleep(1000); //1000
         pridejRadekTabulky(deleni,0);
     }
 
 
-    async function hra4animace() {
+    async function hra4animace10to2() {
         hra4bubbleUvod.innerHTML = `<p id="hra4robotText">Základní krok převodu do dvojkové soustavy je <strong>dělení dvěma</strong> a zapisování
             <strong>zbytku po dělení</strong>.</p>`;
-        hra4buttons.innerHTML = "";
+        document.getElementById("hra4buttons").remove();
         var deleni = [42,2,(42/2),(42%2)];
         document.getElementById("hra4robot").width = "250";
         document.getElementById("hra4bubbleUvod").className = "second";
@@ -45,24 +45,32 @@
             await hra4vypocet(deleni);
         }
         await sleep(3000);
-        document.getElementById("hra4bubbleUvod").style.height = "100px";
-        hra4bubbleUvod.innerHTML = "<p>Když už nemáme kam dál dělit, podíváme se na zbytky, co jsme dostali</p>";
-        await sleep(4000);
-        document.getElementById("hra4bubbleUvod").style.height = "120px";
-        hra4bubbleUvod.innerHTML += `<p><strong>010101</strong></p>`;
-        await sleep(3000);
-        document.getElementById("hra4bubbleUvod").style.height = "180px";
-        hra4bubbleUvod.innerHTML += `<p>Zbytky přečtu odzadu a dostávám výsledek: </p>`;
-        await sleep(4000);        
-        document.getElementById("hra4bubbleUvod").style.height = "220px";
-        hra4bubbleUvod.innerHTML += `<p><strong>101010</strong></p>`;
-        await sleep(6000);
+        document.getElementById("hra4bubbleUvod").style.padding = "15px";
         document.getElementById("hra4bubbleUvod").style.height = "80px";
+        hra4bubbleUvod.innerHTML = "<p>Když už nemáme kam dál dělit, podíváme se na zbytky, co jsme dostali</p>";
+        //await sleep(2000);
+        document.getElementById("hra4bubbleUvod").style.height = "110px";
+        hra4bubbleUvod.innerHTML += `<p><strong>010101</strong></p>`;
+        //await sleep(3000);
+        document.getElementById("hra4bubbleUvod").style.height = "170px";
+        hra4bubbleUvod.innerHTML += `<p>Zbytky přečtu odzadu a dostávám výsledek: </p>`;
+        //await sleep(2000);        
+        document.getElementById("hra4bubbleUvod").style.height = "210px";
+        hra4bubbleUvod.innerHTML += `<p><strong>101010</strong></p>`;
+        //await sleep(6000);
+        document.getElementById("hra4bubbleUvod").style.height = "100px";
         hra4bubbleUvod.innerHTML = `<p><strong><a href="https://cs.wikipedia.org/wiki/42_(odpov%C4%9B%C4%8F)" target="_blank">42</a></strong> ve <strong>dvojkové soustavě</strong> se rovná <strong>101010</strong></p>`;        
-        await sleep(2000);
-        hra4buttZacniHru.innerHTML = `<button id="hra4zacniHru" onclick="zacniHru4()">Začni hru</button>`;
+        hra4bubbleUvod.innerHTML += "<p>A hurá na hru!</p>";
+        await sleep(1000);
+        hra4butZacniHru.innerHTML = `<button id="hra4zacniHru" onclick="hra4zacniHru()">Začni hru</button>`;
     }
 
+    function hra4zacniHru(){
+        document.getElementById("hra4bubbleUvod").style.height = "120px";
+        hra4bubbleUvod.innerHTML = `<p>Pravidla jsou jednoduchá. Dám ti číslo, které máš převést do dvojkové soustavy. <br>
+        A postupně ho převedeš, číslici po číslici</p>`;
+        document.getElementById("hra4tab").remove();
+    }
 
 </script>
 <style type="text/css">
@@ -72,10 +80,10 @@
     #hra4 {
         display:grid;
         grid-template-columns: 60%  auto;
-        grid-template-rows: auto;
+        grid-template-rows: auto 20%;
         grid-template-areas: 
             "text robot"
-            "animace robot";
+            "text button";
 
         font-size: 18px;
         margin: 0px 10px;
@@ -88,7 +96,8 @@
 
     #hra4robot {
         grid-area: robot;
-        margin:auto;
+        margin:0 auto;
+        float:right;
     }
 
     #hra4bubbleUvod { 
@@ -110,7 +119,7 @@
         border-top: 13px solid transparent;
         border-left: 75px solid lightgreen;
         border-bottom: 13px solid transparent;
-        margin: 120px -90px 25px 0px;
+        margin: 125px -90px 25px 0px;
     }
 
     #hra4bubbleUvod.second:before {
@@ -119,9 +128,9 @@
         width: 0;
         height: 0;
         border-top: 16px solid transparent;
-        border-left: 120px solid lightgreen;
+        border-left: 110px solid lightgreen;
         border-bottom: 16px solid transparent;
-        margin: 50px -98px 25px 0px;
+        margin: 55px -98px 25px 0px;
     }
 
 
@@ -173,7 +182,15 @@
         margin: auto;   
     }
 
+    .zbytky {
+        font-weight: bold;
+        color: darkgreen;
 
+    }
+
+    #hra4butZacniHru {
+        grid-area:button;
+    }
 
 </style>
 <div id="hra4">
@@ -184,12 +201,11 @@
 <p><strong>Myslíš si, že už se vyznáš v jedničkách a nulách? </strong>
     Tak můžeš rovnou vykoušet hru, která ti ukáže, jak na tom doopravdy jsi.</p> 
 <p><strong>Pořád si nejsi převody jistý?</strong> Koukni se na animaci, která ti ukáže, jak na to!</p></div>
-<div id="hra4buttons"><button id="hra4zacniHru" onclick="zacniHru4()">Začni hru</button>
-<button id="hra4animace" onclick="hra4animace()">Animace</button></div>
 <table id="hra4tab"></table>
+<div id="hra4buttons"><button id="hra4zacniHru" onclick="zacniHru4()">Začni hru</button>
+<button id="hra4animace" onclick="hra4animace10to2()">Animace</button></div>
 </div>
-<div id="hra4buttZacniHru"></div>
-
 <img id="hra4robot" src="../../pictures/rob02.png" alt="Robot2" width="300">
+<div id="hra4butZacniHru"></div>
 </div>
 
