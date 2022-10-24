@@ -1,5 +1,6 @@
 # All
  - přidat oddíl čtení dat z grafů a na rozeznání několika základních algoritmů??
+ - udělat classy pro tlačítka každé hry
 
 # Uvod 
  - odkazy na rvp

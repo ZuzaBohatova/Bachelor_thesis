@@ -82,11 +82,12 @@
     function hra4(){
         hra4text.innerHTML = `<h4><a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a></h4>
             <h3> Zvládáš převody mezi soustavami?</h3>
-            <p id="hra4ot1">Převod čísla <span class="strong">26 do dvojkové soustavy</span></p>
+            <p id="hra4ot">Převod čísla <span class="strong">26</span> do <span class="strong">dvojkové soustavy</span></p>
             <p id="hra4prav">Postupně vyplň všechna políčka buď jedničkou nebo nulou.
             <br>Pokud zezelenají, odpověděl jsi správně, naopak červená znamená chybu.</p>`;
-        hra4text.innerHTML += "<p><i>Hint: děl dvojkou a zbytky doplňuj odzadu :)</i></p>";
+        hra4text.innerHTML += `<p id="hint"><i>Hint: děl dvojkou a zbytky doplňuj odzadu :)</i></p>`;
         hra4text.innerHTML += hra4addPrevod(5,[1,1,0,1,0],'hra4prevod26');
+        hra4text.innerHTML += `<p id="hra4chyba"></p>`;
         hra4butZacniHru.innerHTML = `<button id="hra4pokracuj" onclick="hra4prevod2()">Pokračuj dál</button>`;        
     }
 
@@ -129,17 +130,18 @@
 
     function hra4prevod2() {
         var ans = hra4muzuDal("hra4prevod26", 5);
-        hra4text.innerHTML += `<p id="hra4chyba"></p>`;
         if(!ans) {
             hra4chyba.innerHTML = "Někde máš chybku, oprav jí a až pak pokračuj";
         }
         if(ans){
-            hra4text.innerHTML = `<h4><a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a></h4>
-            <h3> Zvládáš převody mezi soustavami?</h3>
-            <p id="hra4ot2">Nyní tě čekají o dva těžší převody. </p>`;
-            hra4text.innerHTML += "<p>Převeď 59 do dvojkové soustavy</p>"+hra4addPrevod(6, [1,1,1,0,1,1], "hra4prevod59");
-            hra4text.innerHTML += "<br><p>Převeď 76 do dvojkové soustavy</p>"+hra4addPrevod(7, [1,0,0,1,1,0,0], "hra4prevod76");
-            hra4text.innerHTML += `<p id="hra4chyba"></p>`;
+            hra4chyba.innerHTML = "";            
+            hra4ot.innerHTML = "Nyní tě čekají dva těžší převody.";
+            hra4prav.innerHTML = `<div id="hra4prevod2"><p><span class="strong">Převeď 59 do dvojkové soustavy</span></p>`
+            +hra4addPrevod(6, [1,1,1,0,1,1], "hra4prevod59")+
+            `<br><p><span class="strong">Převeď 76 do dvojkové soustavy</span></p>`
+            +hra4addPrevod(7, [1,0,0,1,1,0,0], "hra4prevod76")+`</div>`;
+            document.getElementById("hra4prevod26").remove();
+            document.getElementById("hint").remove();
             hra4butZacniHru.innerHTML = `<button id="hra4pokracuj" onclick="hra4narozeniny()">Pokračuj dál</button>`;        
     
         }
@@ -152,13 +154,12 @@
             hra4chyba.innerHTML = "Někde máš chybku, oprav jí a až pak pokračuj";
         }
         else {
-            hra4text.innerHTML = `<h4><a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a></h4>
-                <h3> Zvládáš převody mezi soustavami?</h3>
-                <p id="hra4ot2">To nejtěžší máš za sebou, teď si spolu spočítám, jak vypadají tvé narozeniny ve dvojkové soustavě.</p>`;
-            hra4text.innerHTML += `<form id="hra4nar"><input type="number" id="narDen" min="1" max="31" placeholder="den" required>.
+            hra4chyba.innerHTML = "";
+            hra4ot.innerHTML = "To nejtěžší máš za sebou, teď si spolu spočítám, jak vypadají tvé narozeniny ve dvojkové soustavě.";
+            hra4prav.innerHTML = `<form id="hra4nar"><input type="number" id="narDen" min="1" max="31" placeholder="den" required>.
                 <input type="number" id="narMesic" min="1" max="12" placeholder="měsíc" required>. zapíšeš ve dvojkové soustavě jako: </p>
-                <input type="text" id="den" placeholder="den" pattern="[0-1]+" required>
-                <input type="text" id="mesic" placeholder="měsíc" pattern="[0-1]+" required></form>`;
+                <input type="text" id="den" placeholder="den" pattern="[0-1]+" required>.
+                <input type="text" id="mesic" placeholder="měsíc" pattern="[0-1]+" required>.</form>`;
             hra4butZacniHru.innerHTML = `<button id="checkNar" onclick="hra4narCheck()">Zkontroluj</button>`;  
     
         }
@@ -171,18 +172,37 @@
     function hra4narCheck(){
         var den = dec2bin(document.getElementById("narDen").value);
         var mesic = dec2bin(document.getElementById("narMesic").value);
+        var right = true;
         if(document.getElementById("den").value == den){
             document.getElementById("den").style.border = "2px solid darkgreen";
         }
         else {
             document.getElementById("den").style.border = "2px solid red";
+            right = false;
         }
         if(document.getElementById("mesic").value == mesic){
             document.getElementById("mesic").style.border = "2px solid darkgreen";
         }
         else {
             document.getElementById("mesic").style.border = "2px solid red";
+            right = false;
         }
+        if(right) {
+            hra4text.innerHTML = `<h4><a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a></h4><div id="hra4bubbleUvod"></div>`;
+            document.getElementById("hra4bubbleUvod").style.height = "120px";
+            document.getElementById("hra4bubbleUvod").className = "second";
+            document.getElementById("hra4robot").width = "250";
+            hra4bubbleUvod.innerHTML = `<p><span class="strong">Výborně! </span><br> Prošel jsi všemi úkoly na převody do dvojkové soustavy. <br> Vzhůru na další téma.</p>`;
+            document.getElementById("hra4butZacniHru").remove();
+            hra4text.innerHTML += `<div class="hra3kamDal">
+                <button id="hra4reset" onclick="location.href='hra4'">Začít znovu</button>
+                <button id="hra4dalsiHry" onclick="location.href='hry'">Další hry</button>
+                </div>`
+        }
+        else {
+            hra4chyba.innerHTML = "Někde máš chybu, zkus ji opravit";
+        }
+    
     }
 
 </script>
@@ -193,6 +213,11 @@
 
     #hra4text i {
         font-size:14px;
+    }
+
+    #hra4chyba {
+        margin: 20px 5px;
+        color:darkred;
     }
 
     #hra4nar input[type="number"] {
@@ -224,6 +249,7 @@
 
     .strong {
         font-weight:bold;
+        color:rgb(27, 77, 62);
     }
 
     #hra4 {
@@ -288,7 +314,7 @@
         margin-top: 10px;
     } 
 
-    #hra4zacniHru, #hra4animace, #hra4zacni, #hra4pokracuj, #checkNar{
+    #hra4zacniHru, #hra4animace, #hra4zacni, #hra4pokracuj, #checkNar, #hra4reset, #hra4dalsiHry{
         background-color: lightgreen;
         border: 2px solid lightgreen;
         border-radius:20px;
@@ -302,7 +328,7 @@
         width: 180px;
     }
 
-    #hra4zacniHru:hover, #hra4animace:hover, #hra4zacni:hover, #hra4pokracuj:hover, #checkNar:hover {
+    #hra4zacniHru:hover, #hra4animace:hover, #hra4zacni:hover, #hra4pokracuj:hover, #checkNar:hover, #hra4reset:hover, #hra4dalsiHry:hover {
         border: 2px solid darkgreen;
     }
 
