@@ -25,7 +25,7 @@
         document.getElementById("hra4bubbleUvod").style.height = "70px";
         hra4bubbleUvod.innerHTML = "<strong>"+deleni[0]+"</strong> dělíme <strong>"+deleni[1]+"</strong>";  
         //await sleep(2500); //1500
-        hra4bubbleUvod.innerHTML += "<p>Dostaneme <strong>"+deleni[2]+"</strong> a <strong>zbytek "+deleni[3]+"</strong></p>"
+        hra4bubbleUvod.innerHTML += `<p>Dostaneme <span class="strong">"+deleni[2]+"</span> a <strong>zbytek "+deleni[3]+"</strong></p>`;
         //await sleep(1000); //1000
         pridejRadekTabulky(deleni,0);
     }
@@ -33,7 +33,7 @@
 
     async function hra4animace10to2() {
         hra4bubbleUvod.innerHTML = `<p id="hra4robotText">Základní krok převodu do dvojkové soustavy je <strong>dělení dvěma</strong> a zapisování
-            <strong>zbytku po dělení</strong>.</p>`;
+        <span class="strong">zbytku po dělení</span>.</p>`;
         document.getElementById("hra4buttons").remove();
         var deleni = [42,2,(42/2),(42%2)];
         document.getElementById("hra4robot").width = "250";
@@ -44,39 +44,188 @@
             deleni = await zmenParametryDeleni(deleni);
             await hra4vypocet(deleni);
         }
-        await sleep(3000);
+        //await sleep(3000);
         document.getElementById("hra4bubbleUvod").style.padding = "15px";
         document.getElementById("hra4bubbleUvod").style.height = "80px";
         hra4bubbleUvod.innerHTML = "<p>Když už nemáme kam dál dělit, podíváme se na zbytky, co jsme dostali</p>";
         //await sleep(2000);
         document.getElementById("hra4bubbleUvod").style.height = "110px";
-        hra4bubbleUvod.innerHTML += `<p><strong>010101</strong></p>`;
+        hra4bubbleUvod.innerHTML += `<p><span class="strong">010101</span></p>`;
         //await sleep(3000);
         document.getElementById("hra4bubbleUvod").style.height = "170px";
         hra4bubbleUvod.innerHTML += `<p>Zbytky přečtu odzadu a dostávám výsledek: </p>`;
         //await sleep(2000);        
         document.getElementById("hra4bubbleUvod").style.height = "210px";
-        hra4bubbleUvod.innerHTML += `<p><strong>101010</strong></p>`;
+        hra4bubbleUvod.innerHTML += `<p><span class="strong">101010</span></p>`;
         //await sleep(6000);
         document.getElementById("hra4bubbleUvod").style.height = "100px";
-        hra4bubbleUvod.innerHTML = `<p><strong><a href="https://cs.wikipedia.org/wiki/42_(odpov%C4%9B%C4%8F)" target="_blank">42</a></strong> ve <strong>dvojkové soustavě</strong> se rovná <strong>101010</strong></p>`;        
+        hra4bubbleUvod.innerHTML = `<p><span class="strong"><a href="https://cs.wikipedia.org/wiki/42_(odpov%C4%9B%C4%8F)" target="_blank">42</a></span> ve <span class="strong">dvojkové soustavě</span> se rovná <span class="strong">101010</span></p>`;        
         hra4bubbleUvod.innerHTML += "<p>A hurá na hru!</p>";
         await sleep(1000);
-        hra4butZacniHru.innerHTML = `<button id="hra4zacniHru" onclick="hra4zacniHru()">Začni hru</button>`;
+        hra4butZacniHru.innerHTML = `<button id="hra4zacni" onclick="hra4zacniHru()">Začni hru</button>`;
     }
 
     function hra4zacniHru(){
         document.getElementById("hra4bubbleUvod").style.height = "120px";
+        document.getElementById("hra4bubbleUvod").className = "second";
+        document.getElementById("hra4robot").width = "250";
         hra4bubbleUvod.innerHTML = `<p>Pravidla jsou jednoduchá. Dám ti číslo, které máš převést do dvojkové soustavy. <br>
         A postupně ho převedeš, číslici po číslici</p>`;
         document.getElementById("hra4tab").remove();
+        var elementExists = document.getElementById("hra4buttons");
+        if(elementExists != null){
+            document.getElementById("hra4buttons").remove();
+        }
+        hra4butZacniHru.innerHTML = `<button id="hra4zacni" onclick="hra4()">Hrát</button>`;
+    }
+
+    function hra4(){
+        hra4text.innerHTML = `<h4><a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a></h4>
+            <h3> Zvládáš převody mezi soustavami?</h3>
+            <p id="hra4ot1">Převod čísla <span class="strong">26 do dvojkové soustavy</span></p>
+            <p id="hra4prav">Postupně vyplň všechna políčka buď jedničkou nebo nulou.
+            <br>Pokud zezelenají, odpověděl jsi správně, naopak červená znamená chybu.</p>`;
+        hra4text.innerHTML += "<p><i>Hint: děl dvojkou a zbytky doplňuj odzadu :)</i></p>";
+        hra4text.innerHTML += hra4addPrevod(5,[1,1,0,1,0],'hra4prevod26');
+        hra4butZacniHru.innerHTML = `<button id="hra4pokracuj" onclick="hra4prevod2()">Pokračuj dál</button>`;        
+    }
+
+    function hra4addPrevod(count, rightAns, id){
+        var prevod = "<form id="+id+">";
+        for(let i = 1; i <= count; i++){
+            var idAns = id+i;
+            prevod += `<input type="text" id=`+idAns+` onkeyup="hra4check(`+rightAns[i-1]+`,'`+idAns+`')">`;
+        }
+        prevod += "</form>";
+        return prevod;
+    }
+
+    function hra4check(rightAns, id) {
+        let value = document.getElementById(id).value;
+        
+        if(value == rightAns) {
+            document.getElementById(id).style.border = "2px solid green";
+            document.getElementById(id).style.fontWeight = "bold";
+            document.getElementById(id).style.color = "rgb(27, 77, 62)";
+        }
+        else {
+            document.getElementById(id).style.border = "2px solid red";
+            document.getElementById(id).style.color = "darkred";
+            document.getElementById(id).style.fontWeight = "bold";
+        }
+    }
+
+    function hra4muzuDal(id, count){
+        var ans = true;
+        for(let i = 1; i<=count; i++){
+            console.log(id+i);
+            if(document.getElementById(id+i).style.color != "rgb(27, 77, 62)") {
+                console.log(id+i);
+                ans = false;
+            }
+        }
+        return ans;
+    }
+
+    function hra4prevod2() {
+        var ans = hra4muzuDal("hra4prevod26", 5);
+        hra4text.innerHTML += `<p id="hra4chyba"></p>`;
+        if(!ans) {
+            hra4chyba.innerHTML = "Někde máš chybku, oprav jí a až pak pokračuj";
+        }
+        if(ans){
+            hra4text.innerHTML = `<h4><a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a></h4>
+            <h3> Zvládáš převody mezi soustavami?</h3>
+            <p id="hra4ot2">Nyní tě čekají o dva těžší převody. </p>`;
+            hra4text.innerHTML += "<p>Převeď 59 do dvojkové soustavy</p>"+hra4addPrevod(6, [1,1,1,0,1,1], "hra4prevod59");
+            hra4text.innerHTML += "<br><p>Převeď 76 do dvojkové soustavy</p>"+hra4addPrevod(7, [1,0,0,1,1,0,0], "hra4prevod76");
+            hra4text.innerHTML += `<p id="hra4chyba"></p>`;
+            hra4butZacniHru.innerHTML = `<button id="hra4pokracuj" onclick="hra4narozeniny()">Pokračuj dál</button>`;        
+    
+        }
+        
+    }
+
+    function hra4narozeniny(){
+        var ans = hra4muzuDal("hra4prevod59", 6) + hra4muzuDal("hra4prevod76", 7);
+        if(ans != 2){
+            hra4chyba.innerHTML = "Někde máš chybku, oprav jí a až pak pokračuj";
+        }
+        else {
+            hra4text.innerHTML = `<h4><a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a></h4>
+                <h3> Zvládáš převody mezi soustavami?</h3>
+                <p id="hra4ot2">To nejtěžší máš za sebou, teď si spolu spočítám, jak vypadají tvé narozeniny ve dvojkové soustavě.</p>`;
+            hra4text.innerHTML += `<form id="hra4nar"><input type="number" id="narDen" min="1" max="31" placeholder="den" required>.
+                <input type="number" id="narMesic" min="1" max="12" placeholder="měsíc" required>. zapíšeš ve dvojkové soustavě jako: </p>
+                <input type="text" id="den" placeholder="den" pattern="[0-1]+" required>
+                <input type="text" id="mesic" placeholder="měsíc" pattern="[0-1]+" required></form>`;
+            hra4butZacniHru.innerHTML = `<button id="checkNar" onclick="hra4narCheck()">Zkontroluj</button>`;  
+    
+        }
+    }
+
+    function dec2bin(dec) {
+        return (dec >>> 0).toString(2);
+    }
+
+    function hra4narCheck(){
+        var den = dec2bin(document.getElementById("narDen").value);
+        var mesic = dec2bin(document.getElementById("narMesic").value);
+        if(document.getElementById("den").value == den){
+            document.getElementById("den").style.border = "2px solid darkgreen";
+        }
+        else {
+            document.getElementById("den").style.border = "2px solid red";
+        }
+        if(document.getElementById("mesic").value == mesic){
+            document.getElementById("mesic").style.border = "2px solid darkgreen";
+        }
+        else {
+            document.getElementById("mesic").style.border = "2px solid red";
+        }
     }
 
 </script>
 <style type="text/css">
-    strong {
+    #hra4prav {
+        font-size: 18px;
+    }
+
+    #hra4text i {
+        font-size:14px;
+    }
+
+    #hra4nar input[type="number"] {
+        border: 1px solid black;
+        width: 50px;
+        height: 40px;
+        text-align: center;
+        font-size:18px;
+        margin-left:5px;
+    }
+
+    #hra4nar input[type="text"] {
+        border: 1px solid black;
+        width: 80px;
+        height: 40px;
+        text-align: center;
+        font-size:18px;
+        margin-left:5px;
+    }
+
+    #hra4prevod76 input, #hra4prevod26 input, #hra4prevod59 input {
+        border: 2px solid black;
+        width: 45px;
+        height: 45px;
+        text-align: center;
+        font-size:18px;
+        margin:2px;
+    }
+
+    .strong {
         font-weight:bold;
     }
+
     #hra4 {
         display:grid;
         grid-template-columns: 60%  auto;
@@ -133,28 +282,27 @@
         margin: 55px -98px 25px 0px;
     }
 
-
     #zpetCS {
         color: darkgreen;
         font-weight: bold;
         margin-top: 10px;
     } 
 
-    #hra4zacniHru, #hra4animace {
+    #hra4zacniHru, #hra4animace, #hra4zacni, #hra4pokracuj, #checkNar{
         background-color: lightgreen;
         border: 2px solid lightgreen;
         border-radius:20px;
         color: darkgreen;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
         float: right;
         margin: 15px 5px 0px 5px;
         padding: 15px 25px;
         text-align: center;
-        width: 200px;
+        width: 180px;
     }
 
-    #hra4zacniHru:hover, #hra4animace:hover {
+    #hra4zacniHru:hover, #hra4animace:hover, #hra4zacni:hover, #hra4pokracuj:hover, #checkNar:hover {
         border: 2px solid darkgreen;
     }
 
@@ -202,7 +350,7 @@
     Tak můžeš rovnou vykoušet hru, která ti ukáže, jak na tom doopravdy jsi.</p> 
 <p><strong>Pořád si nejsi převody jistý?</strong> Koukni se na animaci, která ti ukáže, jak na to!</p></div>
 <table id="hra4tab"></table>
-<div id="hra4buttons"><button id="hra4zacniHru" onclick="zacniHru4()">Začni hru</button>
+<div id="hra4buttons"><button id="hra4zacniHru" onclick="hra4zacniHru()">Začni hru</button>
 <button id="hra4animace" onclick="hra4animace10to2()">Animace</button></div>
 </div>
 <img id="hra4robot" src="../../pictures/rob02.png" alt="Robot2" width="300">
