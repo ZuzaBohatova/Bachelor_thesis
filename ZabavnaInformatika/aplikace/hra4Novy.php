@@ -85,8 +85,9 @@
             <p id="hra4ot">Převod čísla <span class="strong">26</span> do <span class="strong">dvojkové soustavy</span></p>
             <p id="hra4prav">Postupně vyplň všechna políčka buď jedničkou nebo nulou.
             <br>Pokud zezelenají, odpověděl jsi správně, naopak červená znamená chybu.</p>`;
-        hra4text.innerHTML += `<p id="hint"><i>Hint: děl dvojkou a zbytky doplňuj odzadu :)</i></p>`;
+        hra4text.innerHTML += `<p id="hint"><i>Hint: děl dvojkou a zbytky doplňuj odzadu - 26 : 2 = 13 a zbytek je 0</i></p>`;
         hra4text.innerHTML += hra4addPrevod(5,[1,1,0,1,0],'hra4prevod26');
+        document.getElementById("hra4prevod265").placeholder = "0";
         hra4text.innerHTML += `<p id="hra4chyba"></p>`;
         hra4butZacniHru.innerHTML = `<button id="hra4pokracuj" onclick="hra4prevod2()">Pokračuj dál</button>`;        
     }
