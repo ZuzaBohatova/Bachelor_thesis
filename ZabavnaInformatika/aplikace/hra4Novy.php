@@ -21,12 +21,12 @@
     }
 
     async function hra4vypocet(deleni) {
-        //await sleep(4000);
+        await sleep(4000);
         document.getElementById("hra4bubbleUvod").style.height = "70px";
         hra4bubbleUvod.innerHTML = "<strong>"+deleni[0]+"</strong> dělíme <strong>"+deleni[1]+"</strong>";  
-        //await sleep(2500); //1500
-        hra4bubbleUvod.innerHTML += `<p>Dostaneme <span class="strong">"+deleni[2]+"</span> a <strong>zbytek "+deleni[3]+"</strong></p>`;
-        //await sleep(1000); //1000
+        await sleep(2500); //1500
+        hra4bubbleUvod.innerHTML += `<p>Dostaneme <strong>`+deleni[2]+"</strong> a <strong>zbytek "+deleni[3]+"</strong></p>";
+        await sleep(1000); //1000
         pridejRadekTabulky(deleni,0);
     }
 
@@ -44,20 +44,20 @@
             deleni = await zmenParametryDeleni(deleni);
             await hra4vypocet(deleni);
         }
-        //await sleep(3000);
+        await sleep(3000);
         document.getElementById("hra4bubbleUvod").style.padding = "15px";
         document.getElementById("hra4bubbleUvod").style.height = "80px";
         hra4bubbleUvod.innerHTML = "<p>Když už nemáme kam dál dělit, podíváme se na zbytky, co jsme dostali</p>";
-        //await sleep(2000);
+        await sleep(2000);
         document.getElementById("hra4bubbleUvod").style.height = "110px";
         hra4bubbleUvod.innerHTML += `<p><span class="strong">010101</span></p>`;
-        //await sleep(3000);
+        await sleep(3000);
         document.getElementById("hra4bubbleUvod").style.height = "170px";
         hra4bubbleUvod.innerHTML += `<p>Zbytky přečtu odzadu a dostávám výsledek: </p>`;
-        //await sleep(2000);        
+        await sleep(2000);        
         document.getElementById("hra4bubbleUvod").style.height = "210px";
         hra4bubbleUvod.innerHTML += `<p><span class="strong">101010</span></p>`;
-        //await sleep(6000);
+        await sleep(6000);
         document.getElementById("hra4bubbleUvod").style.height = "100px";
         hra4bubbleUvod.innerHTML = `<p><span class="strong"><a href="https://cs.wikipedia.org/wiki/42_(odpov%C4%9B%C4%8F)" target="_blank">42</a></span> ve <span class="strong">dvojkové soustavě</span> se rovná <span class="strong">101010</span></p>`;        
         hra4bubbleUvod.innerHTML += "<p>A hurá na hru!</p>";
