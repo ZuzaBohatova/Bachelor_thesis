@@ -9,11 +9,6 @@
  - změnit magnetickou pasku na sd kartu
 
 # Hra4
- - rozdělit čísla na více stránek
- - ukázkový výpočet prvního čísla
  - za trest se podívat na animaci a vrátit se znovu na výpočet kde jsme skončili
- - ubývající robot
- - generátor náhodných čísel
-
 
 
