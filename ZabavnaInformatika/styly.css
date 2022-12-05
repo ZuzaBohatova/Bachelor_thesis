@@ -109,7 +109,7 @@ i {
   margin-top: 10%;
 }
 
-#dalsiBut, #vyhodnotitBut, #zacniHru{
+#dalsiBut, #vyhodnotitBut, #hra3zacniHru{
   background-color: #A7C7E7;
   border: 2px solid #A7C7E7;
   border-radius:20px;
@@ -124,7 +124,7 @@ i {
 }
 
 
-.ans button:hover, .hra3obr input:hover, #dalsiBut:hover, #vyhodnotitBut:hover, #zacniHru:hover, .hra3kamDal button:hover{
+.ans button:hover, .hra3obr input:hover, #dalsiBut:hover, #vyhodnotitBut:hover, #hra3zacniHru:hover, .hra3kamDal button:hover{
   border: 2px solid navy;
 }
 

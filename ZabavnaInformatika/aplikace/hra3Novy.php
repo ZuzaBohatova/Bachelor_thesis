@@ -55,7 +55,7 @@
     kolo = 0;
     document.getElementById("hra3").style.gridTemplateColumns = "auto 38%";
     document.getElementById("hra3bubbleUvod").remove();
-    document.getElementById("zacniHru").remove();
+    document.getElementById("hra3zacniHru").remove();
     hra3text.innerHTML += `<h2>Orientuješ se ve vnějších pamětích?</h2><p id="ot">`
       +otazky[kolo]+`</p>
       <p class="ans">
@@ -128,7 +128,7 @@
 <p>V následujícím cvičení tě čeká několik popisů jednotlivých pamětí.
 Tvým úkolem bude ke každému popisu vybrat správný název a obrázek.</p> <p><strong>Pokud odpovíš správně, tvá odpověď zezelená. </strong></p>
 <p><i>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
-<button id="zacniHru" onclick="zacniHru()">Začni hru</button>
+<button id="hra3zacniHru" onclick="zacniHru()">Začni hru</button>
 </div>
 <div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="320">
 <div id="dalsi"></div>

@@ -37,6 +37,9 @@
             case "hra4":
                 require_once __DIR__ . '/hra4Novy.php';
                 break;
+            case "hra2":
+                require_once __DIR__ . '/hra2.php';
+                break;
             case "hry":
                 require_once __DIR__ . '/hry.php';
                 break;  
