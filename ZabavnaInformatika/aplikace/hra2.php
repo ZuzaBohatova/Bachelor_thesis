@@ -12,16 +12,17 @@
             <button id="hra2bios">3</button>
             <button id="hra2disk">4</button>
             <button id="hra2chipset">5</button>
-            <button id="hra2cards">6</button>
+            <button id="hra2ram">6</button>
             <button id="hra2inout">7</button>
             <div>`;
-        sidebar.innerHTML = `<div class="components"><button>RAM</button>
+        sidebar.innerHTML = `<div class="components">
+            <button>Ethernet, USB, ...</button>
+            <button>Síťové, zvukové, grafické karty</button>
             <button>Procesor (CPU)</button>
+            <button>RAM</button>
             <button>Bios</button>
             <button>HDD nebo SSD</button>
             <button>North-South bridge chipset</button>
-            <button>Síťové, zvukové, grafické karty</button>
-            <button>Ethernet, USB, ...</button>
             </div>`;
         document.getElementById("sidebar").style.margin = "50px 20px 0px 0px ";
     }
@@ -106,38 +107,84 @@
 
     /* Style the button and place it in the middle of the hra2container/image */
     .hra2container #hra2pci {
-        position: absolute;
         top: 40%;
-        left: 30%;
+        left: 27.5%;
+    }
+
+    .hra2container #hra2cpu {
+        top: 48%;
+        left: 79%;
+    }
+
+    .hra2container #hra2bios {
+        top: 88%;
+        left: 20%;
+    }
+
+    .hra2container #hra2disk {
+        top: 88%;
+        left: 45%;
+    }
+
+    .hra2container #hra2chipset {
+        top: 50%;
+        left: 60%;
+    }
+
+    .hra2container #hra2chipset:hover {
+        width:20%;
+        height:20%;
+    }   
+
+    .hra2container #hra2ram {
+        top: 73%;
+        left: 70%;
+    }
+
+    .hra2container #hra2ram:hover {
+        width:30%;
+        height:26%;
+    }   
+
+    .hra2container #hra2inout {
+        top: 7%;
+        left: 71.5%;
+    }    
+
+    .hra2container #hra2inout:hover {
+        width:45%;
+        height:20%;
+    }   
+
+    .hra2container button {
+        position: absolute;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
         background-color: transparent;
         color: white;
         font-size: 25px;
-        padding: 5px 50px;
-        border: none;
+        border:  none;
         cursor: pointer;
         font-weight: bold;
     }
 
-    .hra2container #pci:hover {
-        border: 1px solid #E97451;
-        background-color: #FBCEB1
+    .hra2container button:hover {
+        border: 3px solid #FFCC99;
+        border-radius: 10px;
     }
 
-    .har2container
 
     .components button {
         display: block;
-        background-color: #FBCEB1 ;
-        border: 2px solid #FBCEB1 ;
-        border-radius:20px;
+        background-color: #FFCC99 ;
+        border: 2px solid #FFCC99 ;
+        border-radius:10px;
         color: #FF4F00;
         float: right;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
         margin-top: 20px;
-        padding: 15px 25px;
+        padding: 10px 10px;
         text-align: center;
         width: 200px;
     }
