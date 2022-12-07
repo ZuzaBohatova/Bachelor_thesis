@@ -312,7 +312,6 @@
         else {
             hra4chyba.innerHTML = "Někde máš chybu, zkus ji opravit";
         }
-    
     }
 
 </script>
