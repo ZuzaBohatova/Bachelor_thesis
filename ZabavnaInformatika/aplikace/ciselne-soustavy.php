@@ -4,8 +4,8 @@
 <style type="text/css">
     #ciselneSoustavy {
         display:grid;
-        grid-template-columns: 55% 5% 14% auto;
-        grid-template-rows: 40% 22% auto;
+        grid-template-columns: 55% 5% 12% auto;
+        grid-template-rows: 37% 23% auto;
         grid-template-areas: 
             "text . robot robot"
             "animace animace prevod prevod"
@@ -55,16 +55,22 @@
 
     #prevod2Obr {
         grid-area: prevod;
+        width: 270px;
     }
 
     #mocniny2 {
         grid-area:mocniny;
+        width: 100px;
+        margin-left:5px;
     }
 
     #prevod10 {
         grid-area:desitka;
     }
 
+    a:hover {
+        color:darkgreen;
+    }
 
 
 </style>
@@ -97,10 +103,10 @@ Zbytky seřadíme od posledního k prvnímu a tak dostaneme naše číslo ve dvo
     Pro nulu máme 2 na 0, pro jedničku 2 na 1 a tak dále. Vezmeme poslední číslici a vynásobíme ji její přiřazenou mocninou dvojky. 
     To samé postupně provedeme se každou číslicí našeho čísla. Všechny násobky poté sečteme. </p>
 <p><strong>Hurá máme zpátky naše číslo 45. </strong></p>
-<a href="hra4">Zkus si pár příkladů sám</a>
+<h3><a href="hra4">Zkus si pár příkladů sám</a><h3>
 </div>
 
 
-<img id="prevod2Obr" src="../../pictures/prevod2zel.svg" alt="Převod do dvojkové soustavy" width="330">
-<img id="mocniny2" src="../../pictures/mocniny2.png" alt="Mocniny dvou" width="100">
+<img id="prevod2Obr" src="../../pictures/prevod2zel.svg" alt="Převod do dvojkové soustavy">
+<img id="mocniny2" src="../../pictures/mocniny2.png" alt="Mocniny dvou">
 </div>
