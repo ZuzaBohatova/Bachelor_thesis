@@ -1,24 +1,61 @@
 <script>
     document.getElementById("menu").style.border = "5px solid indigo";
     function vyberObtiznost(){
-        // Vytvoření nadpisu h3
+        document.getElementById("hra1vyberObtiznost").remove();
+
         var heading = document.createElement("h3");
         heading.textContent = "Vyber si obtížnost!";
 
-        // Vytvoření odstavce
         var paragraph = document.createElement("p");
         paragraph.textContent = "Mám tu pro tebe na výběr několik obtížností, pokud se s grafy vídíš prvně, ideální bude začít od nejlehčí.";
 
-        // Získání cílového elementu
         var bubbleGrafyHra = document.getElementById("bubbleGrafyHra");
         bubbleGrafyHra.innerHTML = "";
 
-        // Přidání vytvořených elementů do cílového elementu
         bubbleGrafyHra.appendChild(heading);
         bubbleGrafyHra.appendChild(paragraph);
-        document.getElementById("hra1vyberObtiznost").remove();
         
+
+        var pElement = document.createElement("p");
+        pElement.appendChild(createGraphButton("Lehký - graf s 4 vrcholy","./../../json-files/easy_graph.json"));
+        pElement.appendChild(createGraphButton("Střední - graf s x vrcholy","./../../json-files/easy_graph.json"));
+        pElement.appendChild(createGraphButton("Těžký - graf s y vrcholy","./../../json-files/easy_graph.json"));
+        pElement.appendChild(createGraphButton("Extrém - graf s n vrcholy","./../../json-files/easy_graph.json"));
+        var textGrafyHra = document.getElementById("textGrafyHra");
+        textGrafyHra.appendChild(pElement);
     }
+
+    function createGraphButton(text, path){
+        var button = document.createElement("button");
+        button.textContent = text;
+        button.addEventListener("click", function() {
+            loadGraph(path)
+                .then((graphData) => {
+                    console.log(graphData); // You have access to the loaded graph data here
+                    playGraphGame(graphData);
+                })
+                .catch((error) => {
+                    console.error("Error loading graph:", error);
+                });
+        });
+        return button;
+    }
+
+    function loadGraph(path){
+        return fetch(path)
+            .then((res) => res.json())
+            .then((data) => data);
+    }
+    
+    function playGraphGame(graph){
+        console.log(graph);
+        
+        console.log(graph[1])
+
+    }
+
+    
+
 </script>
 <style type="text/css">
     #grafyHra
@@ -81,13 +118,26 @@
         width: 200px;
     }
 
-
     #hra1vyberObtiznost:hover{
         border: 2px solid indigo;
     }
 
+    button {
+        background-color: #e3ccfc ;
+        border: 2px solid #e3ccfc ;
+        border-radius:20px;
+        color: indigo;
+        float: right;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 5px 10px;
+        padding: 10px 15px;
+        width: 230px;
+    }
     
-
+    button:hover {
+        border: 2px solid indigo;
+    }
 </style>
 
 <div id="grafyHra">
