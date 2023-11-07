@@ -1,38 +1,27 @@
 <script>
     document.getElementById("menu").style.border = "5px solid indigo";
-    function vyberObtiznost(){
-        document.getElementById("hra1vyberObtiznost").remove();
+    var graph = [];
 
-        var heading = document.createElement("h3");
-        heading.textContent = "Vyber si obtížnost!";
-
-        var paragraph = document.createElement("p");
-        paragraph.textContent = "Mám tu pro tebe na výběr několik obtížností, pokud se s grafy vídíš prvně, ideální bude začít od nejlehčí.";
-
-        var bubbleGrafyHra = document.getElementById("bubbleGrafyHra");
-        bubbleGrafyHra.innerHTML = "";
-
-        bubbleGrafyHra.appendChild(heading);
-        bubbleGrafyHra.appendChild(paragraph);
-        
-
-        var pElement = document.createElement("p");
-        pElement.appendChild(createGraphButton("Lehký - graf s 4 vrcholy","./../../json-files/easy_graph.json"));
-        pElement.appendChild(createGraphButton("Střední - graf s x vrcholy","./../../json-files/easy_graph.json"));
-        pElement.appendChild(createGraphButton("Těžký - graf s y vrcholy","./../../json-files/easy_graph.json"));
-        pElement.appendChild(createGraphButton("Extrém - graf s n vrcholy","./../../json-files/easy_graph.json"));
-        var textGrafyHra = document.getElementById("textGrafyHra");
-        textGrafyHra.appendChild(pElement);
+    function createDifficultnessButtons(){
+        var div = document.createElement("div");
+        div.setAttribute("id", "graphButt");
+        div.appendChild(createGraphButton("Lehká","./../../json-files/easy_graph.json"));
+        div.appendChild(createGraphButton("Střední","./../../json-files/middle_graph.json"));
+        div.appendChild(createGraphButton("Těžká","./../../json-files/hard_graph.json"));
+        div.appendChild(createGraphButton("Extrém","./../../json-files/extreme_graph.json"));
+        return div;
     }
 
     function createGraphButton(text, path){
         var button = document.createElement("button");
         button.textContent = text;
+        button.classList.add("difficultnessButtons");
         button.addEventListener("click", function() {
             loadGraph(path)
                 .then((graphData) => {
-                    console.log(graphData); // You have access to the loaded graph data here
-                    playGraphGame(graphData);
+                    graph = graphData;
+                    document.getElementById("graphButt").remove();
+                    playGraphGame();
                 })
                 .catch((error) => {
                     console.error("Error loading graph:", error);
@@ -47,15 +36,102 @@
             .then((data) => data);
     }
     
-    function playGraphGame(graph){
-        console.log(graph);
-        
-        console.log(graph[1])
+    function playGraphGame(){
+        var game = document.getElementById("grafyHra");
+        game.innerHTML = "";
+        game.id = "graphGame";
 
+        // Append the new element to the body
+        document.body.appendChild(game);
+        var gameEnd = graph.end;
+        var nameOfEnd = graph[gameEnd].name;
+        var actualPosition = graph.start;
+        createBackToTheory(game);
+
+        // Create a <p> element for the goal
+        var pElement = document.createElement("p");
+        pElement.id = "graphGoal";
+        pElement.textContent = "Tvým cílem je: " + nameOfEnd;
+        game.appendChild(pElement);
+
+        // Create a <div> element for the position
+        var position = document.createElement("div");
+        position.id = "position";
+        var imgElement = document.createElement("img");
+        imgElement.id = "obrGraf";
+        imgElement.src = "../../pictures/house.png";
+        imgElement.alt = "house";
+        imgElement.width = "270";
+        position.appendChild(imgElement);
+        var h4Position = document.createElement("h4");
+        h4Position.id = "nameOfPosition";
+        h4Position.textContent = graph[actualPosition].name;
+        position.appendChild(h4Position);
+        createWayButtons(position, actualPosition);
+        game.appendChild(position);
+        document.body.append(game);
     }
 
-    
+    function changePosition(actualPosition, direction){
+        var nameOfPosition = document.getElementById("nameOfPosition");
+        actualPosition = graph[actualPosition][direction];
+        nameOfPosition.textContent = graph[actualPosition].name;
+        var buttonDiv = document.getElementById("navigationButtons");
+        buttonDiv.innerHTML = "";
+        if(graph.end == actualPosition){
+            document.getElementById("graphGoal").innerHTML = "<strong>Gratulace, jsi v cíly!</strong>";
+            var nextGamesButt = document.createElement("button");
+            nextGamesButt.id = "nextGamesButt";
+            nextGamesButt.textContent = "Zahraj si jinou hru";
+            nextGamesButt.addEventListener('click', function() {
+                window.location.href = 'hry';
+            });
 
+            var nextGrahpsButt = document.createElement("button");
+            nextGrahpsButt.id = "nextGrahpsButt";
+            nextGrahpsButt.textContent = "Vybrat jiný graf";
+            nextGrahpsButt.addEventListener('click', function() {
+                window.location.href = 'hra1';
+            });
+            buttonDiv.appendChild(nextGrahpsButt);
+            buttonDiv.appendChild(nextGamesButt);
+            return;
+        }
+        createWayButtons(position, actualPosition);
+    }
+
+    function createWayButtons(position, actualPosition){
+        var ways = ["A","B","C"];
+        var navigationButtons = document.getElementById("navigationButtons");
+        if(!navigationButtons){
+            navigationButtons = document.createElement("div");
+            navigationButtons.id = "navigationButtons";
+        }
+        
+        var count = graph.countEdges;
+                
+        for(i = 0; i < count; i++){
+            var button = document.createElement("button");
+            button.id = "butt"+ways[i];
+            button.textContent = "Cesta "+ways[i];
+            const direction = ways[i];
+            button.addEventListener('click', function(){
+                changePosition(actualPosition, direction);
+            });
+            navigationButtons.appendChild(button);
+        }
+        position.appendChild(navigationButtons);
+    }
+
+    function createBackToTheory(game){
+        var h4Element = document.createElement("h4");
+        var linkElement = document.createElement("a");
+        linkElement.id = "zpetGrafy";
+        linkElement.href = "grafy";
+        linkElement.textContent = "Zpět na teorii";
+        h4Element.appendChild(linkElement);
+        game.appendChild(h4Element);
+    }
 </script>
 <style type="text/css">
     #grafyHra
@@ -63,11 +139,17 @@
         display:grid;
         grid-template-columns: 60% 5% auto;
         grid-template-areas: 
-            "text . sidebar ";
+            "text . sidebar"
+            "buttons buttons buttons";
         font-size: 18px;
         margin-left: 10px;
     }
 
+    #graphGame
+    {
+        font-size: 18px;
+        margin-left: 10px;
+    }
     #textGrafyHra {
         grid-area: text;
     }
@@ -75,6 +157,14 @@
     #sidebar {
         grid-area: sidebar;
         margin-top: 20px;
+    }
+    
+    #position {
+        text-align: center;
+    }
+    #graphButt {
+        text-align: center;
+        margin-top: 10px;
     }
 
     #bubbleGrafyHra { 
@@ -104,22 +194,9 @@
         margin-top: 10px;
     } 
 
-    #hra1vyberObtiznost {
-        background-color: #e3ccfc ;
-        border: 2px solid #e3ccfc ;
-        border-radius:20px;
-        color: indigo;
-        float: right;
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 20px;
-        padding: 15px 25px;
-        text-align: center;
-        width: 200px;
-    }
 
-    #hra1vyberObtiznost:hover{
-        border: 2px solid indigo;
+    #difficultnessButtons {
+        text-align: center;
     }
 
     button {
@@ -127,7 +204,6 @@
         border: 2px solid #e3ccfc ;
         border-radius:20px;
         color: indigo;
-        float: right;
         font-size: 16px;
         font-weight: bold;
         margin: 5px 10px;
@@ -138,6 +214,12 @@
     button:hover {
         border: 2px solid indigo;
     }
+
+    .difficultnessButtons {
+        width: 150px;
+        margin: 5px 5px;
+        padding: 10px 10px;
+    }
 </style>
 
 <div id="grafyHra">
@@ -145,15 +227,19 @@
 <h4><a id="zpetGrafy" href="grafy">Zpět na teorii</a></h4>
 <div id="bubbleGrafyHra">
     <h3>Dokážeš najít cestu k cíly?</h3>
-    <p>Spolu si dnes vyzkoušíme vizualizaci grafů. Budeš potřebovat tužku a papír.</p>
-    <p>Hru si můžeš si to představit jako <strong>cestu městem</strong>, kdy se chceme dostat třeba domova do cukrárny. 
+    <p>V této hře si vyzkoušíme vizualizaci grafů. Budeš potřebovat tužku a papír.</p>
+    <p>Hra je <strong>cesta městem</strong> (grafem), na které se chceme dostat třeba z domu do cukrárny. 
         Z každého místa vede několik cest, ty je budeš postupně procházet 
         a vznikající graf si zakreslovat na papír.</p>
+    <p>Mám tu na výběr několik obtížností, pokud se s grafy vídíš prvně, ideální bude začít od nejlehčí.</p>
     <p><strong>Jsem zvědavý, jak rychle se dostaneš do cíle!</strong></p>
 </div>
-<button id="hra1vyberObtiznost" onclick="vyberObtiznost()">Vyber obtížnost</button>
 </div>
 <div id="sidebar">
-<img id="robGrafy" src="../../pictures/rob01.png" alt="Robot1" width="270">
+<img id="robGrafy" src="../../pictures/rob01.png" alt="Robot1" width="280">
 </div>
+
 </div>
+<script>
+document.body.appendChild(createDifficultnessButtons());
+</script>
