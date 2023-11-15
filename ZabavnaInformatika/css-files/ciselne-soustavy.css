@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #menu {
     border: 5px solid darkgreen
 }
@@ -71,78 +70,4 @@
 
 a:hover {
     color:darkgreen;
-=======
-#menu {
-    border: 5px solid darkgreen
-}
-
-#ciselneSoustavy {
-    display:grid;
-    grid-template-columns: 55% 5% 12% auto;
-    grid-template-rows: 37% 23% auto;
-    grid-template-areas: 
-        "text . robot robot"
-        "animace animace prevod prevod"
-        "desitka desitka desitka mocniny";
-    font-size: 18px;
-    margin-left: 10px;
-
-}
-
-#textCisS {
-    grid-area: text;
-}
-
-#robCisS {
-    grid-area: robot;
-}
-
-
-
-#bubbleCisS { 
-    background: lightgreen;
-    padding: 1px 25px 1px 10px;
-    -moz-border-radius: 10px; 
-    -webkit-border-radius: 10px; 
-    border-radius: 50px;
-    text-align:center;
-    font-size: 18px;
-}
-
-#bubbleCisS:before {
-    content:"";
-    float:right;
-    width: 0;
-    height: 0;
-    border-top: 13px solid transparent;
-    border-left: 55px solid lightgreen;
-    border-bottom: 13px solid transparent;
-    margin: 120px -74px 25px 0px;
-
-}
-
-#prevodDo2 {
-    grid-area:animace;
-    font-size: 18px;
-    padding-right: 20px;
-}
-
-#prevod2Obr {
-    grid-area: prevod;
-    width: 270px;
-}
-
-#mocniny2 {
-    grid-area:mocniny;
-    width: 100px;
-    margin-left:5px;
-}
-
-#prevod10 {
-    grid-area:desitka;
-}
-
-a:hover {
-    color:darkgreen;
->>>>>>> 811d52e1c397f4ae7529ead5ff3a080913adebfa
 }
