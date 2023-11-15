@@ -117,4 +117,3 @@
 
 </div>
 <div id="sidebar"><img id="jsonExample" src="../../pictures/json-example.png" alt="Příklad JSON" width="300"></div>
-</div>

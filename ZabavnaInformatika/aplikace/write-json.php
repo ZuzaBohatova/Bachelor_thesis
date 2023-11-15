@@ -96,4 +96,3 @@
     document.getElementById('jsonInput').value = JSON.stringify(jsonData, null, 4);
 </script>
 </div>
-</div>
