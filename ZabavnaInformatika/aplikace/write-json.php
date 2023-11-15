@@ -9,9 +9,8 @@
         return alphabet;
     }
 
-    function updateJson() {
+    function createJSONLink() {
         var userInput = document.getElementById('jsonInput').value;
-
         try {
             // Zkusíme přečíst uživatelský vstup jako JSON
             var parsedJson = JSON.parse(userInput);
@@ -23,6 +22,11 @@
             console.error("Chyba při parsování JSON:", error.message);
         }
     }
+
+    function createJSON(jsonData){
+        document.getElementById('jsonInput').value = JSON.stringify(jsonData, null, 4);
+    }
+
 
 </script>
 <style type="text/css">
@@ -39,6 +43,10 @@
         font-weight: bold;
     } 
 
+    #ulozitBtn {
+        float: right;
+        width: 200px;
+    }
 
     button {
         background-color: #e3ccfc ;
@@ -53,6 +61,21 @@
     button:hover {
         border: 2px solid indigo;
     }
+
+    textarea {
+        font-size: 15px;
+        width: 80%;
+    }
+
+    .kurziva {
+        font-style: italic;
+    }
+
+    form {
+        text-align: center;
+    }
+
+
 </style>
 
 <div id="writeJSON">
@@ -71,10 +94,10 @@
     
         // Přidání členů podle vzorce
         for ($i = 1; $i <= $countVert; $i++) {
-            $vertex = array("name" => "zde zadej jmeno"); // Nastavte jméno podle potřeby
+            $vertex = array("name" => "zde zadejte jmeno"); // Nastavte jméno podle potřeby
             
             for ($j = 0; $j < $countEdges; $j++) {
-                $vertex[$alphabet[$j]] = "zde zadej cestu"; // Nastavte hodnotu cesty podle potřeby
+                $vertex[$alphabet[$j]] = "zde zadejte vrchol, do ktereho vede cesta"; // Nastavte hodnotu cesty podle potřeby
             }
             
             $json_file[$i] = $vertex;
@@ -82,17 +105,18 @@
         
         // Převod na JSON
         $json_data = json_encode($json_file, JSON_PRETTY_PRINT);
-        echo '<form id="jsonForm">
-            <p><label for="jsonInput">Vložte JSON:</label></p>
-            <p><textarea id="jsonInput" rows="40" cols="50"></textarea></p>
-            <p><button type="button" onclick="updateJson()">Aktualizovat JSON</button></p>
+        echo '
+        <h3>JSON Editor</h3>
+        <p>Zde vidíte svůj předgenerovaný JSON soubor. Za <span class="kurziva">"zde zadejte .."</span> vyplňte mezi uvozovky požadovanou hodnotu.</p>
+        <p>Až budete mít soubor kompletní, kliknětě na "Uložit". Pokud je váš soubor validní, tak se vám vygeneruje odkaz, který vás pokaždé přesměruje 
+        přímo na hru s vaším konkrétním grafem. Tento odkaz si uložte, můžete ho používat opakovaně, případně sdílet s dalšími uživateli.</p>
+        <form id="jsonForm">
+            <p><textarea id="jsonInput" rows="30" cols="60"></textarea></p>
+            <p><button id="ulozitBtn" type="submit" onclick="createJSONLink()">Uložit</button></p>
         </form>';
     } else {
             echo "Chyba ve formuláři, vraťte se zpět a vyplňte formulář znovu";
     }
 ?> 
-<script>
-    var jsonData = <?php echo $json_data; ?>;
-    document.getElementById('jsonInput').value = JSON.stringify(jsonData, null, 4);
-</script>
+<script>createJSON(<?php echo $json_data; ?>)</script>
 </div>
