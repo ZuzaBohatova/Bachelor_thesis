@@ -133,7 +133,4 @@ Tvým úkolem bude ke každému popisu vybrat správný název a obrázek.</p> <
 <div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="320">
 <div id="dalsi"></div>
 </div>
-
 </div>
-
-

@@ -497,4 +497,3 @@
 <img id="hra4robot" src="../../pictures/rob02.png" alt="Robot2" width="300">
 <div id="hra4butZacniHru"></div>
 </div>
-
