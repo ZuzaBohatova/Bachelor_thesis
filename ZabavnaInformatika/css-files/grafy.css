@@ -3,11 +3,7 @@
 }
 
 a:hover {
-<<<<<<< HEAD
     color: indigo;
-=======
-    color: ccccc;
->>>>>>> 811d52e1c397f4ae7529ead5ff3a080913adebfa
 }
 
 #grafy {
@@ -31,11 +27,7 @@ a:hover {
 
 #definice {
    grid-area: definice;
-<<<<<<< HEAD
    margin: 10px 10px;
-=======
-   margin: 50px 10px;
->>>>>>> 811d52e1c397f4ae7529ead5ff3a080913adebfa
 }
 
 #bubbleGrafy { 
@@ -57,19 +49,4 @@ a:hover {
     border-left: 80px solid #e3ccfc;
     border-bottom: 20px solid transparent;
     margin: 75px -90px 40px 0px;
-<<<<<<< HEAD
-
 }
-=======
-}
-
-h4 {
-    background-color: #e3ccfc;
-    text-align: center;
-}
-
-#hra1:hover {
-   color: indigo;
-}
-	
->>>>>>> 811d52e1c397f4ae7529ead5ff3a080913adebfa
