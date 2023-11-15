@@ -20,7 +20,6 @@
         <li><a href="ciselne-soustavy">Číselné soustavy</a></li>
         <li><a href="site">Sítě</a></li>
         <li><a href="hry">Hry</a></li>
-
     </ul>
     </nav>
     </div>

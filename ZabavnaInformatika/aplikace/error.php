@@ -1,6 +1,4 @@
 <?php
-    function error($code, $popis)
-    {
-        include __DIR__ . '/../vzory/errorVzor.php';
-        http_response_code($code);
-    }
+    echo "Page not found";
+?>
+<script> document.getElementById("menu").style.border = "5px solid green";</script>

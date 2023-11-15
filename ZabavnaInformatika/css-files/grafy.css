@@ -1,0 +1,53 @@
+#menu {
+    border: 5px solid indigo;
+}
+
+a:hover {
+    color: indigo;
+}
+
+#grafy {
+    display:grid;
+    grid-template-columns: 55% 7% auto;
+    grid-template-areas: 
+        "text . robot"
+	"definice definice definice ";
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+#textGrafy {
+    grid-area: text;
+}
+
+#robGrafy {
+    grid-area: robot;
+    margin-top: 20px;
+}
+
+#definice {
+   grid-area: definice;
+   margin: 10px 10px;
+}
+
+#bubbleGrafy { 
+    background: #e3ccfc;
+    padding: 1px 20px 1px 20px;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius: 30px;
+    text-align:center;
+    font-size: 18px;
+}
+
+#bubbleGrafy:before {
+    content:"";
+    float:right;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-left: 80px solid #e3ccfc;
+    border-bottom: 20px solid transparent;
+    margin: 75px -90px 40px 0px;
+
+}

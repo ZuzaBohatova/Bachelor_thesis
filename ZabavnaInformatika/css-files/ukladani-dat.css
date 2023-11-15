@@ -1,0 +1,72 @@
+#menu {
+    border: 5px solid rgb(27, 54, 143)
+}
+
+#ukladaniDat {  
+    display:grid;
+    grid-template-columns: 50% 20% 30%;
+    grid-template-rows: 25% auto;
+    grid-template-areas: 
+        "text text robot"
+        "info info info";
+    margin-left: 10px;
+}
+
+#bubbleUD { 
+    background: #A7C7E7;
+    border-radius: 50px;
+    text-align:center;
+    padding: 1px 25px 1px 10px;
+    font-size: 18px;
+}
+
+#bubbleUD:before {
+    content:"";
+    float:right;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-left: 55px solid #A7C7E7;
+    border-bottom: 13px solid transparent;
+    margin: 70px -56px 50px 0px;
+}
+
+#textUD {
+    grid-area:text;
+}
+
+#robotUD {
+    grid-area:robot;
+    width: 250px;
+}
+
+#vnejsiPameti {
+    grid-area: info;
+}
+
+img {
+    float:right;
+    width: 200px;
+}
+
+#cdObr, #usbObr {
+    width: 150px;
+}
+
+h4 {
+    background-color: #A7C7E7;
+    width: 45%;
+    text-align: center;
+}
+
+#udHraj {
+    background-color: white;
+}
+
+#udHraj a:hover {
+    color:black;
+}
+
+#udHraj:hover {
+    background-color: #A7C7E7;
+}

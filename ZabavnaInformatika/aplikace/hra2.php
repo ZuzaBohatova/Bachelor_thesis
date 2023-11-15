@@ -204,7 +204,7 @@
         margin: 55px -100px 25px 0px;
     }
 
-    #zpetCS {
+    #zpetHW {
         color: #FF4F00;
         font-weight: bold;
         margin-top: 10px;
@@ -363,7 +363,7 @@
 
 <div id="hardware">
 <div id="textHardw">
-<h4><a id="zpetCS" href="hardware">Zpět na teorii</a></h4>
+<h4><a id="zpetHW" href="hardware">Zpět na teorii</a></h4>
 <div id="bubbleHardw">
     <h3>Víš kam zapojit jednotlivé komponenty?</h3>
     <p>Nyní tě čeká hra, která ověří tvé znalosti hardwaru.</p>
