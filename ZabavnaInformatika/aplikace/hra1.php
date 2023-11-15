@@ -5,9 +5,9 @@
     function createDifficultnessButtons(){
         var div = document.createElement("div");
         div.setAttribute("id", "graphButt");
-        div.appendChild(createGraphButton("Lehká","./../../json-files/easy_graph.json"));
+        div.appendChild(createGraphButton("Lehký","./../../json-files/easy_graph.json"));
         div.appendChild(createGraphButton("Střední","./../../json-files/middle_graph.json"));
-        div.appendChild(createGraphButton("Těžká","./../../json-files/hard_graph.json"));
+        div.appendChild(createGraphButton("Těžký","./../../json-files/hard_graph.json"));
         div.appendChild(createGraphButton("Extrém","./../../json-files/extreme_graph.json"));
         return div;
     }
@@ -21,6 +21,7 @@
                 .then((graphData) => {
                     graph = graphData;
                     document.getElementById("graphButt").remove();
+                    document.getElementById("ownGraphButtDiv").remove();
                     playGraphGame();
                 })
                 .catch((error) => {
@@ -215,6 +216,11 @@
         border: 2px solid indigo;
     }
 
+    #ownGraphButtDiv {
+        text-align: center;
+       
+    }
+
     .difficultnessButtons {
         width: 150px;
         margin: 5px 5px;
@@ -238,8 +244,8 @@
 <div id="sidebar">
 <img id="robGrafy" src="../../pictures/rob01.png" alt="Robot1" width="280">
 </div>
-
 </div>
 <script>
 document.body.appendChild(createDifficultnessButtons());
 </script>
+<div id="ownGraphButtDiv"><button id="createOwnGraphButt" onclick="location.href = 'hra1-vlastni-graf'">Vytvoř si vlastní graf</button></div>
