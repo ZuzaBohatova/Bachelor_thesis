@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
     "start" : 1,
     "end" : 3,
@@ -12,13 +11,13 @@
         },
     "2" : 
         {
-            "name" : "Škola",
+            "name" : "Ĺ kola",
             "A" : 5,
             "B" : 1
         },
     "3" : 
         {
-            "name" : "Pošta",
+            "name" : "PoĹˇta",
             "A" : 1,
             "B" : 4
         },
@@ -30,57 +29,14 @@
         },
     "5" : 
         {
-            "name" : "Cukrárna",
+            "name" : "CukrĂˇrna",
             "A" : 6,
             "B" : 3
         },    
     "6" :
         {
-            "name" : "Hřiště",
+            "name" : "HĹ™iĹˇtÄ›",
             "A" : 4,
             "B" : 2
         }
-=======
-{
-    "start" : 1,
-    "end" : 3,
-    "countEdges" : 2,
-    "countVert" : 4,
-    "1" : 
-        {
-            "name" : "Banka",
-            "A" : 6,
-            "B" : 4
-        },
-    "2" : 
-        {
-            "name" : "Škola",
-            "A" : 5,
-            "B" : 1
-        },
-    "3" : 
-        {
-            "name" : "Pošta",
-            "A" : 1,
-            "B" : 4
-        },
-    "4" : 
-        {
-            "name" : "Obchod",
-            "A" : 1,
-            "B" : 6
-        },
-    "5" : 
-        {
-            "name" : "Cukrárna",
-            "A" : 6,
-            "B" : 3
-        },    
-    "6" :
-        {
-            "name" : "Hřiště",
-            "A" : 4,
-            "B" : 2
-        }
->>>>>>> 811d52e1c397f4ae7529ead5ff3a080913adebfa
 }
