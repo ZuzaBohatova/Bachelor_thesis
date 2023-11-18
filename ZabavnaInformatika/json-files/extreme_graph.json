@@ -1,30 +1,62 @@
 {
-    "countEdges" : 2,
-    "countVert" : 4,
     "start" : 1,
-    "end" : 3,
+    "end" : 7,
+    "countEdges" : 3,
+    "countVert" : 8,
     "1" : 
         {
-            "name" : "NĂˇdraĹľĂ­",
-            "A" : 4,
-            "B" : 2
+            "name" : "Park",
+            "A" : 2,
+            "B" : 3,
+            "C" : 8
         },
     "2" : 
         {
-            "name" : "Ĺ kola",
-            "A" : 1,
-            "B" : 4
+            "name" : "Kostel",
+            "A" : 5,
+            "B" : 8,
+            "C" : 4
         },
     "3" : 
         {
-            "name" : "ĂšĹ™ad",
-            "A" : 2,
-            "B" : 1
+            "name" : "Drogerie",
+            "A" : 1,
+            "B" : 6,
+            "C" : 2
         },
     "4" : 
         {
-            "name" : "Obchod",
+            "name" : "Potraviny",
             "A" : 1,
-            "B" : 3
-        }    
+            "B" : 3,
+            "C" : 8
+        },
+    "5" : 
+        {
+            "name" : "CukrĂˇrna",
+            "A" : 6,
+            "B" : 3,
+            "C" : 7
+        },    
+    "6" :
+        {
+            "name" : "HĹ™iĹˇtÄ›",
+            "A" : 1,
+            "B" : 2,
+            "C" : 3
+        },
+    "7" :
+        {
+            "name" : "Hospoda",
+            "A" : 5,
+            "B" : 6,
+            "C" : 8
+        },
+    "8":
+        {
+            "name" : "Divadlo",
+            "A" : 1,
+            "B" : 5,
+            "C" : 4
+        }
 }
