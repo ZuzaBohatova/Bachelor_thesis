@@ -8,7 +8,7 @@
             // Zakódování řetězce do URL-safe formátu
             var encodedData = jsonValidation(jsonString);
             // Vytvoření URL
-            var url = "https://www.ms.mff.cuni.cz/~bohatovz/bohatova/ZabavnaInformatika/aplikace/index.php/hra1?json=" + encodedData;
+            var url = "https://www.ms.mff.cuni.cz/~bohatovz/bohatova/ZacinameSInformatikou/aplikace/index.php/hra1?json=" + encodedData;
             if(url.length > 2000){
                 throw new Error(`Váš graf je bohužel příliš veliký, nezvládneme ho zpracovat`);
             }
