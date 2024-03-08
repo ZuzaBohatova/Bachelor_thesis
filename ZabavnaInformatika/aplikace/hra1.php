@@ -12,6 +12,25 @@
         return div;
     }
 
+    function loadGraphFromParams(){
+        var urlParams = new URLSearchParams(window.location.search);
+        var jsonDataParam = urlParams.get('json');
+
+        if (jsonDataParam) {
+            // jsonDataParam obsahuje hodnotu parametru jsonData
+            try {
+                var jsonData = JSON.parse(atob(decodeURIComponent(jsonDataParam)));
+                graph = jsonData;
+                console.log("JSON nalezen v URL:", jsonData);
+                prepareGame();
+            } catch (error) {
+                console.error("Chyba při parsování JSON:", error);
+            }
+        } else {
+            console.log("Parametr 'jsonData' nenalezen v URL.");
+        }
+    }
+
     function createGraphButton(text, path){
         var button = document.createElement("button");
         button.textContent = text;
@@ -20,15 +39,19 @@
             loadGraph(path)
                 .then((graphData) => {
                     graph = graphData;
-                    document.getElementById("graphButt").remove();
-                    document.getElementById("ownGraphButtDiv").remove();
-                    playGraphGame();
+                    prepareGame();
                 })
                 .catch((error) => {
                     console.error("Error loading graph:", error);
                 });
         });
         return button;
+    }
+
+    function prepareGame(){
+        document.getElementById("graphButt").remove();
+        document.getElementById("ownGraphButtDiv").remove();
+        playGraphGame();
     }
 
     function loadGraph(path){
@@ -58,11 +81,27 @@
         // Create a <div> element for the position
         var position = document.createElement("div");
         position.id = "position";
+
+        let editedName = graph[actualPosition].name;
+        editedName = editedName.toLowerCase();
+    
+        // Nahradit diakritiku
+        editedName = editedName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    
+        // Nahradit mezery podtržítky
+        editedName = editedName.replace(/\s+/g, "_");
+
         var imgElement = document.createElement("img");
         imgElement.id = "obrGraf";
-        imgElement.src = "../../pictures/house.png";
-        imgElement.alt = "house";
+        imgElement.src = "../../pictures/graphs/"+editedName+".png";
+        imgElement.alt = editedName;
         imgElement.width = "270";
+        checkIfImageExists(imgElement.src, (exists) => {
+            if (!exists) {
+                imgElement.src = "../../pictures/graphs/domov.png";
+            } 
+        });
+
         position.appendChild(imgElement);
         var h4Position = document.createElement("h4");
         h4Position.id = "nameOfPosition";
@@ -70,15 +109,59 @@
         position.appendChild(h4Position);
         createWayButtons(position, actualPosition);
         game.appendChild(position);
+
+        var footer = document.getElementsByTagName("footer")[0];
         document.body.append(game);
+
+        if(footer != null){
+            footer.remove();
+            document.body.append(footer);
+        }
+        
+    }
+
+    function checkIfImageExists(url, callback) {
+        const img = new Image();
+        img.src = url;
+        
+        if (img.complete) {
+            callback(true);
+        } else {
+            img.onload = () => {
+            callback(true);
+            };
+            
+            img.onerror = () => {
+            callback(false);
+            };
+        }
     }
 
     function changePosition(actualPosition, direction){
         var nameOfPosition = document.getElementById("nameOfPosition");
         actualPosition = graph[actualPosition][direction];
         nameOfPosition.textContent = graph[actualPosition].name;
+
+        let editedName = graph[actualPosition].name;
+        editedName = editedName.toLowerCase();
+        // Nahradit diakritiku
+        editedName = editedName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        // Nahradit mezery podtržítky
+        editedName = editedName.replace(/\s+/g, "_");
+
+        var image = document.getElementById("obrGraf");
+        image.src = "../../pictures/graphs/"+editedName+".png";
+        image.alt = editedName;
+
+        checkIfImageExists(image.src, (exists) => {
+            if (!exists) {
+                image.src = "../../pictures/graphs/domov.png";
+            } 
+        });
+
         var buttonDiv = document.getElementById("navigationButtons");
         buttonDiv.innerHTML = "";
+        
         if(graph.end == actualPosition){
             document.getElementById("graphGoal").innerHTML = "<strong>Gratulace, jsi v cíly!</strong>";
             var nextGamesButt = document.createElement("button");
@@ -151,6 +234,7 @@
         font-size: 18px;
         margin-left: 10px;
     }
+
     #textGrafyHra {
         grid-area: text;
     }
@@ -229,23 +313,26 @@
 </style>
 
 <div id="grafyHra">
-<div id="textGrafyHra">
-<h4><a id="zpetGrafy" href="grafy">Zpět na teorii</a></h4>
-<div id="bubbleGrafyHra">
-    <h3>Dokážeš najít cestu k cíly?</h3>
-    <p>V této hře si vyzkoušíme vizualizaci grafů. Budeš potřebovat tužku a papír.</p>
-    <p>Hra je <strong>cesta městem</strong> (grafem), na které se chceme dostat třeba z domu do cukrárny. 
-        Z každého místa vede několik cest, ty je budeš postupně procházet 
-        a vznikající graf si zakreslovat na papír.</p>
-    <p>Mám tu na výběr několik obtížností, pokud se s grafy vídíš prvně, ideální bude začít od nejlehčí.</p>
-    <p><strong>Jsem zvědavý, jak rychle se dostaneš do cíle!</strong></p>
-</div>
-</div>
-<div id="sidebar">
-<img id="robGrafy" src="../../pictures/rob01.png" alt="Robot1" width="280">
-</div>
-</div>
+    <div id="textGrafyHra">
+        <h4><a id="zpetGrafy" href="grafy">Zpět na teorii</a></h4>
+        <div id="bubbleGrafyHra">
+            <h3>Dokážeš najít cestu k cíly?</h3>
+            <p>V této hře si vyzkoušíme vizualizaci grafů. Budeš potřebovat tužku a papír.</p>
+            <p>Hra je <strong>cesta městem</strong> (grafem), na které se chceme dostat třeba z domu do cukrárny. 
+                Z každého místa vede několik cest, ty je budeš postupně procházet 
+                a vznikající graf si zakreslovat na papír.</p>
+            <p>Mám tu na výběr několik obtížností, pokud se s grafy vídíš prvně, ideální bude začít od nejlehčí.</p>
+            <p><strong>Jsem zvědavý, jak rychle se dostaneš do cíle!</strong></p>
+        </div>
+    </div>
+    <div id="sidebar">
+        <img id="robGrafy" src="../../pictures/graphs/rob01.png" alt="Robot1" width="280">
+    </div>
+</div>      
 <script>
-document.body.appendChild(createDifficultnessButtons());
+    document.body.appendChild(createDifficultnessButtons());
 </script>
-<div id="ownGraphButtDiv"><button id="createOwnGraphButt" onclick="location.href = 'hra1-vlastni-graf'">Vytvoř si vlastní graf</button></div>
+<div id="ownGraphButtDiv">
+    <button id="createOwnGraphButt" onclick="location.href = 'hra1-vlastni-graf'">Vytvoř si vlastní graf</button>
+</div>
+<script>loadGraphFromParams()</script>

@@ -5,25 +5,25 @@
     "end" : 3,
     "1" : 
         {
-            "name" : "NĂˇdraĹľĂ­",
+            "name" : "Nádraží",
             "A" : 4,
             "B" : 2
         },
     "2" : 
         {
-            "name" : "Ĺ kola",
+            "name" : "Škola",
             "A" : 1,
             "B" : 4
         },
     "3" : 
         {
-            "name" : "ĂšĹ™ad",
+            "name" : "Úřad",
             "A" : 2,
             "B" : 1
         },
     "4" : 
         {
-            "name" : "Obchod",
+            "name" : "Obchodní centrum",
             "A" : 1,
             "B" : 3
         }    

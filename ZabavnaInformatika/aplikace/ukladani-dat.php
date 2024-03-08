@@ -9,7 +9,7 @@
 </p>
 </div>
 </div>
-<img id="robotUD" src="../../pictures/rob03.png" alt="Robot3" width="270">
+<img id="robotUD" src="../../pictures/data_storage/rob03.png" alt="Robot3" width="270">
 <div id="vnejsiPameti">
 <h3>Vnější paměti</h3>
 <p>Vnější paměti máme pro dlouhodobější ukládání dat. Liší se velikostí a také způsobem, jak na ně data zapisujeme:</p>
@@ -19,11 +19,11 @@
     <li> <strong>elektricky</strong>: obsahují elektrické obvody - <strong>USB flash disky, SSD, karty </strong></li>
 </ul>
 <h4>Pevný disk (Hard Drive Disk)</h4>
-<p><img id="hddObr" src="../../pictures/hdd.png" alt="Pevný disk">
+<p><img id="hddObr" src="../../pictures/data_storage/hdd.png" alt="Pevný disk">
 Pevný disk se používá k ukládání většího množství dat. Skládá se z několika kotoučů, 
     které se při zápisu a čtení dat točí. </p>
 <h4>SSD (Solid state drive)</h4>
-<p><img id="ssdObr" src="../../pictures/ssd.jpg" alt="SSD">
+<p><img id="ssdObr" src="../../pictures/data_storage/ssd.jpg" alt="SSD">
 SSD se jako pevný disk používá k ukládání většího množství dat. Narozdíl od 
     pevného disku neobsahuje pohyblivé části a zápis je elektonický. 
     Je rychlejší, ale má menší kapacitu. Používá se často u notebooků.
@@ -31,17 +31,17 @@ SSD se jako pevný disk používá k ukládání většího množství dat. Naro
 <h4>CD (Compact disk) </h4>
 
 <p>
-    <img id="cdObr" src="../../pictures/cd.png" alt="CD">
+    <img id="cdObr" src="../../pictures/data_storage/cd.png" alt="CD">
     CD je optický disk, data jsou uložena na spirále začínající ve středu. 
     Může obsahovat zvukovou nahrávku nebo data (CD-ROM).
 </p>
 <h4>Magnetická páska</h4>
-<p><img id="magPaskaObr" src="../../pictures/magPaska.png" alt="Magnetická páska">
+<p><img id="magPaskaObr" src="../../pictures/data_storage/magPaska.png" alt="Magnetická páska">
 Magnetická páska je předchůdce pevných disků. V dnešní době se
     používá maximálně k archivaci a zálohování velkého množství dat. Je velmi pomalá. 
 </p>
 <h4>USB flash disk</h4>
-<p><img id="usbObr" src="../../pictures/usb.png" alt="USB flash disk">
+<p><img id="usbObr" src="../../pictures/data_storage/usb.png" alt="USB flash disk">
     USB flash disk je malé datové úložiště určené pro přenos dat mezi počítači. 
     Je nástupcem CD. Zapisujeme na něj elektronicky.
 </p>

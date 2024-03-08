@@ -5,7 +5,7 @@
     "countVert" : 8,
     "1" : 
         {
-            "name" : "Park",
+            "name" : "Zabavní park",
             "A" : 2,
             "B" : 3,
             "C" : 8
@@ -19,35 +19,35 @@
         },
     "3" : 
         {
-            "name" : "Drogerie",
+            "name" : "Lékárna",
             "A" : 1,
             "B" : 6,
             "C" : 2
         },
     "4" : 
         {
-            "name" : "Potraviny",
+            "name" : "Obchodní centrum",
             "A" : 1,
             "B" : 3,
             "C" : 8
         },
     "5" : 
         {
-            "name" : "CukrĂˇrna",
+            "name" : "Cukrárna",
             "A" : 6,
             "B" : 3,
             "C" : 7
         },    
     "6" :
         {
-            "name" : "HĹ™iĹˇtÄ›",
+            "name" : "Fotbalové hřiště",
             "A" : 1,
             "B" : 2,
             "C" : 3
         },
     "7" :
         {
-            "name" : "Hospoda",
+            "name" : "Restaurace",
             "A" : 5,
             "B" : 6,
             "C" : 8

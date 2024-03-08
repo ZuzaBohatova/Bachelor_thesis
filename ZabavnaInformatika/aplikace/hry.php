@@ -1,5 +1,5 @@
 <script>
-    document.getElementById("menu").style.border = "5px solid #FFC000";
+    document.getElementById("menu").style.border = "5px solid #FFEF00";
 </script>
 <h2>Hry</h2>
 <ul>

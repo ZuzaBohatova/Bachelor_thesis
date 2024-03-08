@@ -1,5 +1,5 @@
 #menu {
-    border: 5px solid darkgreen
+    border: 5px solid #138808
 }
 
 #ciselneSoustavy {
@@ -70,4 +70,9 @@
 
 a:hover {
     color:darkgreen;
+}
+
+h3 {
+  background: lightgreen;
+  text-align: center;
 }

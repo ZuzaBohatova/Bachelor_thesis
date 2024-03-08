@@ -1,187 +1,321 @@
 <script>
-    document.getElementById("menu").style.border = "5px solid rgb(27, 54, 143)";
+document.getElementById("menu").style.border = "5px solid rgb(27, 54, 143)";
+
+let flippedButtons = 0; // Proměnná pro uchování počtu aktuálně otočených tlačítek
+let firstFlippedButtonID = ""; // Proměnná pro uchování ID prvního otočeného tlačítka
+let countOfButtons = 12;
+
+const cards = ["SDKarta_img", "HDD_text", "SSD_img", "USB_text","HDD_img", "USB_img", "MagPas_text", "MagPas_img","SSD_text", "CD_text", "CD_img", "SDKarta_text"];
+
+const pexesoCards = [];
+
+const dictionary = {
+  "SDKarta_text": "Uvnitř fotoaparátů a mobilní telefonů, Elektronický zápis dat",
+  "SDKarta_img": "../../pictures/data_storage/sdCard.png",
+  "HDD_text": "Skládá se z několika kotoučů, Zápis dat pomocí magnetického pole",
+  "HDD_img": "../../pictures/data_storage/hdd.png",
+  "SSD_text": "Hlavně u notebooků, elektronický zápis dat, Uložení většího množství dat",
+  "SSD_img": "../../pictures/data_storage/ssd.jpg",
+  "USB_text": "Malé datové úložiště, Uložení dat pomocí elektrických obvodů",
+  "USB_img": "../../pictures/data_storage/usb.png",
+  "CD_text": "Přehrání hudby, Zápis dat pomocí laserového paprsku",
+  "CD_img": "../../pictures/data_storage/cd.png",
+  "MagPas_text": "Magnetický zápis, Archivace velkého množství dat, Zastaralé",
+  "MagPas_img": "../../pictures/data_storage/magPaska.png", 
+};
+
+  // Zamíchání pole cards
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function startGame(){
+  var gameContainer = document.getElementById("hra3");
+  gameContainer.innerHTML = "";
+  gameContainer.id = "pexeso";
+
+  var title = document.createElement("h2");
+  title.textContent = "Pexeso";
   
 
-  function checkHra3(){
-    let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
-    let correctPic = ["2","3","4","1","5"];
-    let ans = ["pamet1", "pamet2", "pamet3", "pamet4", "pamet5"];
-    let pic = ["ansObr1", "ansObr2", "ansObr3", "ansObr4", "ansObr5"];
-    let missPic = 0;
-    let missAns = 0;
-    let chybyAns = "Chyboval jsi v otázkách:";
-    let chybyPic = "Špatně jsi přiřadil obrázky:";
 
-    for(let i = 0; i < 5; i++){
-      if(correctAns[i] != document.getElementById(ans[i]).value){
-        chybyAns += " "+(i+1);
-        ++missAns; 
-      }
-      if(correctPic[i] != document.getElementById(pic[i]).value){
-        chybyPic += " "+(i+1);
-        ++missPic; 
-      }
+  const shuffledCards = shuffle(cards);
 
-    } 
-    if(missAns > 0){
-      output.innerHTML = "<br>"+chybyAns;
-    }
-    if(missPic > 0){
-      output.innerHTML += "<br>"+chybyPic;
-    }
-    if((missPic+missAns) == 0){
-      alert("Neudělal jsi jedinou chybu dobrá práce!!!")
-      output.innerHTML = "Výborně, jen tak dál"
-    }
-    else{
-      alert("Nějaké chyby tam byly, koukni kde, zkus to znovu!")
-    }
-    
+  // Vytvoření pole pexesoCards jako 4x3 mřížky ze zamíchaného pole cards
+  for (let i = 0; i < 3; i++) {
+    const row = shuffledCards.slice(i * 4, (i + 1) * 4);
+    pexesoCards.push(row);
   }
 
-  function allOptions(){
-    var options = `<option value="free"></option>
-    <option value="hdd">Pevný disk (HDD)</option>
-    <option value="usb">USB flash disk</option>
-    <option value="ssd">SSD</option>
-    <option value="magPaska">Magnetická páska</option>
-    <option value="cd">CD</option>
-    </select><br>`;
-    document.write(options);
+  console.log(pexesoCards);
+
+
+  gameContainer.appendChild(title);
+  gameContainer.appendChild(loadPexeso());
+}
+
+function loadPexeso() {
+    var table = document.createElement('table');
+    table.id = "pexesoTable";
+
+    for (let i = 0; i < 3; i++) {
+      const row = table.insertRow();
+      for (let j = 0; j < 4; j++) {
+        const cell = row.insertCell();
+        const button = document.createElement('button');
+        button.id = pexesoCards[i][j];
+        setDefaultButton(button);
+
+        button.addEventListener('click', function () {
+          if (button.dataset.clicked === "true") {
+            setDefaultButton(button);
+            button.dataset.clicked = "false";
+            button.textContent = "";
+            
+            flippedButtons--; // Snížíme počet otočených tlačítek
+          } 
+          else {
+            if(flippedButtons == 0){
+              firstFlippedButtonID = button.id;
+            }
+
+            if (pexesoCards[i][j].includes("text")) {
+              button.style.backgroundImage = "";
+              button.textContent = dictionary[pexesoCards[i][j]];
+            } 
+            else {
+              button.style.backgroundImage = "url(" + dictionary[pexesoCards[i][j]] + ")";
+            }
+            button.dataset.clicked = "true";
+            flippedButtons++; // Zvýšíme počet otočených tlačítek
+          }
+
+          // Pokud jsou otočeny již dvě tlačítka, zablokujeme další klikání
+          if(flippedButtons == 1){
+              firstFlippedButtonID = button.id;
+          }
+          else if (flippedButtons === 2) {
+            checkMatchingCards(button);
+            disableAllButtons();
+          }
+          else {
+            enableAllButtons()
+          }
+        });
+        cell.appendChild(button);
+      }
+    }
+    return table;
+}
+
+function disableAllButtons() {
+  const buttons = document.querySelectorAll('#pexesoTable button');
+  buttons.forEach(button => {
+    if (button.dataset.clicked !== "true") {
+      button.disabled = true;
+    }
+  });
+}
+
+function enableAllButtons() {
+  const buttons = document.querySelectorAll('#pexesoTable button');
+  buttons.forEach(button => {
+    button.disabled = false;
+  });
+}
+
+function setDefaultButton(button) {
+  button.style.background = "white";
+  button.style.backgroundImage = 'url(../../pictures/data_storage/rob03mini.jpg)';
+  button.style.backgroundSize = "contain";
+  button.style.backgroundRepeat = "no-repeat";
+  button.style.backgroundPosition = "center";
+  button.dataset.clicked = "false"; // přidáváme data atribut pro uchování stavu tlačítka
+}
+
+function checkMatchingCards(secondButton) {
+  const firstButtonIDParts = firstFlippedButtonID.split("_");
+  const secondButtonIDParts = secondButton.id.split("_");
+
+  if (firstButtonIDParts[0] === secondButtonIDParts[0]) {
+    var firstButton = document.getElementById(firstFlippedButtonID);
+    var secondButton = document.getElementById(secondButton.id);
+    firstButton.style.border = "2px solid green";
+    secondButton.style.border = "2px solid green";
+    setTimeout(() => {
+      firstButton.remove();
+      secondButton.remove();
+      enableAllButtons();
+      countOfButtons = countOfButtons - 2;
+      if(countOfButtons == 0){
+        loadEvaluation();
+        return;
+      }
+      flippedButtons = 0;
+    }, 1500);    
   }
+}
+
+function loadEvaluation(){
+  document.getElementById("pexesoTable").remove();
+  var hra3Div = document.getElementById("pexeso");
+  hra3Div.id = "hra3";
+  hra3Div.innerHTML = "";
+
+  // Vytvoření elementu <div id="hra3text">
+  var hra3TextDiv = document.createElement("div");
+  hra3TextDiv.id = "hra3text";
+
+  // Vytvoření elementu <h4> s odkazem
+  var h4Element = document.createElement("h4");
+  var aElement = document.createElement("a");
+  aElement.id = "zpetUD";
+  aElement.href = "ukladani-dat";
+  aElement.textContent = "Zpět na teorii";
+  h4Element.appendChild(aElement);
+
+  // Vytvoření elementu <div id="hra3bubbleUvod">
+  var hra3BubbleUvodDiv = document.createElement("div");
+  hra3BubbleUvodDiv.id = "hra3bubbleUvod";
+
+  // Vytvoření elementu <h4>
+  var h4BubbleUvod = document.createElement("h4");
+  h4BubbleUvod.textContent = "Výborně, tohle jsi zvládnul velmi dobře!";
+
+  // Vytvoření elementu <p>
+  var pElement = document.createElement("p");
+  pElement.textContent = "Můžeš se vydat prozkoumat další hry.";
+
+  // Vložení elementů do <div id="hra3bubbleUvod">
+  hra3BubbleUvodDiv.appendChild(h4BubbleUvod);
+  hra3BubbleUvodDiv.appendChild(pElement);
+
+
+  // Vytvoření elementu <button id="hra3zacniHru">
+  var buttonElement = document.createElement("button");
+  buttonElement.id = "dalsiHryButton";
+  buttonElement.textContent = "Další hry";
+  buttonElement.addEventListener("click", function() {
+    // Přejdi na jinou stránku
+    window.location.href = "hry";
+  });
+
+  // Vložení elementů do <div id="hra3text">
+  hra3TextDiv.appendChild(h4Element);
+  hra3TextDiv.appendChild(hra3BubbleUvodDiv);
+  hra3TextDiv.appendChild(buttonElement);
+
+  // Vytvoření elementu <div id="hra3sidebar">
+  var hra3SidebarDiv = document.createElement("div");
+  hra3SidebarDiv.id = "hra3sidebar";
+
+  // Vytvoření elementu <img id="hra3robot">
+  var imgElement = document.createElement("img");
+  imgElement.id = "hra3robot";
+  imgElement.src = "../../pictures/data_storage/rob03.png";
+  imgElement.alt = "Robot3";
+
+  // Vložení elementů do <div id="hra3sidebar">
+  hra3SidebarDiv.appendChild(imgElement);
+
+  // Vložení elementů do <div id="hra3">
+  hra3Div.appendChild(hra3TextDiv);
+  hra3Div.appendChild(hra3SidebarDiv);    
+}
+
 </script>
 <style type="text/css">
-#prirazovacka {
+#hra3 {  
   display:grid;
   grid-template-columns: 60% 10% 30%;
-  grid-template-rows: 38% auto;
-  grid-template-areas: 
-    "text text robot"
-    "kviz sidebar sidebar"
-
-
-}
-#textHra3 {
-   grid-area:text;
+  grid-template-areas: "text . robot";
 }
 
-#speech-bubble { 
-   background: #A7C7E7;
-   border-radius: 50px;
-   text-align:center;
-   padding: 1px 25px 1px 10px;
-   font-size: 18px;
-
+#hra3bubbleUvod { 
+  background: #A7C7E7;
+  border-radius: 50px;
+  text-align:center;
+  padding: 1px 25px 1px 10px;
+  font-size: 18px;
 }
 
-#speech-bubble:before {
-   content:"";
-   float:right;
-   width: 0;
-   height: 0;
-   border-top: 13px solid transparent;
-   border-left: 55px solid #A7C7E7;
-   border-bottom: 13px solid transparent;
-   margin: 90px -80px 25px 0px;
+#hra3bubbleUvod:before {
+  content:"";
+  float:right;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-left: 130px solid #A7C7E7;
+  border-bottom: 13px solid transparent;
+  margin: 70px -130px 50px 0px;
 }
 
-#hra3Obr {
-  grid-area: sidebar;
-  text-align:center; 
+#hra3text {
+  grid-area:text;
 }
+
 #hra3robot {
-  grid-area: robot;
-  padding-right:20%;
+  grid-area:robot;
+  width: 250px;
 }
 
-#hra3 {
-    grid-area:kviz;
+#pexeso {
+  margin-top: 20px;
 }
 
-#formReset {
-  background-color: yellow;
-  border: 1px solid navy;
-  border-radius:10px;
-  color: navy;
-  padding: 15px 32px;
-  text-align: center;
-  display: inline-block;
-  font-size: 16px;
+#pexesoTable {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  background-image: "../../pictures/data_storage/rob03.png";
 }
 
-#kontrola {
+td button {
+  width: 150px;
+  height: 150px;
+  background-image: "../../pictures/data_storage/rob03.png";
+}
+
+td {
+  width: 150px;
+  height: 150px;
+}
+
+#hra3zacniHru, #dalsiHryButton {
   background-color: #A7C7E7;
-  border: 1px solid navy;
-  border-radius:10px;
+  border: 2px solid #A7C7E7;
+  border-radius: 20px;
   color: navy;
-  padding: 15px 32px;
+  float: right;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 15px 25px;
   text-align: center;
-  display: inline-block;
-  font-size: 16px;
+  width: 200px;
 }
 
-ol {
-  display:inline-block;
+#hra3zacniHru:hover, #dalsiHryButton:hover {
+  border: 2px solid navy;
 }
 
 </style>
-<div id="prirazovacka">
-<div id="textHra3">
-  <h1>Přiřazovačka</h1>
-<div id="speech-bubble">
-<h3>Orientuješ se ve vnějších pamětích?</h3>
-<p>V následujícím cvičení tě čeká několik popisů jednotlivých pamětí. <br>
-Tvým úkolem bude ke každému popisu přiřadit správný název a obrázek. 
-<br><i><strong>Rada:</strong> pokud si s nějakou otázkou nebudeš vědět rady, pokračuj na další. 
-Vylučovací metodou se určitě dostaneš ke správné odpovědi. 
-<br>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
-
-</div>
-<div id="hra03robot"><img src="../../pictures/rob03.svg" alt="Robot3" width="250"></div>
-<div id="hra3Obr">
-<ol>
-<li><img src="../../pictures/hdd.png" alt="Pevný disk" width="180"></li>
-<li><img src="../../pictures/magPaska.png" alt="Magnetická páska" width="180"></li>
-<li><img src="../../pictures/cd.png" alt="CD" width="120"></li>
-<li><img src="../../pictures/ssd.jpg" alt="SSD" width="180"></li>
-<li><img src="../../pictures/usb.png" alt="USB flash disk" width="150"></li>
-</ol>
-
-</div>
 
 <div id="hra3">
-
-<form name="formHra3" action="hra3" method="post">
-  <label for="pamet1">1. Používám magnetický zápis. Jsem ideální pro archivaci velkého množství dat, ale pomalu už se blížím do důchodu. Kdo jsem?</label>
-  <select id="pamet1" name="pamet1">
-    <script>allOptions()</script>
-  <label for="ansObr1">Obrázek číslo:</label>
-  <input type="number" id="ansObr1" name="ansObr1" min="1" max="5" required><br><br>
-  <label for="pamet2">2. Můžeš mě použít k přehrání hudby a data se na mě zapisují pomocí laserového paprsku. A říkají mi:</label>
-  <select id="pamet2" name="pamet2">
-    <script>allOptions()</script>
-  <label for="ansObr2">Obrázek číslo:</label>
-  <input type="number" id="ansObr2" name="ansObr2" min="1" max="5" required><br><br>
-  <label for="pamet3">3. Pravděpodobně mě najdeš uvnitř svého notebooku. Jsem tižší a rychlejší než můj předchůdce, proto si za mě taky musíš připlatit. </label>
-  <select id="pamet3" name="pamet3">
-    <script>allOptions()</script>
-  <label for="ansObr3">Obrázek číslo:</label>
-  <input type="number" id="ansObr3" name="ansObr3" min="1" max="5" required><br><br>
-  <label for="pamet4">4. Jsem uložen uvnitř počítače. Skládám se z několika kotoučů, zapisuju data pomocí magnetického pole. 
-    Poslední dobou se mě snaží nahradit, ale pořád jsem ta nejlevnější varianta. </label>
-  <select id="pamet4" name="pamet4">
-    <script>allOptions()</script>
-  <label for="ansObr4">Obrázek číslo:</label>
-  <input type="number" id="ansObr4" name="ansObr4" min="1" max="5" required><br><br>
-  <label for="pamet5">5. Data se na mě ukládají pomocí elektrických obvodů. Myslím, že už jsme se spolu nejspíš setkali. Určitě víš, že mi říkají:  </label>
-  <select id="pamet5" name="pamet5">
-    <script>allOptions()</script>
-  <label for="ansObr5">Obrázek číslo:</label>
-  <input type="number" id="ansObr5" name="ansObr5" min="1" max="5" required><br><br>
-  <input type="reset" id="formReset" value="Začít znovu">
-  <input type="button" id="kontrola" onclick="checkHra3()" value="Zkontrolovat">
-</form>
-<span id="output"></span></div>
+  <div id="hra3text">
+    <h4><a id="zpetUD" href="ukladani-dat">Zpět na teorii</a></h4>
+    <div id="hra3bubbleUvod">
+      <h4>Orientuješ se ve vnějších pamětích?</h4>
+      <p>V následujícím cvičení tě čeká pexeso na téma pamětí.
+      Tvým úkolem bude ke každému popisu vybrat správný obrázek.</p> 
+    </div>
+    <button id="hra3zacniHru" onclick="startGame()">Začni hru</button>
+  </div>
+  <div id="hra3sidebar">
+    <img id="hra3robot" src="../../pictures/data_storage/rob03.png" alt="Robot3">
+  </div>
 </div>
-
-

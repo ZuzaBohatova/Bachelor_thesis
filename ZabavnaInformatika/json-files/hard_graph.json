@@ -11,37 +11,37 @@
         },
     "2" : 
         {
-            "name" : "Ĺ kola",
+            "name" : "Škola",
             "A" : 9,
             "B" : 8
         },
     "3" : 
         {
-            "name" : "Drogerie",
+            "name" : "Lékárna",
             "A" : 1,
             "B" : 6
         },
     "4" : 
         {
-            "name" : "Potraviny",
+            "name" : "Obchodní centrum",
             "A" : 1,
             "B" : 7
         },
     "5" : 
         {
-            "name" : "CukrĂˇrna",
+            "name" : "Cukrárna",
             "A" : 6,
             "B" : 3
         },    
     "6" :
         {
-            "name" : "HĹ™iĹˇtÄ›",
+            "name" : "Fotbalové hřiště",
             "A" : 1,
             "B" : 9
         },
     "7" :
         {
-            "name" : "Muzeum",
+            "name" : "Zábavní park",
             "A" : 5,
             "B" : 6
         },

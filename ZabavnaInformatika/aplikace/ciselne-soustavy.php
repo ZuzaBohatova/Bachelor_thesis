@@ -23,7 +23,8 @@ Zbytky seřadíme od posledního k prvnímu a tak dostaneme naše číslo ve dvo
 
 </div>
 <div id="prevod10">
-<h3>A teď zpátky do desítkové!</h3><p>Tady to bude o něco těžší. Důležité je znát <strong>mocniny dvojky</strong>. </p>
+<h3>A teď zpátky do desítkové!</h3>
+<p>Tady to bude o něco těžší. Důležité je znát <strong>mocniny dvojky</strong>. </p>
 <p>Vezmeme číslo ve dvojkové soustavě a očíslujeme ho odzadu a začneme číslovat od nuly. Každé číslo reprezentuje danou mocninu dvojku.
     Pro nulu máme 2 na 0, pro jedničku 2 na 1 a tak dále. Vezmeme poslední číslici a vynásobíme ji její přiřazenou mocninou dvojky. 
     To samé postupně provedeme se každou číslicí našeho čísla. Všechny násobky poté sečteme. </p>

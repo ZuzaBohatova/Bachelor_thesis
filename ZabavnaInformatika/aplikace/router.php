@@ -16,7 +16,7 @@ function route($url) {
             case "ciselne-soustavy":
                 return '/ciselne-soustavy.php'; 
             case "hra3":
-                return '/hra3Novy.php'; 
+                return '/hra3.php'; 
             case "hra1":
                 return '/hra1.php';
             case "hra4":

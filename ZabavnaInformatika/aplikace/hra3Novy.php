@@ -10,9 +10,9 @@
     "Data se na mě ukládají pomocí elektrických obvodů. Myslím, že už jsme se spolu nejspíš setkali. Určitě víš, že mi říkají:"  
   ];
 
-  let happy = "../../pictures/rob03happy.png";
-  let sad = "../../pictures/rob03sad.png"
-  let normal = "../../pictures/rob03.png";
+  let happy = "../../pictures/data_storage/rob03happy.png";
+  let sad = "../../pictures/data_storage/rob03sad.png"
+  let normal = "../../pictures/data_storage/rob03.png";
 
   function checkAns() {
     let correctAns = ["magPaska","cd", "ssd","hdd","usb"];
@@ -96,7 +96,6 @@
     <button id="dalsiHry" onclick="location.href='hry'">Další hry</button>
     </div></div>
     <img id="hra3robotZaver" src="" alt="Robot3" width="350">
-    
     `;
     switch (chyby) {
       case 0:
@@ -130,7 +129,7 @@ Tvým úkolem bude ke každému popisu vybrat správný název a obrázek.</p> <
 <p><i>Každá otázka má jen jednu odpověď a každá odpověď je použita jen jednou. </i></p></div>
 <button id="hra3zacniHru" onclick="zacniHru()">Začni hru</button>
 </div>
-<div id="hra3sidebar"><img id="hra3robot" src="../../pictures/rob03.png" alt="Robot3" width="320">
+<div id="hra3sidebar"><img id="hra3robot" src="../../pictures/data_storage/rob03.png" alt="Robot3" width="320">
 <div id="dalsi"></div>
 </div>
 </div>

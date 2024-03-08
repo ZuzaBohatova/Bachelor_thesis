@@ -141,16 +141,84 @@
     }
 
     function vyhodnoceni(){
-        hardware.innerHTML = `<p>Výborně</p><div class="hra2kamDal">
-            <button id="hra2reset" onclick="location.href='hra2'">Začít znovu</button>
-            <button id="hra2dalsiHry" onclick="location.href='hry'">Další hry</button>
-            </div>`;
+        // Získání reference na element, který chcete vyčistit
+        var hardwareContainer = document.getElementById('hardware');
+
+        // Vymazání obsahu
+        hardwareContainer.innerHTML = '';
+
+        // Vytvoření kontejneru pro textový obsah
+        var textHardwContainer = document.createElement('div');
+        textHardwContainer.id = 'textHardw';
+
+        // Vytvoření zpětného odkazu
+        var zpetHWLink = document.createElement('a');
+        zpetHWLink.id = 'zpetHW';
+        zpetHWLink.textContent = 'Zpět na teorii';
+        zpetHWLink.href = 'hardware';
+        var zpetHWHeading = document.createElement('h4');
+        zpetHWHeading.appendChild(zpetHWLink);
+        textHardwContainer.appendChild(zpetHWHeading);
+
+        // Vytvoření bubliny s textem
+        var bubbleHardwDiv = document.createElement('div');
+        bubbleHardwDiv.id = 'bubbleHardw';
+
+        var bubbleHardwHeading = document.createElement('h4');
+        bubbleHardwHeading.textContent = 'Výborně!';
+        bubbleHardwDiv.appendChild(bubbleHardwHeading);
+
+        var bubbleHardwText = document.createElement('p');
+        bubbleHardwText.textContent = 'To se ti povedlo.';
+        bubbleHardwDiv.appendChild(bubbleHardwText);
+
+        textHardwContainer.appendChild(bubbleHardwDiv);
+
+        // Vytvoření kontejneru pro další akce
+        var hra2kamDalDiv = document.createElement('div');
+        hra2kamDalDiv.id = 'hra2kamDal';
+
+        var hra2resetButton = document.createElement('button');
+        hra2resetButton.id = 'hra2reset';
+        hra2resetButton.textContent = 'Začít znovu';
+        hra2resetButton.addEventListener('click', function() {
+            location.href = 'hra2';
+        });
+        hra2kamDalDiv.appendChild(hra2resetButton);
+
+        var hra2dalsiHryButton = document.createElement('button');
+        hra2dalsiHryButton.id = 'hra2dalsiHry';
+        hra2dalsiHryButton.textContent = 'Další hry';
+        hra2dalsiHryButton.addEventListener('click', function() {
+            location.href = 'hry';
+        });
+        hra2kamDalDiv.appendChild(hra2dalsiHryButton);
+
+        textHardwContainer.appendChild(hra2kamDalDiv);
+
+        // Přidání textového obsahu do dokumentu
+        hardwareContainer.appendChild(textHardwContainer);
+
+        // Vytvoření kontejneru pro sidebar
+        var sidebarDiv = document.createElement('div');
+        sidebarDiv.id = 'sidebar';
+
+        var robHardwImg = document.createElement('img');
+        robHardwImg.id = 'robHardw';
+        robHardwImg.src = '../../pictures/rob04.png';
+        robHardwImg.alt = 'Robot4';
+        robHardwImg.width = '270';
+        sidebarDiv.appendChild(robHardwImg);
+
+        // Přidání sidebaru do dokumentu
+        hardwareContainer.appendChild(sidebarDiv);
+
 
     }
 
 </script>
 <style type="text/css">
-    .hra2kamDal button {
+    #hra2kamDal button {
         background-color: #FFCC99 ;
         border: 2px solid #FFCC99 ;
         border-radius:20px;
@@ -158,11 +226,14 @@
         float: right;
         font-size: 18px;
         font-weight: bold;
-        margin-top: 20px;
+        margin: 20px 5px 10px 5px;
         padding: 15px 25px;
         text-align: center;
         width: 200px;
+    }
 
+    #hra2kamDal button:hover {
+        border: 2px solid #FF4F00;
     }
 
     #hardware {

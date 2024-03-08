@@ -11,7 +11,7 @@
         zobrazování dat a ty, co nás budou zajímat - <strong>grafy reprezentující vztahy mezi objekty.</strong></p>
         </div>
     </div>
-    <img id="robGrafy" src="../../pictures/rob01.png" alt="Robot1" width="250">
+    <img id="robGrafy" src="../../pictures/graphs/rob01.png" alt="Robot1" width="250">
     <div id="definice">
         <p><strong>Graf</strong> je tvořen <strong>hranami a vrcholy</strong>. Hrana musí být zakončena vrcholy z obou stran. 
             Můžeme si to představit jako puntíky spojené čarami.
