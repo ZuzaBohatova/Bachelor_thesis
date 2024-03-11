@@ -10,6 +10,7 @@
       "text text text";
     font-size: 18px;
     margin-left: 10px;
+    width: 90%;
   }
 
   #infoSite {
