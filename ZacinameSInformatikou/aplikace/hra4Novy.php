@@ -49,7 +49,7 @@
         
         document.getElementById("hra4bubbleUvod").className = "second";
         
-        document.getElementById("hra4robot").src = "../../pictures/rob02.png";
+        document.getElementById("hra4robot").src = "../../pictures/number_systems/rob02.png";
         document.getElementById("hra4robot").width = "250";
     }
 
@@ -62,7 +62,7 @@
         document.getElementById("hra4buttons").remove();
         var deleni = [42,2,(42/2),(42%2)];
         document.getElementById("hra4robot").width = "250";
-        document.getElementById("hra4robot").src = "../../pictures/rob02.png";
+        document.getElementById("hra4robot").src = "../../pictures/number_systems/rob02.png";
         document.getElementById("hra4bubbleUvod").className = "second";
         hra4bubbleUvod.innerHTML += `<p>My budeme do dvojkové soustavy převádět číslo <strong><a href="https://cs.wikipedia.org/wiki/42_(odpov%C4%9B%C4%8F)" target="_blank">`+deleni[0]+"</a></strong>";
         await hra4vypocet(deleni);
@@ -123,7 +123,7 @@
         document.getElementById("hra4bubbleUvod").style.height = "120px";
         document.getElementById("hra4bubbleUvod").className = "second";
         document.getElementById("hra4robot").width = "250";
-        document.getElementById("hra4robot").src = "../../pictures/rob02.png";
+        document.getElementById("hra4robot").src = "../../pictures/number_systems/rob02.png";
         hra4bubbleUvod.innerHTML = `<p>Pravidla jsou jednoduchá. Dám ti číslo, které máš převést do dvojkové soustavy. <br>
         A postupně ho převedeš, číslici po číslici</p>`;
         document.getElementById("hra4tab").remove();
@@ -177,7 +177,7 @@
             document.getElementById(id).style.fontWeight = "bold";
             ++mistakes;
             if(mistakes <= 7){
-                document.getElementById("hra4robot").src = "../../pictures/rob02"+mistakes+".png";
+                document.getElementById("hra4robot").src = "../../pictures/number_systems/rob02"+mistakes+".png";
                 document.getElementById("hra4robot").width = "305";
             }
             else {
@@ -494,6 +494,6 @@
 <div id="hra4buttons"><button id="hra4zacniHru" onclick="hra4zacniHru()">Začni hru</button>
 <button id="hra4animace" onclick="hra4animace10to2()">Animace</button></div>
 </div>
-<img id="hra4robot" src="../../pictures/rob02.png" alt="Robot2" width="300">
+<img id="hra4robot" src="../../pictures/number_systems/rob02.png" alt="Robot2" width="300">
 <div id="hra4butZacniHru"></div>
 </div>

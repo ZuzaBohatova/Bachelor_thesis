@@ -277,8 +277,6 @@
 
     #zpetHW {
         color: #FF4F00;
-        font-weight: bold;
-        margin-top: 10px;
     } 
 
     #hra2zacniHru {

@@ -21,6 +21,8 @@ function route($url) {
                 return '/hra1.php';
             case "hra4":
                 return '/hra4Novy.php';
+            case "hra5":
+                return '/hra5.php';
             case "hra2":
                 return '/hra2.php';
             case "hry":

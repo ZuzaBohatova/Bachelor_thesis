@@ -1,15 +1,17 @@
-<script>
-    document.getElementById("menu").style.border = "5px solid #008b8b";
-</script>
 <style>
+  #menu {
+    border: 5px solid #008b8b;
+  }
+
   #site {
     display:grid;
     grid-template-columns: 65% 5% auto;
     grid-template-areas: 
       "info . robot "
-      "text text text";
+      "text text text"
+      "linkHra linkHra linkHra";
     font-size: 18px;
-    margin-left: 10px;
+    margin: auto;
     width: 90%;
   }
 
@@ -24,7 +26,6 @@
 
   #textSite {
     grid-area: text;
-    font-size: 16px;
   }
 
   #imagePanel {
@@ -56,8 +57,20 @@
     background: #96ded1;
     text-align: center;
   }
-</style>
 
+  #linkHra {
+    margin-top: 20px;
+    grid-area: linkHra;
+    text-align: center;
+    font-size:20px;
+    font-weight: bold;
+  }
+
+  #linkHra:hover {
+    background-color: #96ded1;
+    color: black;
+  }
+</style>
 
 <div id="site">
   <div id="infoSite">
@@ -69,16 +82,18 @@
       </p>
     </div>
   </div>
-  <img id="robSite" src="../../pictures/rob05.png" alt="Robot5" width="300">
+  <img id="robSite" src="../../pictures/networks/rob05.png" alt="Robot5" width="300">
   <div id="textSite">
   
-  <h4>Co je to internet?</h3>
+  <h4>Co je to internet?</h4>
     <p>Internet je celosvětový systém navzájem propojených počítačových sítí. Každá taková síť se skládá ze zařízení, které spolu neustále komunikují. 
       Zařízení se dělí na dva typy: 
-      <ul>
-        <li> <strong>klienti</strong> - zařízení, která něco požadují</li>
-        <li> <strong>servery</strong> - zařízení, která něco nabízejí</li>
-      </ul>
+    </p>
+    <ul>
+      <li> <strong>klienti</strong> - zařízení, která něco požadují</li>
+      <li> <strong>servery</strong> - zařízení, která něco nabízejí</li>
+    </ul>
+    <p>
       Např. když si chceme pustit video na youtube - náš počítač je klient, který požaduje dané video, a youtube je server, který toto video nabízí.
     </p>
   <h4>Kde se bere internetové připojení?</h4>
@@ -109,4 +124,5 @@
         </ul>
     </ol>
   </div>
+  <a id="linkHra" href="hra5">Zkuste si sestavit vlastní cestu Internetem!</a>      
 </div>

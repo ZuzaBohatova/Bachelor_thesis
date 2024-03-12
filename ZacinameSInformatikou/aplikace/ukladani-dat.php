@@ -16,7 +16,7 @@
             "USB USBImg"
             "SDCard SDCardImg"
             "LinkHra LinkHra";
-        margin-left: 10px;
+        margin: auto;
         font-size: 18px;
         width: 90%;
     }
@@ -45,8 +45,8 @@
 
     #RobotDataStorage {
         grid-area:robot;
-        width: 240px;
-        margin-left: 40px;
+        width: 250px;
+        margin: auto;
     }
 
     #TextDataStorage {
@@ -126,7 +126,7 @@
             </p>
         </div>
     </div>
-    <img id="RobotDataStorage" src="../../pictures/data_storage/rob03.png" alt="Robot3" width="270" />
+    <img id="RobotDataStorage" src="../../pictures/data_storage/rob03.png" alt="Robot3"/>
     <div id="TextDataStorage">
         <h3>Vnější paměti</h3>
         <p>Vnější paměti máme pro dlouhodobější ukládání dat. Liší se velikostí a také způsobem, jak na ně data zapisujeme:</p>

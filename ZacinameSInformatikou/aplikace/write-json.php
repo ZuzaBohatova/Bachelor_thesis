@@ -93,11 +93,14 @@
 
 </script>
 <style type="text/css">
+    #jsonEditor {
+        width: 90%;
+        margin: auto;
+    }
+
     #writeJSON
     {
         font-size: 18px;
-        margin-left: 10px;
-        margin-top: 10px;
     }
     
 
@@ -141,53 +144,18 @@
 
 
 </style>
-
-<div id="writeJSON">
-<div id="infoJSON">
-<h4><a id="zpetHra" href="hra1">Zpět na hru</a></h4>
-<?php  
-    if (isset($_POST["submitBtn"])) { 
-        $countVert = intval($_POST["countVert"]);
-        $countEdges = intval($_POST["countEdges"]);
-        $start = intval($_POST["start"]);
-        $end = intval($_POST["end"]);
-        $alphabet = implode('', range('A', 'Z'));
-    
-        // Přidání hodnot před cyklem
-        $json_file = array("countVert" => $countVert, "countEdges" => $countEdges, "start" => $start, "end" => $end);
-    
-        // Přidání členů podle vzorce
-        for ($i = 1; $i <= $countVert; $i++) {
-            $vertex = array("name" => "zde zadejte jmeno"); // Nastavte jméno podle potřeby
-            
-            for ($j = 0; $j < $countEdges; $j++) {
-                $vertex[$alphabet[$j]] = "zde zadejte vrchol, do ktereho vede cesta"; // Nastavte hodnotu cesty podle potřeby
-            }
-            
-            $json_file[$i] = $vertex;
-        }
-        
-        // Převod na JSON
-        $json_data = json_encode($json_file, JSON_PRETTY_PRINT);
-        $divStyle = "display: block;";
-        
-    } else {
-        $divStyle = "display: none;";
-        echo "Chyba ve formuláři, vraťte se zpět a vyplňte formulář znovu";
-    }
-?> 
 <div id="jsonEditor" style="<?php echo $divStyle; ?>">
-<h3>JSON Editor</h3>
-<div id="infoText">
-<p>Zde vidíte svůj předgenerovaný JSON soubor. Za <span class="kurziva">"zde zadejte .."</span> vyplňte požadovanou hodnotu - bez uvozovek, 
-např. <span class="kurziva">"A": 5,</span>.</p>
-<p>Až budete mít soubor kompletní, kliknětě na "Uložit". Pokud je váš soubor validní, tak se vám vygeneruje odkaz, který vás pokaždé přesměruje 
-přímo na hru s vaším konkrétním grafem. Tento odkaz si uložte, můžete ho používat opakovaně, případně sdílet s dalšími uživateli.</p>
-</div>
-<form id="jsonForm">
-    <p><textarea id="jsonInput" rows="30" cols="60"><?php echo $json_data; ?></textarea></p>
-</form>
-<button id="ulozitBtn" onclick="viewGraphLink(createJSONLink())">Uložit</button>
-<br>
-</div>
+    <h3>JSON Editor</h3>
+    <div id="infoText">
+        <p>Zde vidíte svůj předgenerovaný JSON soubor. Za <span class="kurziva">"zde zadejte .."</span> vyplňte požadovanou hodnotu - bez uvozovek, např. <span class="kurziva">"A": 5,</span>.</p>
+        <p>
+            Až budete mít soubor kompletní, kliknětě na "Uložit". Pokud je váš soubor validní, tak se vám vygeneruje odkaz, který vás pokaždé přesměruje přímo na hru s vaším konkrétním grafem. Tento odkaz si uložte, můžete ho používat
+            opakovaně, případně sdílet s dalšími uživateli.
+        </p>
+    </div>
+    <form id="jsonForm">
+        <p><textarea id="jsonInput" rows="30" cols="60"><?php echo $json_data; ?></textarea></p>
+    </form>
+    <button id="ulozitBtn" onclick="viewGraphLink(createJSONLink())">Uložit</button>
+    <br />
 </div>
