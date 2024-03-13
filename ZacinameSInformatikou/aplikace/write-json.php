@@ -33,7 +33,10 @@
             var paragraph2 = document.createElement('p');
             paragraph2.id = "url";
             paragraph2.style.overflowWrap = "break-word";
-            paragraph2.textContent = url; // Předpokládám, že 'url' je proměnná, která obsahuje URL
+            var link = document.createElement('a');
+            link.href = url; // Předpokládám, že 'url' je proměnná, která obsahuje URL
+            link.textContent = url;
+            paragraph2.appendChild(link);
 
             // Vložení vytvořených elementů do kontejneru
             infoText.appendChild(paragraph1);
@@ -93,13 +96,11 @@
 
 </script>
 <style type="text/css">
-    #jsonEditor {
-        width: 90%;
-        margin: auto;
-    }
 
     #writeJSON
     {
+        width: 90%;
+        margin: auto;
         font-size: 18px;
     }
     
@@ -142,8 +143,47 @@
         text-align: center;
     }
 
+    link:hover {
+        color: indigo;
+    }
+
 
 </style>
+<div id="writeJSON">
+<div id="infoJSON">
+<h4><a id="zpetHra" href="hra1">Zpět na hru</a></h4>
+<?php  
+    if (isset($_POST["submitBtn"])) { 
+        $countVert = intval($_POST["countVert"]);
+        $countEdges = intval($_POST["countEdges"]);
+        $start = intval($_POST["start"]);
+        $end = intval($_POST["end"]);
+        $alphabet = implode('', range('A', 'Z'));
+    
+        // Přidání hodnot před cyklem
+        $json_file = array("countVert" => $countVert, "countEdges" => $countEdges, "start" => $start, "end" => $end);
+    
+        // Přidání členů podle vzorce
+        for ($i = 1; $i <= $countVert; $i++) {
+            $vertex = array("name" => "zde zadejte jmeno"); // Nastavte jméno podle potřeby
+            
+            for ($j = 0; $j < $countEdges; $j++) {
+                $vertex[$alphabet[$j]] = "zde zadejte vrchol, do ktereho vede cesta"; // Nastavte hodnotu cesty podle potřeby
+            }
+            
+            $json_file[$i] = $vertex;
+        }
+        
+        // Převod na JSON
+        $json_data = json_encode($json_file, JSON_PRETTY_PRINT);
+        $divStyle = "display: block;";
+        
+    } else {
+        $divStyle = "display: none;";
+        echo "Chyba ve formuláři, vraťte se zpět a vyplňte formulář znovu";
+    }
+?> 
+
 <div id="jsonEditor" style="<?php echo $divStyle; ?>">
     <h3>JSON Editor</h3>
     <div id="infoText">
