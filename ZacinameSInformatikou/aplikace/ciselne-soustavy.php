@@ -11,7 +11,6 @@
             "animace prevod"
             "desitka mocniny"
             "linkHra linkHra";
-        font-size: 18px;
         margin: auto;
         width: 90%;
     }
@@ -28,7 +27,7 @@
 
     #bubbleCisS { 
         background: lightgreen;
-        padding: 1px 25px 1px 10px;
+        padding: 10px 20px;
         -moz-border-radius: 10px; 
         -webkit-border-radius: 10px; 
         border-radius: 50px;

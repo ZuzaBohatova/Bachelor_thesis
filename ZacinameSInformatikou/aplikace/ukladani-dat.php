@@ -1,9 +1,9 @@
 <style>
     #menu {
-        border: 5px solid rgb(27, 54, 143)
+        border: 5px solid rgb(27, 54, 143);
     }
 
-    #DataStorage {  
+    #dataStorage {  
         display:grid;
         grid-template-columns: 70% auto;
         grid-template-areas:
@@ -15,20 +15,19 @@
             "MagPaska MagPaskaImg"
             "USB USBImg"
             "SDCard SDCardImg"
-            "LinkHra LinkHra";
-        margin: auto;
-        font-size: 18px;
+            "linkGame linkGame";
+        margin
         width: 90%;
     }
 
-    #BubbleDataStorage { 
+    #bubbleDataStorage { 
         background: #A7C7E7;
         border-radius: 50px;
-        text-align:center;
-        padding: 1px 25px 1px 10px;
+        text-align: center;
+        padding: 10px 20px;
     }
 
-    #BubbleDataStorage:before {
+    #bubbleDataStorage:before {
         content:"";
         float:right;
         width: 0;
@@ -39,68 +38,68 @@
         margin: 90px -100px 50px 0px;
     }
 
-    #InfoDataStorage {
+    #infoDataStorage {
         grid-area:info;
     }
 
-    #RobotDataStorage {
+    #robotDataStorage {
         grid-area:robot;
         width: 250px;
         margin: auto;
     }
 
-    #TextDataStorage {
+    #textDataStorage {
         grid-area: text;
     }
 
-    #HDD {
+    #hdd {
         grid-area: HDD;
     }
 
-    #HDDImg {
+    #hddImg {
         grid-area: HDDImg;
     }
 
-    #SSD {
+    #ssd {
         grid-area: SSD;
     }
 
-    #SSDImg {
+    #ssdImg {
         grid-area: SSDImg;
     }
 
-    #CD {
+    #cd {
         grid-area: CD;
     }
 
-    #CDImg {
+    #cdImg {
         grid-area: CDImg;
     }
 
-    #MagPaska {
+    #magPaska {
         grid-area: MagPaska;
     }
 
-    #MagPaskaImg {
+    #magPaskaImg {
         grid-area: MagPaskaImg;
     }
 
-    #USB {
+    #usb {
         grid-area: USB;
     }
 
-    #USBImg {
+    #usbImg {
         grid-area: USBImg;
     }
 
-    #LinkHra {
-        grid-area: LinkHra;
+    #linkGame {
+        grid-area: linkGame;
         text-align: center;
         font-size:20px;
         font-weight: bold;
     }
 
-    #LinkHra:hover {
+    #linkGame:hover {
         background-color: #A7C7E7;
         color: black;
     }
@@ -115,10 +114,10 @@
     }
 </style>
 
-<div id="DataStorage">
-    <div id="InfoDataStorage">
+<div id="dataStorage">
+    <div id="infoDataStorage">
         <h2>Ukládání dat</h2>
-        <div id="BubbleDataStorage">
+        <div id="bubbleDataStorage">
             <h3>Kam se ukládají naše data?</h3>
             <p>
                 Každý na svém počítači pracujeme s velkým množstvím souborů, ať už jsou to fotky, hudba nebo různé dokumenty. 
@@ -126,8 +125,8 @@
             </p>
         </div>
     </div>
-    <img id="RobotDataStorage" src="../../pictures/data_storage/rob03.png" alt="Robot3"/>
-    <div id="TextDataStorage">
+    <img id="robotDataStorage" src="../../pictures/data_storage/rob03.png" alt="Robot3"/>
+    <div id="textDataStorage">
         <h3>Vnější paměti</h3>
         <p>Vnější paměti máme pro dlouhodobější ukládání dat. Liší se velikostí a také způsobem, jak na ně data zapisujeme:</p>
         <ul>
@@ -136,7 +135,7 @@
             <li><strong>elektricky</strong>: obsahují elektrické obvody - <strong>USB flash disky, SSD, karty </strong></li>
         </ul>
     </div>
-    <div id="HDD">
+    <div id="hdd">
         <h4>Pevný disk (Hard Drive Disk)</h4>
         <p> 
             Pevný disk se používá k ukládání většího množství dat. Skládá se z několika kotoučů, které se při zápisu a čtení dat točí.
@@ -144,8 +143,8 @@
             Ale oproti SSD má pomalejší přístupovou rychlost a může být náchylnější k mechanickému poškození kvůli pohyblivým součástem.
         </p>
     </div>
-    <img id="HDDImg" src="../../pictures/data_storage/hdd.jpg" alt="Pevný disk" width="270"/>
-    <div id="SSD">
+    <img id="hddImg" src="../../pictures/data_storage/hdd.jpg" alt="Pevný disk" width="270"/>
+    <div id="ssd">
         <h4>SSD (Solid state drive)</h4>
         <p>
             SSD se jako pevný disk používá k ukládání většího množství dat. 
@@ -153,29 +152,29 @@
             Je rychlejší, ale má menší kapacitu. Používá se často u notebooků.
         </p>
     </div>
-    <img id="SSDImg" src="../../pictures/data_storage/ssd.jpg" alt="SSD" width="270"/>
-    <div id="CD">
+    <img id="ssdImg" src="../../pictures/data_storage/ssd.jpg" alt="SSD" width="270"/>
+    <div id="cd">
         <h4>CD (Compact disk)</h4>
         <p>
             CD je optický disk, data jsou uložena na spirále začínající ve středu. Může obsahovat zvukovou nahrávku nebo data (CD-ROM).
         </p> 
     </div>
-    <img id="CDImg" src="../../pictures/data_storage/cd.png" alt="CD" width="180"/>
-    <div id="MagPaska">
+    <img id="cdImg" src="../../pictures/data_storage/cd.png" alt="CD" width="180"/>
+    <div id="magPaska">
         <h4>Magnetická páska</h4>
         <p>
             Magnetická páska je předchůdce pevných disků. V dnešní době se používá maximálně k archivaci a zálohování velkého množství dat. Je velmi pomalá.
         </p>
     </div> 
-    <img id="MagPaskaImg" src="../../pictures/data_storage/magPaska.png" alt="Magnetická páska" width="250"/>  
-    <div id="USB">   
+    <img id="magPaskaImg" src="../../pictures/data_storage/magPaska.png" alt="Magnetická páska" width="250"/>  
+    <div id="usb">   
         <h4>USB flash disk</h4>
         <p>
             USB flash disk je malé datové úložiště určené pro přenos dat mezi počítači. Je nástupcem CD. Zapisujeme na něj elektronicky.
         </p>
     </div>
-    <img id="USBImg" src="../../pictures/data_storage/usb.jpg" alt="USB flash disk" width="250"/>
-    <div id="SDCard">   
+    <img id="usbImg" src="../../pictures/data_storage/usb.jpg" alt="USB flash disk" width="250"/>
+    <div id="sdCard">   
         <h4>SD Karta (Secure Digital Card) </h4>
         <p>
             SD karta je typ paměťové karty používané k ukládání dat v různých elektronických zařízeních, jako jsou digitální fotoaparáty, mobilní telefony, 
@@ -183,6 +182,6 @@
             který řídí přístup k datům na této paměťové části.  
         </p>
     </div>
-    <img id="SDCardImg" src="../../pictures/data_storage/sdCard.png" alt="SD karta" width="250"/>
-    <a id="LinkHra" href="hra3">Ověřte si svoje znalosti ve hře!</a>      
+    <img id="sdCardImg" src="../../pictures/data_storage/sdCard.png" alt="SD karta" width="250"/>
+    <a id="linkGame" href="hra3">Ověřte si svoje znalosti ve hře!</a>      
 </div>

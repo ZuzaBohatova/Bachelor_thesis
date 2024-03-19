@@ -225,14 +225,15 @@
         grid-template-areas: 
             "text . sidebar"
             "buttons buttons buttons";
-        font-size: 18px;
-        margin-left: 10px;
+        margin: auto;
+        width: 90%;
     }
 
     #graphGame
     {
         font-size: 18px;
-        margin-left: 10px;
+        margin: auto;
+        width: 90%;
     }
 
     #textGrafyHra {
@@ -247,6 +248,7 @@
     #position {
         text-align: center;
     }
+    
     #graphButt {
         text-align: center;
         margin-top: 10px;
@@ -279,11 +281,6 @@
         margin-top: 10px;
     } 
 
-
-    #difficultnessButtons {
-        text-align: center;
-    }
-
     button {
         background-color: #e3ccfc ;
         border: 2px solid #e3ccfc ;
@@ -291,7 +288,7 @@
         color: indigo;
         font-size: 16px;
         font-weight: bold;
-        margin: 5px 10px;
+        margin: 5px 5px;
         padding: 10px 15px;
         width: 230px;
     }
@@ -307,8 +304,6 @@
 
     .difficultnessButtons {
         width: 150px;
-        margin: 5px 5px;
-        padding: 10px 10px;
     }
 </style>
 

@@ -16,8 +16,7 @@
             "HDDaSSD HDDaSSDImg"
             "BIOS BIOSImg"
             "linkGame linkGame";
-        font-size: 18px;
-        margin-left: 10px;
+        margin: auto;
         width: 90%;
     }
 

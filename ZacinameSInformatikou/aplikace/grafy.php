@@ -10,7 +10,6 @@
             "text robot"
             "definice definice"
             "linkHra linkHra";
-        font-size: 18px;
         margin: auto;
         width: 90%;
     }
@@ -27,17 +26,14 @@
 
     #definice {
         grid-area: definice;
-        margin: 10px 10px;
+        margin: 10px;
     }
 
     #bubbleGrafy { 
         background: #e3ccfc;
-        padding: 1px 20px 1px 20px;
-        -moz-border-radius: 10px; 
-        -webkit-border-radius: 10px; 
-        border-radius: 30px;
+        padding: 10px 20px;
+        border-radius: 50px;
         text-align:center;
-        font-size: 18px;
     }
 
     #bubbleGrafy:before {
@@ -53,7 +49,6 @@
 
     #linkHra {
         grid-area: linkHra;
-        margin-top: 20px;
         text-align: center;
         font-size:  20px;
         font-weight: bold;

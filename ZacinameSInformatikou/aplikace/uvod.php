@@ -1,9 +1,8 @@
 <script>
-    document.getElementById("menu").style.border = "5px solid #C7EA46";
+    document.getElementById("menu").style.border = "5px solid #ee82ee";
 </script>
 <style>
     #uvod {
-        font-size: 18px;
         margin: auto;
         width: 90%;
     }
@@ -21,8 +20,8 @@
     </p>
 
     <img src="../../pictures/graphs/rob01.png" alt="Robot1" width="160">
-    <img src="../../pictures/rob02.png" alt="Robot2" width="180">
+    <img src="../../pictures/number_systems/rob02.png" alt="Robot2" width="180">
     <img src="../../pictures/data_storage/rob03.png" alt="Robot3" width="180">
     <img src="../../pictures/rob04.png" alt="Robot4" width="180">
-    <img src="../../pictures/networks/rob05.png" alt="Robot5" width="190">
+    <img src="../../pictures/information_systems/rob05.png" alt="Robot5" width="120">
 </div>

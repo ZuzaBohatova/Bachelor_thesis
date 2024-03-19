@@ -241,8 +241,8 @@
         grid-template-columns: 70% 5% auto;
         grid-template-areas: 
             "text . sidebar ";
-        font-size: 18px;
-        margin-left: 10px;
+        margin: auto;
+        width: 90%;
     }
 
     #textHardw {

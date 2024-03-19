@@ -50,7 +50,6 @@
         document.getElementById("hra4bubbleUvod").className = "second";
         
         document.getElementById("hra4robot").src = "../../pictures/number_systems/rob02.png";
-        document.getElementById("hra4robot").width = "250";
     }
 
     async function hra4animace10to2() {
@@ -61,7 +60,6 @@
         <span class="strong">zbytku po dělení</span>.</p>`;
         document.getElementById("hra4buttons").remove();
         var deleni = [42,2,(42/2),(42%2)];
-        document.getElementById("hra4robot").width = "250";
         document.getElementById("hra4robot").src = "../../pictures/number_systems/rob02.png";
         document.getElementById("hra4bubbleUvod").className = "second";
         hra4bubbleUvod.innerHTML += `<p>My budeme do dvojkové soustavy převádět číslo <strong><a href="https://cs.wikipedia.org/wiki/42_(odpov%C4%9B%C4%8F)" target="_blank">`+deleni[0]+"</a></strong>";
@@ -122,7 +120,6 @@
     function hra4zacniHru(){
         document.getElementById("hra4bubbleUvod").style.height = "120px";
         document.getElementById("hra4bubbleUvod").className = "second";
-        document.getElementById("hra4robot").width = "250";
         document.getElementById("hra4robot").src = "../../pictures/number_systems/rob02.png";
         hra4bubbleUvod.innerHTML = `<p>Pravidla jsou jednoduchá. Dám ti číslo, které máš převést do dvojkové soustavy. <br>
         A postupně ho převedeš, číslici po číslici</p>`;
@@ -178,7 +175,6 @@
             ++mistakes;
             if(mistakes <= 7){
                 document.getElementById("hra4robot").src = "../../pictures/number_systems/rob02"+mistakes+".png";
-                document.getElementById("hra4robot").width = "305";
             }
             else {
                 trest();
@@ -301,7 +297,6 @@
             hra4text.innerHTML = `<h4><a id="zpetCS" href="ciselne-soustavy">Zpět na teorii</a></h4><div id="hra4bubbleUvod"></div>`;
             document.getElementById("hra4bubbleUvod").style.height = "120px";
             document.getElementById("hra4bubbleUvod").className = "second";
-            document.getElementById("hra4robot").width = "250";
             hra4bubbleUvod.innerHTML = `<p><span class="strong">Výborně! </span><br> Prošel jsi všemi úkoly na převody do dvojkové soustavy. <br> Vzhůru na další téma.</p>`;
             document.getElementById("hra4butZacniHru").remove();
             hra4text.innerHTML += `<div class="hra3kamDal">
@@ -316,10 +311,6 @@
 
 </script>
 <style type="text/css">
-    #hra4prav {
-        font-size: 18px;
-    }
-
     #hra4text i {
         font-size:14px;
     }
@@ -334,7 +325,6 @@
         width: 50px;
         height: 40px;
         text-align: center;
-        font-size:18px;
         margin-left:5px;
     }
 
@@ -343,7 +333,6 @@
         width: 80px;
         height: 40px;
         text-align: center;
-        font-size:18px;
         margin-left:5px;
     }
 
@@ -352,7 +341,6 @@
         width: 45px;
         height: 45px;
         text-align: center;
-        font-size:18px;
         margin:2px;
     }
 
@@ -368,8 +356,6 @@
         grid-template-areas: 
             "text robot"
             "text button";
-
-        font-size: 18px;
         margin: 0px 10px;
 
     }
@@ -395,10 +381,8 @@
         -webkit-border-radius: 10px; 
         background: lightgreen;
         border-radius: 50px;
-        font-size: 18px;
         padding: 20px;
         text-align:center;
-        
     }
 
     #hra4bubbleUvod:before {
@@ -407,9 +391,9 @@
         width: 0;
         height: 0;
         border-top: 13px solid transparent;
-        border-left: 75px solid lightgreen;
+        border-left: 140px solid lightgreen;
         border-bottom: 13px solid transparent;
-        margin: 125px -90px 25px 0px;
+        margin: 80px -130px 25px 0px;
     }
 
     #hra4bubbleUvod.second:before {
@@ -481,6 +465,10 @@
         grid-area:button;
     }
 
+    img {
+        width: 300px;
+    }
+
 </style>
 <div id="hra4">
 <div id="hra4text">
@@ -494,6 +482,6 @@
 <div id="hra4buttons"><button id="hra4zacniHru" onclick="hra4zacniHru()">Začni hru</button>
 <button id="hra4animace" onclick="hra4animace10to2()">Animace</button></div>
 </div>
-<img id="hra4robot" src="../../pictures/number_systems/rob02.png" alt="Robot2" width="300">
+<img id="hra4robot" src="../../pictures/number_systems/rob02.png" alt="Robot2">
 <div id="hra4butZacniHru"></div>
 </div>

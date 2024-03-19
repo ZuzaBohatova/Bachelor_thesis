@@ -9,8 +9,8 @@ function route($url) {
                 return '/grafy.php';
             case "hardware":
                 return '/hardware.php';
-            case "site":
-                return '/site.php';
+            case "informacni-systemy":
+                return '/information_systems.php';
             case "ukladani-dat":
                 return '/ukladani-dat.php';   
             case "ciselne-soustavy":

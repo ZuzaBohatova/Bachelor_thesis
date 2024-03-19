@@ -4,7 +4,6 @@
     }
 
     #hry {
-        font-size: 18px;
         margin: auto;
         width: 90%;
     }

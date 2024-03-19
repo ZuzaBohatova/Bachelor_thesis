@@ -34,9 +34,9 @@
   }
 
   function startGame(){
-    var gameContainer = document.getElementById("Game3");
+    var gameContainer = document.getElementById("game3");
     gameContainer.innerHTML = "";
-    gameContainer.id = "Pexeso";
+    gameContainer.id = "pexeso";
 
     var title = document.createElement("h2");
     title.textContent = "Pexeso";
@@ -49,12 +49,12 @@
     }
 
     gameContainer.appendChild(title);
-    gameContainer.appendChild(loadPexeso());
+    gameContainer.appendChild(loadpexeso());
   }
 
-  function loadPexeso() {
+  function loadpexeso() {
     var table = document.createElement('table');
-    table.id = "PexesoTable";
+    table.id = "pexesoTable";
 
     for (let i = 0; i < 3; i++) {
       const row = table.insertRow();
@@ -107,7 +107,7 @@
   }
 
   function disableAllButtons() {
-    const buttons = document.querySelectorAll('#PexesoTable button');
+    const buttons = document.querySelectorAll('#pexesoTable button');
     buttons.forEach(button => {
       if (button.dataset.clicked !== "true") {
         button.disabled = true;
@@ -116,7 +116,7 @@
   }
 
   function enableAllButtons() {
-    const buttons = document.querySelectorAll('#PexesoTable button');
+    const buttons = document.querySelectorAll('#pexesoTable button');
     buttons.forEach(button => {
       button.disabled = false;
     });
@@ -155,26 +155,26 @@
   }
 
   function loadEvaluation(){
-    document.getElementById("PexesoTable").remove();
-    var Game3Div = document.getElementById("Pexeso");
-    Game3Div.id = "Game3";
-    Game3Div.innerHTML = "";
+    document.getElementById("pexesoTable").remove();
+    var game3Div = document.getElementById("pexeso");
+    game3Div.id = "game3";
+    game3Div.innerHTML = "";
 
-    // Vytvoření elementu <div id="Game3text">
-    var Game3TextDiv = document.createElement("div");
-    Game3TextDiv.id = "Game3text";
+    // Vytvoření elementu <div id="game3text">
+    var game3textDiv = document.createElement("div");
+    game3textDiv.id = "game3text";
 
     // Vytvoření elementu <h4> s odkazem
     var h4Element = document.createElement("h4");
     var aElement = document.createElement("a");
-    aElement.id = "BackToTheory";
+    aElement.id = "backToTheory";
     aElement.href = "ukladani-dat";
     aElement.textContent = "Zpět na teorii";
     h4Element.appendChild(aElement);
 
-    // Vytvoření elementu <div id="Game3Bubble">
-    var Game3BubbleDiv = document.createElement("div");
-    Game3BubbleDiv.id = "Game3Bubble";
+    // Vytvoření elementu <div id="game3Bubble">
+    var game3BubbleDiv = document.createElement("div");
+    game3BubbleDiv.id = "game3Bubble";
 
     // Vytvoření elementu <h4>
     var h4BubbleUvod = document.createElement("h4");
@@ -184,55 +184,55 @@
     var pElement = document.createElement("p");
     pElement.textContent = "Můžeš se vydat prozkoumat další hry.";
 
-    // Vložení elementů do <div id="Game3Bubble">
-    Game3BubbleDiv.appendChild(h4BubbleUvod);
-    Game3BubbleDiv.appendChild(pElement);
+    // Vložení elementů do <div id="game3Bubble">
+    game3BubbleDiv.appendChild(h4BubbleUvod);
+    game3BubbleDiv.appendChild(pElement);
 
 
-    // Vytvoření elementu <button id="StartGameBtn">
+    // Vytvoření elementu <button id="startGameBtn">
     var buttonElement = document.createElement("button");
-    buttonElement.id = "OtherGamesBtn";
+    buttonElement.id = "otherGameBtn";
     buttonElement.textContent = "Další hry";
     buttonElement.addEventListener("click", function() {
       // Přejdi na jinou stránku
       window.location.href = "hry";
     });
 
-    // Vložení elementů do <div id="Game3text">
-    Game3TextDiv.appendChild(h4Element);
-    Game3TextDiv.appendChild(Game3BubbleDiv);
-    Game3TextDiv.appendChild(buttonElement);
+    // Vložení elementů do <div id="game3text">
+    game3textDiv.appendChild(h4Element);
+    game3textDiv.appendChild(game3BubbleDiv);
+    game3textDiv.appendChild(buttonElement);
 
-    // Vytvoření elementu <img id="Game3robot">
+    // Vytvoření elementu <img id="game3Robot">
     var imgElement = document.createElement("img");
-    imgElement.id = "Game3robot";
+    imgElement.id = "game3Robot";
     imgElement.src = "../../pictures/data_storage/rob03.png";
     imgElement.alt = "Robot3";
 
-    // Vložení elementů do <div id="Game3">
-    Game3Div.appendChild(Game3TextDiv);
-    Game3Div.appendChild(imgElement);    
+    // Vložení elementů do <div id="game3">
+    game3Div.appendChild(game3textDiv);
+    game3Div.appendChild(imgElement);    
   }
 
 </script>
 
 <style type="text/css">
-#Game3 {  
+#game3 {  
   display:grid;
   grid-template-columns: 60% 10% 30%;
   grid-template-areas: "text . robot";
   margin: auto;
+  width: 90%;
 }
 
-#Game3Bubble { 
+#game3Bubble { 
   background: #A7C7E7;
   border-radius: 50px;
   text-align:center;
   padding: 1px 25px 1px 10px;
-  font-size: 18px;
 }
 
-#Game3Bubble:before {
+#game3Bubble:before {
   content:"";
   float:right;
   width: 0;
@@ -243,17 +243,22 @@
   margin: 80px -130px 50px 0px;
 }
 
-#Game3text {
+#game3text {
   grid-area:text;
 }
 
-#Game3robot {
+#game3Robot {
   grid-area:robot;
   width: 270px;
 }
 
-#PexesoTable {
+#pexesoTable {
   margin: 20px auto;
+}
+
+#pexeso {
+  margin: auto;
+  width: 90%;
 }
 
 td button {
@@ -267,13 +272,14 @@ td {
   height: 150px;
 }
 
-#StartGameBtn, #OtherGamesBtn {
+#startGameBtn, #otherGameBtn {
   background-color: #A7C7E7;
   border: 2px solid #A7C7E7;
   border-radius: 20px;
+  font-family: Verdana, sans-serif;
+  font-size: 18px;
   color: navy;
   float: right;
-  font-size: 18px;
   font-weight: bold;
   margin-top: 20px;
   padding: 15px 25px;
@@ -281,25 +287,25 @@ td {
   width: 200px;
 }
 
-#StartGameBtn:hover, #OtherGamesBtn:hover {
+#startGameBtn:hover, #otherGameBtn:hover {
   border: 2px solid navy;
 }
 
-#BackToTheory {
+#backToTheory {
   color: rgb(27, 54, 143);
 }
 
 </style>
 
-<div id="Game3">
-  <div id="Game3text">
-    <h4><a id="BackToTheory" href="ukladani-dat">Zpět na teorii</a></h4>
-    <div id="Game3Bubble">
+<div id="game3">
+  <div id="game3text">
+    <h4><a id="backToTheory" href="ukladani-dat">Zpět na teorii</a></h4>
+    <div id="game3Bubble">
       <h4>Orientuješ se ve vnějších pamětích?</h4>
-      <p>V následujícím cvičení tě čeká Pexeso na téma pamětí.
+      <p>V následujícím cvičení tě čeká pexeso na téma pamětí.
       Tvým úkolem bude ke každému popisu vybrat správný obrázek.</p> 
     </div>
-    <button id="StartGameBtn" onclick="startGame()">Začni hru</button>
+    <button id="startGameBtn" onclick="startGame()">Začni hru</button>
   </div>
-  <img id="Game3robot" src="../../pictures/data_storage/rob03.png" alt="Robot3">
+  <img id="game3Robot" src="../../pictures/data_storage/rob03.png" alt="Robot3">
 </div>
