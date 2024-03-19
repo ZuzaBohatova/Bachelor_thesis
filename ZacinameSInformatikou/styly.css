@@ -1,8 +1,11 @@
+@charset "utf-8";
+
 body {
   background-color: white;
   font-family: Verdana,sans-serif;
   font-size: 18px;
   margin: auto;
+  margin-bottom: 50px;
   max-width: 1050px;
   min-width: 640px;
   padding: 20px 25px;
@@ -23,13 +26,41 @@ nav li {
   margin-top: 10px;
 }  
 
+nav #linkUvod:hover {
+    color: #ee82ee;
+}
+
+nav #linkGrafy:hover {
+    color: #e3ccfc;
+}
+
+nav #linkHardware:hover {
+    color: #FF4F00;
+}
+
+nav #linkDataStorage:hover {
+    color: #A7C7E7;
+}
+
+nav #linkNumberSystems:hover {
+    color: lightgreen;
+}
+
+nav #linkInformationSystems:hover {
+    color: #96ded1;
+}
+
+nav #linkGames:hover {
+    color: #FFEF00;
+}
+
+
 #hlavni-nadpis {
   text-align: center;
 }
 
 a {
   color:black;
-  font-size: 18px;
   text-decoration: none;
 }
 
@@ -44,13 +75,17 @@ i {
 
 
 footer {
-  margin-top: 40px;
-  font-size: 12px;
+  font-size: 10px;
   text-align:center; 
+  position: fixed;
+  bottom: 0;
+  width: 90%;
+  max-width: 1050px;
+  min-width: 640p;
+  background-color: white;
 }
 
 footer a {
-  font-size: 12px;
-  text-align:center; 
+  font-size: 10px;
 }
 
