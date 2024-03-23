@@ -1,0 +1,21 @@
+ink rel="stylesheet" href="../css-files/number-systems.css" type="text/css">
+<script src="../js-files/number-systems-game.js"></script>
+<div id="numberSystemGame" class="mainPage">
+    <div id="textNumSysGame" class="textNumSys">
+        <script>document.getElementById("textNumSysGame").appendChild(createBack());</script>
+        <div id="bubbleNumSysGame" class="bubble bubbleNumSys">
+            <h3>Zvládáš převody mezi dvojkovou a desítkovou soustavou?</h3>
+            <p>
+                <strong>Myslíš si, že už se vyznáš v jedničkách a nulách? </strong>
+                Tak můžeš rovnou vykoušet hru, která ti ukáže, jak na tom doopravdy jsi.
+            </p> 
+            <p>
+                <strong>Pořád si nejsi převody jistý?</strong> Koukni se na animaci, která ti ukáže, jak na to!
+            </p>
+        </div>
+        <table id="animationTable"></table>
+        <button id="startGameButton" onclick="startGame(true)">Začni hru</button>
+        <button id="startAnimationButton" onclick="animationFrom10To2()">Animace</button>
+    </div>
+    <img id="robotNumSysGame" class="robotNumSys" src="../../pictures/number_systems/rob02.png" alt="Robot2">
+</div>

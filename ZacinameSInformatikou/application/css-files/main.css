@@ -1,0 +1,147 @@
+@charset "utf-8";
+
+body {
+  background-color: white;
+  font-family: Verdana,sans-serif;
+  font-size: 18px;
+  margin: auto;
+  margin-bottom: 50px;
+  max-width: 1050px;
+  min-width: 640px;
+  padding: 20px 25px;
+
+}
+
+#menu {
+  border: 5px solid #ffdf00 ;
+}
+
+
+nav ul {
+  background-color: white;
+  font-weight: 500;
+  list-style-type: none;
+  padding: 2%;
+  text-align: center;
+}
+
+nav li {
+  display: inline;
+  padding: 2%;
+  margin-top: 10px;
+}  
+
+.linkCommon:hover {
+  color: #ffcc00;
+}
+
+.linkGraphs:hover {
+  color: #ee82ee;
+}
+
+.linkHardware:hover {
+  color: #FF4F00;
+}
+
+.linkDataStorage:hover {
+  color: #87cefa ;
+}
+
+.linkNumberSystems:hover{
+  color: #32cd32;
+}
+
+.linkInformationSystems:hover {
+  color: #008b8b;;
+}
+
+#hlavni-nadpis {
+  text-align: center;
+}
+
+#robots {
+  text-align: center;
+}
+
+.mainPage {
+  margin: auto;
+  width: 90%;
+}
+
+.bubble {
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-align:center;
+}
+
+.bubble:before {
+  content:"";
+  float:right;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  margin: 50px -80px 25px 0px;
+}
+
+.linkGame {
+  grid-area: linkGame;
+  text-align: center;
+  font-size:  20px;
+  font-weight: bold;
+}
+
+.linkGame:hover {
+  color: black;
+}
+
+a {
+  color:black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+i {
+  font-size:16px;
+}
+
+button {
+  font-size: 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 10px 5px;
+  padding: 10px 15px;
+  width: 225px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#games {
+  list-style-type: none; 
+  padding: 0;
+  font-size: 22px;
+}
+
+.icons {
+  width: 45px;
+  margin: 7px 10px 0px 0;
+}
+
+
+footer {
+  font-size: 12px;
+  text-align:center; 
+  position: fixed;
+  bottom: 0;
+  width: 90%;
+  max-width: 1050px;
+  min-width: 640px;
+  background-color: white;
+}
+
+footer a {
+  font-size: 12px;
+}

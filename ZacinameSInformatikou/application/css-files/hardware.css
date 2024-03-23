@@ -1,0 +1,263 @@
+/*společné prvky*/
+body {
+    --darkColor: #FF4F00;
+    --lightColor: #FFCC99;
+}
+
+#menu {
+    border: 5px solid var(--darkColor);
+}
+
+button {
+    background-color: var(--lightColor) ;
+    border: 2px solid var(--lightColor) ;
+    color: var(--darkColor);
+    float: right;
+}
+
+button:hover {
+    border: 2px solid var(--darkColor);
+}
+
+.bubbleHardware { 
+    background: var(--lightColor) ;
+}
+
+.bubbleHardware:before {
+    border-left: 100px solid var(--lightColor) ;
+    margin-left: -100px;
+}
+
+#textHardware, #textHardwareGame {
+    grid-area: text;
+}
+
+/*hardware teorie*/
+#hardware {
+    display:grid;
+    grid-template-columns: 65% auto;
+    grid-template-areas: 
+        "text robot"
+        "motherBoard motherBoardImg"
+        "processor processorImg"
+        "chipset chipsetImg"
+        "ethernetUSB ethernetImg"
+        "karty soundCardImg"
+        "ram ramImg"
+        "hddASdd hddASddImg"
+        "bios biosImg"
+        "linkGame linkGame";
+}
+
+#robotHardware {
+    grid-area: robot;
+    margin: auto;
+    margin-top: 25px;
+    width: 250px; 
+    padding-left: 30px;
+}
+
+#motherboard {
+    grid-area: motherBoard;
+}
+
+#motherboardImg {
+    grid-area: motherBoardImg;
+    margin: 20px;
+    width: 100%;
+}
+
+#processor {
+    grid-area: processor;
+}
+
+#processorImg {
+    grid-area: processorImg;
+    margin: 20px;
+    width: 80%;
+}
+
+#chipset {
+    grid-area: chipset;
+}
+
+#chipsetImg {
+    grid-area: chipsetImg;
+    margin: 20px;    
+    width: 60%;  
+}
+
+#ethernetUSB {
+    grid-area: ethernetUSB;
+}
+
+#ethernetImg {
+    grid-area: ethernetImg;
+    margin: 20px; 
+    width: 60%;      
+}
+
+#cards {
+    grid-area: karty;
+}
+
+#soundCardImg {
+    grid-area: soundCardImg;
+    margin: 20px; 
+    width: 90%;  
+}
+
+#ram {
+    grid-area: ram;
+}
+
+#ramImg {
+    grid-area: ramImg;
+    margin: 20px; 
+    width: 80%;  
+}
+
+#hddASdd {
+    grid-area: hddASdd;
+}
+
+#hddASddImg {
+    grid-area: hddASddImg;
+    margin: 20px; 
+    width: 80%;  
+}
+
+#bios {
+    grid-area: bios;
+}
+
+#biosImg {
+    grid-area: biosImg;
+    margin: 20px; 
+    width: 80%;  
+}
+
+#linkGame:hover {
+    background-color: var(--lightColor);
+    color: black;
+}
+
+#hardware h4 {
+    background: var(--lightColor);
+    text-align: center;
+}
+
+
+/*hardware hra*/
+#hardwareGame {
+    display:grid;
+    grid-template-columns: 70% auto;
+    grid-template-areas: 
+        "text sidebar ";
+}
+
+#robotHardwareGame {
+    width: 270px;
+    padding-left: 10px;
+}
+
+#sidebar {
+    grid-area: sidebar;
+    margin: 20px auto;     
+}
+
+
+#backToTheory {
+    color: var(--darkColor);
+} 
+
+#checkGame{
+    background-color: var(--darkColor);
+    border: 2px solid var(--darkColor);
+    color: var(--lightColor);
+}
+
+#checkGame:hover {
+    border: 2px solid var(--lightColor);
+}
+
+/* Container needed to position the button. Adjust the width as needed */
+.gameContainer {
+    position: relative;
+    grid-area: text;
+}
+
+/* Make the image responsive */
+#motherboard {
+    width: 100%;
+    height: auto;
+}
+
+/* Style the button and place it in the middle of the gameContainer/image */
+.gameContainer #hra41 {
+    top: 35%;
+    left: 30%;
+    width:40%;
+    height:40%;
+}
+
+.gameContainer #hra42 {
+    top: 45%;
+    left: 79%;
+    width:15%;
+    height:20%;
+}
+
+.gameContainer #hra43 {
+    top: 86%;
+    left: 19%;
+    width:9%;
+    height:13%;
+}
+
+.gameContainer #hra44 {
+    top: 86%;
+    left: 50%;
+    width:18%;
+    height:20%;
+}
+
+.gameContainer #hra45 {
+    top: 47.5%;
+    left: 60%;
+    width:15%;
+    height:20%;
+}  
+
+.gameContainer #hra46 {
+    top: 73%;
+    left: 70%;
+    width:30%;
+    height:26%;
+}
+
+.gameContainer #hra47 {
+    top: 5%;
+    left: 71.5%;
+    width:45%;
+    height:20%;
+}    
+
+.gameContainer button {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: #FFF5EE;
+    font-size: 32px;
+    border:  none;
+    border-radius: 10px;
+}
+
+.components {
+    margin-top:10%;
+}
+
+.components button {
+    display: block;
+    margin-top: 5px;
+}

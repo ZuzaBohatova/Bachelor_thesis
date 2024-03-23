@@ -1,0 +1,131 @@
+body {
+    --darkColor: indigo;
+    --lightColor: #e3ccfc;
+}
+
+/*společné prvky pro všechny stránky grafů*/
+#menu {
+    border: 5px solid var(--darkColor);
+}
+
+.textGraphs {
+    grid-area: text;
+}
+
+.bubbleGraphs { 
+    background: var(--lightColor);
+}
+
+.bubbleGraphs:before {
+    border-left: 80px solid var(--lightColor);
+}
+
+.robotGraphs {
+    grid-area: robot;
+    margin: auto;
+    margin-top: 20px;
+    width: 250px;
+    padding-left: 30px;
+}
+
+button {
+    background-color: var(--lightColor) ;
+    border: 2px solid var(--lightColor) ;
+    color: var(--darkColor);
+}
+
+button:hover {
+    border: 2px solid var(--darkColor);
+}
+
+/*grafy teorie*/
+#graphs {
+    display:grid;
+    grid-template-columns: 65% auto;
+    grid-template-areas: 
+        "text robot"
+        "definition definition"
+        "linkGame linkGame";
+}
+
+#definition {
+    grid-area: definition;
+    margin: 10px;
+}
+
+#definition h4 {
+    background: var(--lightColor);
+    text-align: center;
+}
+
+#linkGame:hover {
+    background: var(--lightColor);
+}
+
+/*grafy hra*/
+#graphsGame
+{
+    display:grid;
+    grid-template-columns: 60% auto;
+    grid-template-areas: 
+        "text robot"
+        "buttons buttons";
+}
+
+#backGraphs, #backGame, legend, #url{
+    color: var(--darkColor);
+} 
+
+#graphButtonsDiv {
+    text-align: center;
+    margin-top: 10px;
+} 
+
+#position {
+    text-align: center;
+}
+
+#ownGraphButton {
+   margin: auto;
+}
+
+/*grafy hra - vytvoření vlastního grafu*/
+#creatingOwnGraph
+{
+    display: grid;
+    grid-template-columns: 60% auto;
+    grid-template-areas: 
+        "text jsonExample";
+}
+
+#infoText {
+    grid-area: text;
+}
+
+#jsonExample {
+    grid-area: jsonExample;
+    margin: auto;
+}
+
+fieldset {
+    border-width: 3px; 
+    border-color: indigo; 
+}
+
+input {
+    float: right;
+    width: 40%;
+}
+
+#generateTemplateButton {
+    width: 100%;
+}
+
+textarea {
+    font-size: 15px;
+    width: 80%;
+}
+
+form {
+    text-align: center;
+}

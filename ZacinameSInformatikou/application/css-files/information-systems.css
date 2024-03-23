@@ -1,0 +1,208 @@
+/*společné prvky*/
+body {
+    --darkColor: #008b8b;
+    --lightColor: #96ded1;
+}
+
+#menu {
+    border: 5px solid var(--darkColor);
+}
+
+button {
+    background-color: var(--lightColor);
+    border: 2px solid var(--lightColor);
+    color: var(--darkColor);
+    float: right;
+}
+
+button:hover  {
+    border: 2px solid var(--darkColor);
+}
+
+.robotInfoSys {
+    grid-area: robot;
+    margin: 20px auto;
+    width: 200px;
+    padding-left: 30px;
+}
+
+.bubbleInfoSys { 
+    background: var(--lightColor);
+}
+
+.bubbleInfoSys:before {
+    border-left: 80px solid var(--lightColor);
+}
+
+/*informační systémy teorie*/
+#informationSystems {
+    display:grid;
+    grid-template-columns: 65% auto;
+    grid-template-areas: 
+    "info robot "
+    "text text"
+    "linkGame linkGame";
+}
+
+#infoInformationSystems {
+    grid-area: info;
+}
+
+#textInformationSystems {
+    grid-area: text;
+}
+
+#informationSystems h4, #linkGame:hover {
+    background: var(--lightColor);
+    text-align: center;
+    color: black;
+}
+
+/*informační systémy hra*/
+#infoSysGame {  
+    display:grid;
+    grid-template-columns: 70% auto;
+    grid-template-areas: "text robot";
+}
+
+#textInfoSysGame {
+    grid-area:text;
+}
+
+#backToTheory {
+    color: var(--darkColor);
+}
+
+#dialogue {
+    display:grid;
+    grid-template-columns: 20% 30% 30% 20%;
+    grid-template-areas:
+        "back . . ."
+        "person1 bubbleRobot bubbleMechanic person2"
+        ". buttonPanel buttonPanel buttonPanel";
+}
+
+#dataTable {
+    display:grid;
+    grid-template-columns: 70% 30%;
+    grid-template-areas:
+        "back ."
+        "bubbleDataTable mechanic"
+        "csvTable csvTable"
+        "buttonPanel buttonPanel";
+}
+
+#robotDialogue {
+    grid-area: person1;
+    width: 180px;
+    margin: 20px auto;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+#phone {
+    grid-area: person2;
+    margin: 20px auto;
+    width: 180px;
+    content:url("../../pictures/information_systems/ringing_phone.gif");
+}
+
+#bubbleRobot {
+    grid-area: bubbleRobot; 
+    background: var(--lightColor); 
+    max-width: 70%;
+    margin: auto;
+}
+
+#bubbleRobot:before {
+    float:left;
+    border-right: 50px solid var(--lightColor);
+    margin: 30px 0px 0px -50px;
+}
+
+#bubbleMechanic {
+    grid-area: bubbleMechanic;
+    margin: auto;
+    max-width: 65%;
+}
+
+#bubbleMechanic:before {
+    border-left: 50px solid var(--lightColor);
+    margin: 30px -50px 0px 0px;
+}
+
+#person2 {
+    grid-area: person2;
+    width: 180px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 50%;
+    content:url("../../pictures/information_systems/mechanic_profile.png");
+}
+
+#timeTableDialogue {
+    grid-area: bubbleMechanic;
+    margin: auto;
+    width: 300px;
+    content:url("../../pictures/information_systems/time_table.png");
+}
+
+#buttonPanel  {
+    grid-area: buttonPanel;
+    margin-top: 20px;
+} 
+
+#bubbleDataTable {
+    grid-area: bubbleDataTable; 
+    margin: auto;
+}
+
+#mechanic {
+    grid-area: mechanic;
+    width: 150px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#robotTable {
+    grid-area: mechanic;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+#csvTable td {
+    border: 2px solid var(--darkColor);
+    text-align: center;
+}
+
+#csvTable {
+    border-collapse: collapse;
+    margin: auto;
+    grid-area: csvTable;
+}
+
+#csvTable input {
+    width: 100%;
+    font-size: 18px;
+    box-sizing: border-box;
+    border: none;     
+    text-align: center;
+    padding: 5px 0px;  
+}
+
+#csvTable select {
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: none;      
+    padding: 5px 0px;   
+}
+
+#buttonTablePanel {
+    grid-area: buttonPanel;
+}
+
+#timeTable {
+    margin: auto;
+    width: 500px;
+}   

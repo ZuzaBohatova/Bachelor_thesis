@@ -1,0 +1,156 @@
+/*společné prvky*/
+body {
+    --darkColor: navy;
+    --lightColor: #A7C7E7;
+}
+  
+#menu {
+    border: 5px solid var(--darkColor);
+}
+  
+.bubbleDataStorage { 
+    background: var(--lightColor);
+}
+  
+.bubbleDataStorage:before {
+    border-left: 80px solid var(--lightColor);
+    margin-top: 70px;
+}
+
+.robotDataStorage {
+    grid-area:robot;
+    width: 250px;
+    margin: auto;
+    padding-left: 20px;
+  }
+  
+button {
+    background-color: var(--lightColor);
+    border: 2px solid var(--lightColor);
+    color: var(--darkColor);
+    float: right;
+}
+  
+button:hover {
+    border: 2px solid var(--darkColor);
+}
+  
+/*ukládání dat hra*/
+#dataStorageGame {  
+    display:grid;
+    grid-template-columns: 70% auto;
+    grid-template-areas: "text robot";
+}
+  
+#textDataStorageGame {
+    grid-area:text;
+}
+  
+#pexesoTable {
+    margin: 20px auto;
+}
+  
+td button {
+    width: 150px;
+    height: 150px;
+    background-image: "../../pictures/data_storage/rob03.png";
+    font-size: 14px;
+    border-radius: 0px;
+    margin: 5px;
+}
+  
+td {
+    width: 150px;
+    height: 150px;
+}
+  
+#backToTheory {
+    color: var(--darkColor);
+}
+  
+  
+/*teorie ukládání dat*/
+#dataStorage {  
+    display:grid;
+    grid-template-columns: 70% auto;
+    grid-template-areas:
+      "info robot" 
+      "text text"
+      "hdd hddImg"
+      "ssd ssdImg"
+      "cd cdImg"
+      "magPaska magPaskaImg"
+      "usb usbImg"
+      "sdCard sdCardImg"
+      "linkGame linkGame";
+}
+  
+#infoDataStorage {
+    grid-area:info;
+}
+  
+#textDataStorage {
+    grid-area: text;
+}
+  
+#hdd {
+    grid-area: hdd;
+}
+  
+#hddImg {
+   grid-area: hddImg;
+}
+  
+#ssd {
+    grid-area: ssd;
+}
+  
+#ssdImg {
+    grid-area: ssdImg;
+}
+  
+#cd {
+    grid-area: cd;
+}
+  
+#cdImg {
+    grid-area: cdImg;
+}
+  
+#magPaska {
+    grid-area: magPaska;
+}
+  
+#magPaskaImg {
+    grid-area: magPaskaImg;
+}
+  
+#usb {
+    grid-area: usb;
+}
+  
+#usbImg {
+    grid-area: usbImg;
+}
+
+#sdCard {
+    grid-area: sdCard;
+}
+
+#sdCardImg {
+    grid-area: sdCardImg;
+}
+
+#linkGame:hover {
+    background-color: #A7C7E7;
+    color: black;
+}
+
+#dataStorage h4 {
+    background-color: #A7C7E7;
+    text-align: center;
+}
+
+#dataStorage img {
+    margin: 20px;
+}

@@ -1,10 +1,10 @@
 výrobní číslo,datum výroby,datum a čas návštěvy,důvod návštěvy,akutní problémy,datum poslední kontroly
-ZI01F,6.2.2011,10.6.2024 8:00,výměna oleje,ano,1.12.2022
-RB02G,21.12.2003,10.6.2024 14:00,dotažení šroubů,ano,7.3.2023
+ZI01F,6.2.2011,10.6.2024 8:00,přehřívání,ano,1.12.2022
+RB02G,21.12.2003,10.6.2024 14:00,uvolněné šrouby,ano,7.3.2023
 ZI02C,7.7.2007,10.6.2024 16:00,technická kontrola,ne,3.2.2023
-RB03L,16.8.2006,11.6.2024 10:00,problémy s motorem,ano,2.7.2023
+RB03L,16.8.2006,11.6.2024 10:00,motor,ano,2.7.2023
 RB04S,22.5.2010,11.6.2024 14:00,technická kontrola,ne,19.1.2023
-ZI03M,11.8.2012,11.6.2024 16:00,nefunkční kolo,ano,17.1.2023
+ZI03M,11.8.2012,11.6.2024 16:00,pohyb ramene,ano,17.1.2023
 RB01Z,15.4.2001,12.6.2024 10:00,prohnutý plech,ne,8.5.2023
 RH01V,12.4.2001,13.6.2024 10:00,přehřívání,ano,3.10.2023
 ZI04Z,20.1.2009,14.6.2024 8:00,technická kontrola,ne,5.8.2022

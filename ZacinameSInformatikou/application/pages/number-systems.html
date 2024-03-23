@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="../css-files/number-systems.css" type="text/css">
+<div id="numberSystems" class="mainPage">
+    <div class="textNumSys">
+        <h2>Číselné soustavy</h2>
+        <div class="bubble bubbleNumSys">
+            <p>
+                <strong>Ahooj!</strong> Jistě znáš čísla v desítkové soustavě - 3, 42, 907 ... 
+                Ale ve světě počítačů hraje prim dvojková soustava, tedy čísla z 0 a 1.
+            </p>
+            <p>
+                <strong>Ale proč? </strong>Abychom data mohli přenášet a ukládat, musí jim rozumět přenosová media - kabely, elektrické obvody. 
+                Kdybychom převáděli do elektrické podoby čísla 0-9, naše systémy by byly pomalé a poruchové. 
+                Proto používáme jen 0 a 1, elektrickým obvodům stačí rozeznávat dva stavy, např. vypnuto/zapnuto.
+            </p>
+        </div>
+    </div>
+    <img class="robotNumSys" src="../../pictures/number_systems/rob02.png" alt="Robot2">
+
+    <div id="to2">
+        <h4>Jak převádět čísla do dvojkové soustavy? </h4>
+        <p>
+            Jak vidíte na obrázku, číslo v desítkové soustavě <strong>dělíme 2</strong>, dokud to jde. Vedle si <strong>zapisujeme zbytek</strong> po dělení, který je vždy 1 nebo 0. 
+            Zbytky seřadíme od posledního k prvnímu a tak dostaneme naše číslo ve dvojkové soustavě.</p>
+        <p><strong>45 zapíšeme ve dvojkové soustavě jako 101101</strong></p><br>
+    </div>
+    <img id="from2Img" src="../../pictures/number_systems/prevod2zel.png" alt="Převod do dvojkové soustavy">
+
+    <div id="from10">
+        <h4>A teď zpátky do desítkové!</h4>
+        <p>Tady to bude o něco těžší. Důležité je znát <strong>mocniny dvojky</strong>. </p>
+        <p>
+            Vezmeme číslo ve dvojkové soustavě a očíslujeme ho odzadu a začneme číslovat od nuly. Každé číslo reprezentuje danou mocninu dvojku.
+            Pro nulu máme 2 na 0, pro jedničku 2 na 1 a tak dále. Vezmeme poslední číslici a vynásobíme ji její přiřazenou mocninou dvojky. 
+            To samé postupně provedeme se každou číslicí našeho čísla. Všechny násobky poté sečteme. 
+        </p>
+        <p><strong>Hurá máme zpátky naše číslo 45. </strong></p>
+    </div>
+    <img id="squaresImg" src="../../pictures/number_systems/mocniny2.png" alt="Mocniny dvou">
+    <a id="linkGame" class="linkGame" href="ciselne-soustavy-hra">Zkus si pár příkladů sám</a>
+</div>
