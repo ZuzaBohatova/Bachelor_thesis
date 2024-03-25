@@ -15,7 +15,7 @@ const conversation = [
     { speaker: 'Robot', text: 'Dobrý den, potřeboval bych se objednat na technickou kontrolu.' },
     { speaker: 'Mechanic', text: 'Výborně, uveďte prosím své výrobní číslo. ' },
     { speaker: 'Robot', text: 'ZI05T.' },
-    { speaker: 'Mechanic', text: 'Jaký je váš roky výroby? ' },
+    { speaker: 'Mechanic', text: 'Jaký je váš rok výroby? ' },
     { speaker: 'Robot', text: '15. dubna 2010' },
     { speaker: 'Mechanic', text: 'Máte nějaké akutní problémy?' },
     { speaker: 'Robot', text: 'Nemám.' },
