@@ -271,7 +271,7 @@ function checkAnswers(graf){
         imgDiv.style.textAlign = "center";
         var timeTable = document.createElement("img");
         timeTable.id = "timeTable";
-        timeTable.src = "../../pictures/information_systems/time_table_changed.png";
+        timeTable.src = "../../pictures/information_systems/time_table_add_robot.png";
         timeTable.alt = "Časový rozvrh";
         imgDiv.appendChild(timeTable);
 
