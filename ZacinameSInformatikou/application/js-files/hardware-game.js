@@ -6,7 +6,9 @@ let colors = ["blue", "green", "red", "black", "dodgerblue", "yellow", "mediumvi
 
 function createDiv(id, divClass){
     var div = document.createElement("div");
-    div.id = id;
+    if(id != null){
+       div.id = id; 
+    }
     if(divClass != null){
         div.classList.add(divClass);
     }
@@ -28,7 +30,7 @@ function startGame(){
 
     var gameContainer = createDiv(null,"gameContainer");
 
-    var img = createImage("motherboard","../../pictures/hardware/drawn_motherboard.png","Motherboard");
+    var img = createImage("drawnMotherboard","../../pictures/hardware/drawn_motherboard.png","Motherboard");
 
     var labelButtons = generateLabelButtons();
 
@@ -81,7 +83,7 @@ function choose(choice){
         if(choice < 10){
             if(answers[choice] == null){
                 lastIsLabel = true;
-                document.getElementById("hra4"+choice).style.border = "2px solid #FFCC99"; //click
+                document.getElementById("hra4"+choice).style.border = "3px solid #FFCC99"; //click
                 lastClick = choice;
             }
             else {
@@ -94,7 +96,7 @@ function choose(choice){
             }
             else{
                 lastClick = choice;
-                document.getElementById("hra4"+choice).style.border = "2px solid #FF4F00"; //click
+                document.getElementById("hra4"+choice).style.border = "3px solid #FF4F00"; //click
             }
         }
     }
@@ -103,7 +105,7 @@ function choose(choice){
             if(choice < 10){
                 removeColor(choice);
                 removeColor(lastClick);
-                document.getElementById("hra4"+choice).style.border = "2px solid #FFCC99"; //click
+                document.getElementById("hra4"+choice).style.border = "3px solid #FFCC99"; //click
                 lastClick = choice;
             }
             else {
@@ -127,7 +129,7 @@ function choose(choice){
             else{
                 removeColor(choice);
                 removeColor(lastClick);
-                document.getElementById("hra4"+choice).style.border = "2px solid #FF4F00";  //click
+                document.getElementById("hra4"+choice).style.border = "3px solid #FF4F00";  //click
                 lastClick = choice;
                 lastIsLabel = false;
             }

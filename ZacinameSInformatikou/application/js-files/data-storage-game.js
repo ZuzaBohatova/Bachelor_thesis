@@ -1,6 +1,6 @@
-let flippedButtons = 0; // Proměnná pro uchování počtu aktuálně otočených tlačítek
-let firstFlippedButtonID = ""; // Proměnná pro uchování ID prvního otočeného tlačítka
-let countOfButtons = 12;
+var flippedButtons = 0; // Proměnná pro uchování počtu aktuálně otočených tlačítek
+var firstFlippedButtonID = ""; // Proměnná pro uchování ID prvního otočeného tlačítka
+var countOfButtons = 12;
 
 const cards = ["SDKarta_img", "HDD_text", "SSD_img", "USB_text","HDD_img", "USB_img", "MagPas_text", "MagPas_img","SSD_text", "CD_text", "CD_img", "SDKarta_text"];
 const pexesoCards = [];
@@ -20,9 +20,11 @@ const dictionary = {
     "MagPas_img": "../../pictures/data_storage/magPaska.png", 
 };
 
+
+
 // Zamíchání pole cards
 function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+    for (var i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
@@ -40,7 +42,7 @@ function startGame(){
     const shuffledCards = shuffle(cards);
 
     // Vytvoření pole pexesoCards jako 4x3 mřížky ze zamíchaného pole cards
-    for (let i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
         const row = shuffledCards.slice(i * 4, (i + 1) * 4);
         pexesoCards.push(row);
     }
@@ -49,13 +51,13 @@ function startGame(){
     gameContainer.appendChild(loadpexeso());
     }
 
-    function loadpexeso() {
+function loadpexeso() {
     var table = document.createElement('table');
     table.id = "pexesoTable";
 
-    for (let i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
         const row = table.insertRow();
-        for (let j = 0; j < 4; j++) {
+        for (var j = 0; j < 4; j++) {
         const cell = row.insertCell();
         const button = document.createElement('button');
         button.id = pexesoCards[i][j];
@@ -63,26 +65,25 @@ function startGame(){
 
         button.addEventListener('click', function () {
             if (button.dataset.clicked === "true") {
-            setDefaultButton(button);
-            button.dataset.clicked = "false";
-            button.textContent = "";
-            
-            flippedButtons--; // Snížíme počet otočených tlačítek
+                setDefaultButton(button);
+                button.dataset.clicked = "false";
+                button.textContent = "";
+                flippedButtons--; // Snížíme počet otočených tlačítek
             } 
             else {
-            if(flippedButtons == 0){
-                firstFlippedButtonID = button.id;
-            }
+                if(flippedButtons == 0){
+                    firstFlippedButtonID = button.id;
+                }
 
-            if (pexesoCards[i][j].includes("text")) {
-                button.style.backgroundImage = "";
-                button.textContent = dictionary[pexesoCards[i][j]];
-            } 
-            else {
-                button.style.backgroundImage = "url(" + dictionary[pexesoCards[i][j]] + ")";
-            }
-            button.dataset.clicked = "true";
-            flippedButtons++; // Zvýšíme počet otočených tlačítek
+                if (pexesoCards[i][j].includes("text")) {
+                    button.style.backgroundImage = "";
+                    button.textContent = dictionary[pexesoCards[i][j]];
+                } 
+                else {
+                    button.style.backgroundImage = "url(" + dictionary[pexesoCards[i][j]] + ")";
+                }
+                button.dataset.clicked = "true";
+                flippedButtons++; // Zvýšíme počet otočených tlačítek
             }
 
             // Pokud jsou otočeny již dvě tlačítka, zablokujeme další klikání
@@ -90,11 +91,11 @@ function startGame(){
                 firstFlippedButtonID = button.id;
             }
             else if (flippedButtons === 2) {
-            checkMatchingCards(button);
-            disableAllButtons();
+                checkMatchingCards(button);
+                disableAllButtons();
             }
             else {
-            enableAllButtons()
+                enableAllButtons()
             }
         });
         cell.appendChild(button);
@@ -132,22 +133,21 @@ function checkMatchingCards(secondButton) {
     const firstButtonIDParts = firstFlippedButtonID.split("_");
     const secondButtonIDParts = secondButton.id.split("_");
 
-    if (firstButtonIDParts[0] === secondButtonIDParts[0]) {
+    if (firstButtonIDParts[0] == secondButtonIDParts[0] && firstButtonIDParts[1] != secondButtonIDParts[1]) {
         var firstButton = document.getElementById(firstFlippedButtonID);
-        var secondButton = document.getElementById(secondButton.id);
         firstButton.style.border = "2px solid green";
         secondButton.style.border = "2px solid green";
-        setTimeout(() => {
-        firstButton.remove();
-        secondButton.remove();
-        enableAllButtons();
-        countOfButtons = countOfButtons - 2;
-        if(countOfButtons == 0){
-            loadEvaluation();
-            return;
-        }
-        flippedButtons = 0;
-        }, 1500);    
+        setTimeout(()=> {
+            firstButton.remove();
+            secondButton.remove();
+            enableAllButtons();
+            countOfButtons = countOfButtons - 2;
+            if(countOfButtons == 0){
+                loadEvaluation();
+                return;
+            }
+            flippedButtons = 0;
+        },1000);
     }
 }
 

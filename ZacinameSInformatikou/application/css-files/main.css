@@ -31,6 +31,14 @@ nav li {
   margin-top: 10px;
 }  
 
+nav a {
+  text-decoration: none;
+}
+
+nav a.active {
+  font-weight: bold;
+}
+
 .linkCommon:hover {
   color: #ffcc00;
 }
@@ -47,7 +55,7 @@ nav li {
   color: #87cefa ;
 }
 
-.linkNumberSystems:hover{
+.linkNumberSystems:hover {
   color: #32cd32;
 }
 
@@ -89,6 +97,7 @@ nav li {
   text-align: center;
   font-size:  20px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .linkGame:hover {
@@ -97,7 +106,6 @@ nav li {
 
 a {
   color:black;
-  text-decoration: none;
 }
 
 a:hover {

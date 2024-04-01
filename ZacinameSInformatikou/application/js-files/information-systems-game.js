@@ -57,18 +57,52 @@ function createElementsOfDialogue(game){
     var phone = document.createElement("img");
     phone.id = "phone";
     phone.alt = "Ringing phone";
+
+    var buttonPanel = document.createElement("div");
+    buttonPanel.id = "buttonPanel";
+
+    var nextButton = document.createElement("button");
+    nextButton.id = "dialogueNextButton";
+    nextButton.textContent = "Zpět";
+    nextButton.addEventListener('click', function() {
+        animateConversation(false);
+    });
+
+    var backButton = document.createElement("button");
+    backButton.id = "dialogueBackButton";
+    backButton.textContent = "Další";
+    backButton.addEventListener('click', function() {
+        animateConversation(true);
+    });
+
+    buttonPanel.appendChild(backButton);
+    buttonPanel.appendChild(nextButton);
     
     game.appendChild(robot);
     game.appendChild(bubbleRobot);
     game.appendChild(bubbleMechanic);
-    game.appendChild(phone);
+    game.appendChild(phone); 
+    game.appendChild(buttonPanel);
 
     index = 0;
     phonePickUp = true;
-    intervalId = setInterval(animateConversation, 5000);
 }
 
-function animateConversation() {
+function animateConversation(goForward) {
+    console.log("pred"+index);
+    if(goForward){
+        ++index;
+    }
+    else {
+        if(index > 0){
+            --index;
+        }
+        else {
+            return;
+        }
+        
+    }
+    console.log("po"+index);
     const { speaker, text } = conversation[index % conversation.length];
     if(phonePickUp == true) {
         var mechanic = document.getElementById("phone");
@@ -97,9 +131,7 @@ function animateConversation() {
         timeTableDialogue.id = "timeTableDialogue";
         timeTableDialogue.alt = "Rozvrh";
     }
-    index++;
     if (index === conversation.length) {
-        clearInterval(intervalId);
         createDialogueButtons();
     }
 }
@@ -125,10 +157,11 @@ function startGame(id){
 }
 
 function createDialogueButtons(){
+    var buttonPanel = document.getElementById("buttonPanel");
+    buttonPanel.innerHTML = "";
+
     var dialogue = document.getElementById("dialogue");
-    var buttonPanel = document.createElement("div");
-    buttonPanel.id = "buttonPanel";
-    
+
     var buttonAgain = document.createElement("button");
     buttonAgain.id = "buttonAgain";
     buttonAgain.innerText = "Zopakovat";
@@ -148,7 +181,7 @@ function createDialogueButtons(){
         var back = addBackToTheory();
         dialogue.innerHTML = "";
         dialogue.appendChild(back);
-        var table = loadCsvAndCreateTable("../../csv-files/IS_objednani.csv", dialogue);
+        loadCsvAndCreateTable("../../csv-files/IS_objednani.csv", dialogue);
     });
 
     buttonPanel.appendChild(buttonNext);
@@ -237,6 +270,7 @@ function checkAnswers(graf){
         var input = document.getElementById(columnNames[i]);
         if(input.value == rightAnswers[i]){
             input.style.backgroundColor = "lightgreen";
+            console.log(input, input.style.backgroundColor);
         }
         else {
             input.style.backgroundColor = "#ffc6c4";
@@ -249,6 +283,7 @@ function checkAnswers(graf){
             if(input.id == "duvod_navstevy"){
                 visitFalse = input.value;
             }
+            console.log(input, input.style.backgroundColor);
         }
     }
 
@@ -391,7 +426,7 @@ function addInputRow(table) {
         if(columnNames[i] == "duvod_navstevy"){
             var select = document.createElement("select");
             select.id = columnNames[i];
-            for (var j = 0; j <= selectOptions.length; j++) {
+            for (var j = 0; j < selectOptions.length; j++) {
                 var option = document.createElement("option");
                 option.text = selectOptions[j];
                 option.value = selectOptions[j];

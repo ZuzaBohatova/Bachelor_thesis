@@ -39,7 +39,11 @@
             <div id="infoText">
                 <p>
                     Zde vidíte svůj předgenerovaný JSON soubor. 
-                    Za <i>"zde zadejte .."</i> vyplňte požadovanou hodnotu - bez uvozovek, např. <i>"A": 5,</i>.
+                </p>
+                <p>
+                    Za <i>"zde zadejte jmeno"</i> uveďte název vrcholu <strong>v uvozovkách</strong>, např. <i>"name" : "Hlavní nádraží"</i>.
+                    <br>
+                    Za <i>"zde zadejte vrchol, ..."</i> vyplňte požadovanou hodnotu - <strong>bez uvozovek</strong>, např. <i>"A": 5,</i>.
                 </p>
                 <p>
                     Až budete mít soubor kompletní, kliknětě na "Uložit". Pokud je váš soubor validní, tak se vám vygeneruje odkaz, který vás pokaždé přesměruje přímo na hru s vaším konkrétním grafem. Tento odkaz si uložte, můžete ho používat
