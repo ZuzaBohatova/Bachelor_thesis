@@ -8,6 +8,11 @@ body {
     border: 5px solid var(--darkColor);
 }
 
+.linkInformationSystems {
+    color: #008b8b;
+    font-weight: bold;
+}
+
 button {
     background-color: var(--lightColor);
     border: 2px solid var(--lightColor);

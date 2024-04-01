@@ -8,6 +8,12 @@ body {
     border: 5px solid var(--darkColor);
 }
 
+.linkHardware {
+    font-weight: bold;
+    color: #FF4F00;
+}
+
+
 button {
     background-color: var(--lightColor) ;
     border: 2px solid var(--lightColor) ;

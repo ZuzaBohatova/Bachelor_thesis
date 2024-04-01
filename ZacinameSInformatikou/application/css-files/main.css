@@ -13,13 +13,11 @@ body {
 }
 
 #menu {
-  border: 5px solid #ffdf00 ;
+  border: 5px solid #FFBF00;
 }
 
 
 nav ul {
-  background-color: white;
-  font-weight: 500;
   list-style-type: none;
   padding: 2%;
   text-align: center;
@@ -28,19 +26,19 @@ nav ul {
 nav li {
   display: inline;
   padding: 2%;
-  margin-top: 10px;
+  white-space: nowrap;
 }  
 
 nav a {
   text-decoration: none;
 }
 
-nav a.active {
-  font-weight: bold;
+.linkCommon:hover {
+  color: #FFBF00;
 }
 
-.linkCommon:hover {
-  color: #ffcc00;
+.linkPrologue:hover {
+  color: #FFBF00;
 }
 
 .linkGraphs:hover {
@@ -61,6 +59,10 @@ nav a.active {
 
 .linkInformationSystems:hover {
   color: #008b8b;;
+}
+
+.linkGames:hover {
+  color: #D22B2B;
 }
 
 #hlavni-nadpis {

@@ -16,6 +16,11 @@ button:hover {
    border: 5px solid darkgreen;
 }
 
+.linkNumberSystems {
+    color: #32cd32;
+    font-weight: bold;
+}
+
 .textNumSys {
     grid-area: text;
 }

@@ -7,6 +7,11 @@ body {
 #menu {
     border: 5px solid var(--darkColor);
 }
+
+.linkDataStorage {
+    color: #87cefa;
+    font-weight: bold;
+}
   
 .bubbleDataStorage { 
     background: var(--lightColor);

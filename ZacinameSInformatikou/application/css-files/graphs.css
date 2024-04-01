@@ -12,6 +12,12 @@ body {
     grid-area: text;
 }
 
+.linkGraphs {
+    color: #ee82ee;
+    font-weight: bold;
+}
+
+
 .bubbleGraphs { 
     background: var(--lightColor);
 }
