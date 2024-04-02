@@ -89,7 +89,6 @@ function createElementsOfDialogue(game){
 }
 
 function animateConversation(goForward) {
-    console.log("pred"+index);
     if(goForward){
         ++index;
     }
@@ -102,7 +101,6 @@ function animateConversation(goForward) {
         }
         
     }
-    console.log("po"+index);
     const { speaker, text } = conversation[index % conversation.length];
     if(phonePickUp == true) {
         var mechanic = document.getElementById("phone");
@@ -131,7 +129,7 @@ function animateConversation(goForward) {
         timeTableDialogue.id = "timeTableDialogue";
         timeTableDialogue.alt = "Rozvrh";
     }
-    if (index === conversation.length) {
+    if (index === conversation.length - 1) {
         createDialogueButtons();
     }
 }
@@ -439,6 +437,7 @@ function addInputRow(table) {
             input.type = 'text';
             input.placeholder = 'Zadejte text';
             input.id = columnNames[i];
+            input.autocomplete = "off";
             newCell.appendChild(input);
         }
     }
