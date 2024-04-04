@@ -1,38 +1,48 @@
+/**
+ * Soubor information-systems-game.js se spouští v information-systems-game.html 
+ * Ovládá hru - rozhovor robota s mechanikem, následnou tabulku na vypnění dat z rozhovoru a obrázky grafů, které plynou z tabulky
+ */
 
-const textbubbleRobot = document.createElement("p");
-const textbubbleMechanic = document.createElement("p");
-var bubbleRobot = document.createElement("div");
-var bubbleMechanic = document.createElement("div");
-var robot = document.createElement("img");
-let phonePickUp = true;
+const textbubbleRobot = document.createElement("p"); // element paragraph pro text robota
+const textbubbleMechanic = document.createElement("p"); // element paragraph pro text mechanika
+var bubbleRobot = document.createElement("div"); // element div, který reprezentuje bublinu robota
+var bubbleMechanic = document.createElement("div"); //element div, který reprezentuje bublinu mechanika
+var robot = document.createElement("img"); // element image s obrázkem robota
+var phonePickUp = true; //zda byl již zobraze zvonící telefon
 
-const columnNames = ["vyrobni_cislo","datum_vyroby","datum_cas_navstevy","duvod_navstevy","akutni_problemy","datum_posledni_kontroly"];
-const rightAnswers = ["ZI05T","15.4.2010","12.6.2024 14:00","technická kontrola","ne","5.5.2023"];
-const selectOptions = ["uvolněné šrouby", "technická kontrola","motor","pohyb ramene","prohnutý plech","přehřívání"];
+const columnNames = ["vyrobni_cislo","datum_vyroby","datum_cas_navstevy","duvod_navstevy","akutni_problemy","datum_posledni_kontroly"]; // názvy sloupců tabulky
+const rightAnswers = ["ZI05T","15.4.2010","12.6.2024 14:00","technická kontrola","ne","5.5.2023"]; // správné odpovědi do tabulky
+const selectOptions = ["uvolněné šrouby", "technická kontrola","motor","pohyb ramene","prohnutý plech","přehřívání"]; // možnosti pro element select
 
+/**
+ * Pole obsahující slovníky s celou konverzací
+ */
 const conversation = [
-    { speaker: 'Mechanic', text: 'Zdravím, servisní oddělení. Jak vám mohu pomoci?' },
-    { speaker: 'Robot', text: 'Dobrý den, potřeboval bych se objednat na technickou kontrolu.' },
-    { speaker: 'Mechanic', text: 'Výborně, uveďte prosím své výrobní číslo. ' },
-    { speaker: 'Robot', text: 'ZI05T.' },
-    { speaker: 'Mechanic', text: 'Jaký je váš rok výroby? ' },
-    { speaker: 'Robot', text: '15. dubna 2010' },
-    { speaker: 'Mechanic', text: 'Máte nějaké akutní problémy?' },
-    { speaker: 'Robot', text: 'Nemám.' },
-    { speaker: 'Mechanic', text: 'Kdy jste byl na poslední technické kontrole?' },
-    { speaker: 'Robot', text: 'Minulý rok páteho května.' },
-    { speaker: 'Mechanic', text: 'Výborně, vyhovoval by vám termín desátého června v deset hodin?' },
+    { speaker: "Mechanic", text: "Zdravím, servisní oddělení. Jak vám mohu pomoci?" },
+    { speaker: "Robot", text: "Dobrý den, potřeboval bych se objednat na technickou kontrolu." },
+    { speaker: "Mechanic", text: "Výborně, uveďte prosím své výrobní číslo. " },
+    { speaker: "Robot", text: "ZI05T." },
+    { speaker: "Mechanic", text: "Jaký je váš rok výroby? " },
+    { speaker: "Robot", text: "15. dubna 2010" },
+    { speaker: "Mechanic", text: "Máte nějaké akutní problémy?" },
+    { speaker: "Robot", text: "Nemám." },
+    { speaker: "Mechanic", text: "Kdy jste byl na poslední technické kontrole?" },
+    { speaker: "Robot", text: "Minulý rok páteho května." },
+    { speaker: "Mechanic", text: "Výborně, vyhovoval by vám termín desátého června v deset hodin?" },
     { speaker: "TimeTable", text: ""},
-    { speaker: 'Robot', text: 'Šlo by to spíš někdy odpoledne?' },
-    { speaker: 'Mechanic', text: 'Hmm, ano, dvanáctého června ve dvě.' },
+    { speaker: "Robot", text: "Šlo by to spíš někdy odpoledne?" },
+    { speaker: "Mechanic", text: "Hmm, ano, dvanáctého června ve dvě." },
     { speaker: "TimeTable", text: ""},
-    { speaker: 'Robot', text: 'To by bylo skvělé, děkuji a nashledanou.' },
-    { speaker: 'Mechanic', text: 'Nashledanou.' }
+    { speaker: "Robot", text: "To by bylo skvělé, děkuji a nashledanou." },
+    { speaker: "Mechanic", text: "Nashledanou." }
 ];
 
-let index = 0;
-let intervalId = 0;
+var conversationStep = 0; // krok konverzace
 
+/**
+ * Funkce, která vytvoří jednotlivé elementy dialogu
+ * @param {HTMLDivElement} game Div element sloužící jako kontejner pro hru 
+ */
 function createElementsOfDialogue(game){
     robot.id = "robotDialogue";
     robot.src = "../../pictures/information_systems/rob05_profile_square.png";
@@ -64,14 +74,14 @@ function createElementsOfDialogue(game){
     var nextButton = document.createElement("button");
     nextButton.id = "dialogueNextButton";
     nextButton.textContent = "Zpět";
-    nextButton.addEventListener('click', function() {
+    nextButton.addEventListener("click", function() {
         animateConversation(false);
     });
 
     var backButton = document.createElement("button");
     backButton.id = "dialogueBackButton";
     backButton.textContent = "Další";
-    backButton.addEventListener('click', function() {
+    backButton.addEventListener("click", function() {
         animateConversation(true);
     });
 
@@ -84,31 +94,36 @@ function createElementsOfDialogue(game){
     game.appendChild(phone); 
     game.appendChild(buttonPanel);
 
-    index = 0;
+    conversationStep = 0;
     phonePickUp = true;
 }
 
+/**
+ * Funkce, která řídí průběh dialogu
+ * @param {boolean} goForward Zda pokračujeme dopředu nebo dozadu
+ * @returns 
+ */
 function animateConversation(goForward) {
     if(goForward){
-        ++index;
+        ++conversationStep;
     }
     else {
-        if(index > 0){
-            --index;
+        if(conversationStep > 0){
+            --conversationStep;
         }
         else {
             return;
         }
         
     }
-    const { speaker, text } = conversation[index % conversation.length];
+    const { speaker, text } = conversation[conversationStep % conversation.length];
     if(phonePickUp == true) {
         var mechanic = document.getElementById("phone");
         mechanic.id = "person2";
         mechanic.alt = "Mechanik";
         phonePickUp = false;
     }
-    if (speaker === 'Robot') {
+    if (speaker === "Robot") {
         robot.style.visibility = "visible";
         textbubbleRobot.textContent = text;
         bubbleRobot.style.visibility = "visible";
@@ -129,11 +144,15 @@ function animateConversation(goForward) {
         timeTableDialogue.id = "timeTableDialogue";
         timeTableDialogue.alt = "Rozvrh";
     }
-    if (index === conversation.length - 1) {
+    if (conversationStep === conversation.length - 1) {
         createDialogueButtons();
     }
 }
 
+/**
+ * Funkce, která načte link element "Zpět na teorii" a vloží ho do nadpisu 
+ * @returns {HTMLHeadingElement} Element nadpisu "Zpět na teorii"
+ */
 function addBackToTheory(){
     var back = document.getElementById("backToTheory");
     back.style.gridArea = "back";
@@ -143,6 +162,10 @@ function addBackToTheory(){
     return h4;
 }
 
+/**
+ * Funkce spustí hru 
+ * @param {string} id ID divu, z kterého chceme hru spustit
+ */
 function startGame(id){
     var game = document.getElementById(id);
     game.id = "dialogue";
@@ -154,6 +177,9 @@ function startGame(id){
     createElementsOfDialogue(game);
 }
 
+/**
+ * Funkce, která vytvoří tlačítka na konci dialogu
+ */
 function createDialogueButtons(){
     var buttonPanel = document.getElementById("buttonPanel");
     buttonPanel.innerHTML = "";
@@ -188,6 +214,10 @@ function createDialogueButtons(){
     dialogue.appendChild(buttonPanel);
 }
 
+/**
+ * Funkce přidá mechanika jeho bublinu s textem
+ * @param {HTMLDivElement} dataTable Div element jako kontejner pro část hry s tabulkou
+ */
 function addMechanicBubble(dataTable){
     var bubble = document.createElement("div");
     bubble.id = "bubbleDataTable";
@@ -208,22 +238,27 @@ function addMechanicBubble(dataTable){
     dataTable.appendChild(mechanic);
 }
 
+/**
+ * Funkce načte data z csv souboru a vytvoří tabulku
+ * @param {string} path Cesta k csv souboru
+ * @param {HTMLDivElement} dataTable Div element obsahující část hry s tabulkou 
+ */
 function loadCsvAndCreateTable(path, dataTable){
     addMechanicBubble(dataTable);
 
     fetch(path)
         .then(response => response.text())
         .then(csvText => {
-            const csvRows = csvText.split('\n');
-            var table = document.createElement('table');
+            const csvRows = csvText.split("\n");
+            var table = document.createElement("table");
             table.id = "csvTable";
 
             csvRows.forEach((row, rowIndex) => {
-                const columns = row.split(',');
-                const tr = document.createElement('tr');
+                const columns = row.split(",");
+                const tr = document.createElement("tr");
 
                 columns.forEach(column => {
-                    const td = document.createElement('td');
+                    const td = document.createElement("td");
                     td.textContent = column;
                     tr.appendChild(td);
                 });
@@ -235,9 +270,13 @@ function loadCsvAndCreateTable(path, dataTable){
             createTableButtons(dataTable);
 
         })
-        .catch(error => console.error('Error loading CSV:', error));
+        .catch(error => console.error("Error loading CSV:", error));
 }
 
+/**
+ * Vytvoří tlačítka pro tabulku a vloží je do divu
+ * @param {HTMLDivElement} dataTable 
+ */
 function createTableButtons(dataTable) {
     var buttonSubmit = document.createElement("button");
     buttonSubmit.id = "buttonSubmit";
@@ -261,14 +300,19 @@ function createTableButtons(dataTable) {
     dataTable.appendChild(buttonPanel);
 }
 
-function checkAnswers(graf){
+/**
+ * Funkce zkontroluje, zda jsou data zadaná do tabulky správně
+ * Pokud jsou všechny správně, posune hru dál
+ * Pokud jsous právně jen některé, označí je zeleně a červeně označí chyby
+ * @param {HTMLDivElement} graph Div element pro graf
+ */
+function checkAnswers(graph){
     var allRight = true;
     var visitFalse = null;
-    for(let i = 0; i < columnNames.length; i++){
+    for(var i = 0; i < columnNames.length; i++){
         var input = document.getElementById(columnNames[i]);
         if(input.value == rightAnswers[i]){
             input.style.backgroundColor = "lightgreen";
-            console.log(input, input.style.backgroundColor);
         }
         else {
             input.style.backgroundColor = "#ffc6c4";
@@ -281,56 +325,10 @@ function checkAnswers(graf){
             if(input.id == "duvod_navstevy"){
                 visitFalse = input.value;
             }
-            console.log(input, input.style.backgroundColor);
         }
     }
-
     if(allRight) {
-        var back = addBackToTheory();
-        graf.innerHTML = "";
-        graf.id = "graf";
-        graf.classList.add("mainPage");
-        graf.appendChild(back);
-
-        var title = document.createElement("h3");
-        title.id = "title";
-        title.textContent = "Tabulka obsazenosti mechanika robotů";
-        var assignment = document.createElement("p");
-        assignment.id = "assignment";
-        assignment.textContent = `Z dat uložených v předchozí tabulce jsme vygenerovali grafické znázornění obsazenosti. 
-            Ukládání dat do tabulky a jejich následné zpracování nám tak může pomoci lépe porozumět datům, která máme k dispozici.`;
-
-        var imgDiv = document.createElement("div");
-        imgDiv.style.textAlign = "center";
-        var timeTable = document.createElement("img");
-        timeTable.id = "timeTable";
-        timeTable.src = "../../pictures/information_systems/time_table_add_robot.png";
-        timeTable.alt = "Časový rozvrh";
-        imgDiv.appendChild(timeTable);
-
-        
-        var buttonNext = document.createElement("button");
-        buttonNext.id = "buttonNext";
-        buttonNext.innerText = "Další";
-        buttonNext.addEventListener("click", function() {
-            title.textContent = "Graf průměrné návštěvnosti";
-            assignment.textContent = `Z každé tabulky jsme schopni vytvořit plno různých grafů, ty nám mohou pomoci se lépe orientovat v datech.
-                Zde můžeme vidět graf průměrné návštěvnosti na jednotlivý den v týdnu. Takový graf nám ukáže, kdy je lepší navštívit např. danou restauraci nebo obchod.`;
-            var grafImg = timeTable;
-            grafImg.id = "grafNumbersOfVisitors";
-            grafImg.src = "../../pictures/information_systems/graph_numberOfVisits.png";
-            grafImg.alt = "Graf průměrné návštěvnosti";
-            grafImg.style.width = "600px";     
-            buttonNext.addEventListener("click", function() {
-                graf.remove();
-                createEndPage();
-            });                   
-        });         
-
-        graf.appendChild(title);
-        graf.appendChild(assignment);
-        graf.appendChild(imgDiv);
-        graf.appendChild(buttonNext);                    
+        createGraphFromTable(graph);                   
     }
     else {
         if(visitFalse != null){
@@ -356,46 +354,99 @@ function checkAnswers(graf){
             bubble.textContent = "Ale ale, někde se ti vloudila chybička! Zkusíš to opravit?"; 
         }
     }
-    
 }
 
+/**
+ * Funkce posune hru o kapitolu dál a zobrazí obrázek grafu z dat tabulky
+ * @param {HTMLDivElement} graph Div element
+ */
+function createGraphFromTable(graph){
+    var back = addBackToTheory();
+    graph.innerHTML = "";
+    graph.id = "graf";
+    graph.classList.add("mainPage");
+    graph.appendChild(back);
+
+    var title = document.createElement("h3");
+    title.id = "title";
+    title.textContent = "Tabulka obsazenosti mechanika robotů";
+    var assignment = document.createElement("p");
+    assignment.id = "assignment";
+    assignment.textContent = `Z dat uložených v předchozí tabulce jsme vygenerovali grafické znázornění obsazenosti. 
+        Ukládání dat do tabulky a jejich následné zpracování nám tak může pomoci lépe porozumět datům, která máme k dispozici.`;
+
+    var imgDiv = document.createElement("div");
+    imgDiv.style.textAlign = "center";
+    var timeTable = document.createElement("img");
+    timeTable.id = "timeTable";
+    timeTable.src = "../../pictures/information_systems/time_table_add_robot.png";
+    timeTable.alt = "Časový rozvrh";
+    imgDiv.appendChild(timeTable);
+    
+    var buttonNext = document.createElement("button");
+    buttonNext.id = "buttonNext";
+    buttonNext.innerText = "Další";
+    buttonNext.addEventListener("click", function() {
+        title.textContent = "Graf průměrné návštěvnosti";
+        assignment.textContent = `Z každé tabulky jsme schopni vytvořit plno různých grafů, ty nám mohou pomoci se lépe orientovat v datech.
+            Zde můžeme vidět graf průměrné návštěvnosti na jednotlivý den v týdnu. Takový graf nám ukáže, kdy je lepší navštívit např. danou restauraci nebo obchod.`;
+        var graphImg = timeTable;
+        graphImg.id = "grafNumbersOfVisitors";
+        graphImg.src = "../../pictures/information_systems/graph_numberOfVisits.png";
+        graphImg.alt = "Graf průměrné návštěvnosti";
+        graphImg.style.width = "600px";     
+        buttonNext.addEventListener("click", function() {
+            graph.remove();
+            createEndPage();
+        });                   
+    });         
+
+    graph.appendChild(title);
+    graph.appendChild(assignment);
+    graph.appendChild(imgDiv);
+    graph.appendChild(buttonNext); 
+}
+
+/**
+ * Funkce vytvoří koncovou stránku hry s obrázkem robota, bublinou a tlačítky odkazujícími na další hry a zopakování hry
+ */
 function createEndPage(){
-    var game = document.createElement('div');
-    game.id = 'infoSysGame';
+    var game = document.createElement("div");
+    game.id = "infoSysGame";
     game.classList.add("mainPage");
 
-    var textDiv = document.createElement('div');
-    textDiv.id = 'textInfoSysGame';
+    var textDiv = document.createElement("div");
+    textDiv.id = "textInfoSysGame";
 
-    var heading = document.createElement('h4');
-    var backToTheoryLink = document.createElement('a');
-    backToTheoryLink.id = 'backToTheory';
-    backToTheoryLink.href = 'informacni-systemy';
-    backToTheoryLink.textContent = 'Zpět na teorii';
+    var heading = document.createElement("h4");
+    var backToTheoryLink = document.createElement("a");
+    backToTheoryLink.id = "backToTheory";
+    backToTheoryLink.href = "informacni-systemy";
+    backToTheoryLink.textContent = "Zpět na teorii";
     heading.appendChild(backToTheoryLink);
 
-    var bubble = document.createElement('div');
-    bubble.id = 'bubbleInfoSysGame';
+    var bubble = document.createElement("div");
+    bubble.id = "bubbleInfoSysGame";
     bubble.classList.add("bubble");
     bubble.classList.add("bubbleInfoSys")
-    var bubbleHeading = document.createElement('h4');
-    bubbleHeading.textContent = 'Výborně, zvládl jsi to na jedničku!';
-    var bubbleParagraph = document.createElement('p');
-    bubbleParagraph.innerHTML = 'Spolu jsme si prošli, co jsou to informační systémy. Doufám, že teď už máš lepší představu, jak takový informační systém může fungovat. Teď si můžeš zkusit třeba další hry.';
+    var bubbleHeading = document.createElement("h4");
+    bubbleHeading.textContent = "Výborně, zvládl jsi to na jedničku!";
+    var bubbleParagraph = document.createElement("p");
+    bubbleParagraph.innerHTML = "Spolu jsme si prošli, co jsou to informační systémy. Doufám, že teď už máš lepší představu, jak takový informační systém může fungovat. Teď si můžeš zkusit třeba další hry.";
     bubble.appendChild(bubbleHeading);
     bubble.appendChild(bubbleParagraph);
 
-    var anotherGameButton = document.createElement('button');
-    anotherGameButton.id = 'anotherGameButton';
-    anotherGameButton.textContent = 'Další hry';
-    anotherGameButton.addEventListener('click', function() {
+    var anotherGameButton = document.createElement("button");
+    anotherGameButton.id = "anotherGameButton";
+    anotherGameButton.textContent = "Další hry";
+    anotherGameButton.addEventListener("click", function() {
         window.location.href = "hry";
     });
 
-    var gameAgainButton = document.createElement('button');
-    gameAgainButton.id = 'gameAgainButton';
-    gameAgainButton.textContent = 'Začni znovu';
-    gameAgainButton.addEventListener('click', function() {
+    var gameAgainButton = document.createElement("button");
+    gameAgainButton.id = "gameAgainButton";
+    gameAgainButton.textContent = "Začni znovu";
+    gameAgainButton.addEventListener("click", function() {
         window.location.href = "informacni-systemy-hra";
     });
 
@@ -405,21 +456,25 @@ function createEndPage(){
     textDiv.appendChild(gameAgainButton);
     game.appendChild(textDiv);
 
-    var robotImg = document.createElement('img');
-    robotImg.id = 'robotInfoSysGame';
-    robotImg.src = '../../pictures/information_systems/rob05_move.png';
-    robotImg.alt = 'Robot5';
+    var robotImg = document.createElement("img");
+    robotImg.id = "robotInfoSysGame";
+    robotImg.src = "../../pictures/information_systems/rob05_move.png";
+    robotImg.alt = "Robot5";
     robotImg.classList.add("robotInfoSys");
     game.appendChild(robotImg);
 
     document.body.appendChild(game);
 }
 
+/**
+ * Funkce přidá do tabulky řádek, do kterého vkládá uživatel své odpovědi
+ * @param {HTMLTableElement} table Tabulka, do které vkládáme input řádek
+ */
 function addInputRow(table) {
     const rowCount = table.rows.length;
     const newRow = table.insertRow(rowCount);
 
-    for (let i = 0; i < table.rows[0].cells.length; i++) {
+    for (var i = 0; i < table.rows[0].cells.length; i++) {
         const newCell = newRow.insertCell(i);
         if(columnNames[i] == "duvod_navstevy"){
             var select = document.createElement("select");
@@ -433,9 +488,9 @@ function addInputRow(table) {
             newCell.appendChild(select);
         }
         else{
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.placeholder = 'Zadejte text';
+            const input = document.createElement("input");
+            input.type = "text";
+            input.placeholder = "Zadejte text";
             input.id = columnNames[i];
             input.autocomplete = "off";
             newCell.appendChild(input);

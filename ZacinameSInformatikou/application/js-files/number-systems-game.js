@@ -1,12 +1,21 @@
-var mistakes = 0;
-var lastEx = 0;
-var step = 0;
-var interval = 0;
-var division = [42,2,(42/2),(42%2)];
-var rules = "Postupně vyplň všechna políčka buď jedničkou nebo nulou. Pokud zezelenají, odpověděl jsi správně, naopak červená znamená chybu.";
-var mistakeText = "Někde máš chybku, zkus ji opravit!";
+/**
+ * Soubor number-systems-game.js je spouštěn v number-systems-game.html
+ * Ovládá hru, kde uživatel vyplňuje převody z desítkové do dvojkové soustavy
+ * Na začátku má k dispozici také animaci, která zobrazuje, jak převod do dvojkové soustavy probíhá
+ */
 
-//vytvoří odkaz na zpátky na teorii
+var mistakes = 0; // počet chyb, které již uživatel udělal
+var lastEx = 0; // poslední cvičení, na kterém skončil
+var animationStep = 0; // v kterém kroku animace se aktuálně nacházíme
+var interval = 0; // interval animace
+var division = [42,2,(42/2),(42%2)]; // kroky dělení 
+var rules = "Postupně vyplň všechna políčka buď jedničkou nebo nulou. Pokud zezelenají, odpověděl jsi správně, naopak červená znamená chybu."; // pravidla hry
+var mistakeText = "Někde máš chybku, zkus ji opravit!"; // text, který se zobrazuje, když uživatel udělá chybu
+
+/**
+ * Funkce, která vytvoří odkaz na zpátky na teorii
+ * @returns {HTMLHeadingElement} element nadpisu, v němž je vložen odkaz
+ */
 function createBack(){
     var back = document.createElement("a");
     back.id = "backNumSysGame";
@@ -18,7 +27,12 @@ function createBack(){
     return heading;
 }
 
-//vytvoří odstavec pouze s textovým obsahem
+/**
+ * Funkce vytvoří odstavec pouze s textovým obsahem
+ * @param {string} text Text odstavce
+ * @param {string} id ID odstavce
+ * @returns {HTMLParagraphElement} nově vytvořený odstavec
+ */
 function createParagraph(text, id) {
     var paragraph = document.createElement("p");
     if(id != null){
@@ -28,7 +42,12 @@ function createParagraph(text, id) {
     return paragraph;
 }
 
-//vytvoří odstavec s vnitřním HTML kodem
+/**
+ * Funkce vytvoří odstavec obsahující innerHTML
+ * @param {innerHTML} htmlContent Obsah odstavce obsahující HTML elementy
+ * @param {string} id ID odstavce
+ * @returns {HTMLParagraphElement} nově vytvořený odstavec
+ */
 function createParagraphWithHTML(htmlContent, id) {
     var paragraph = document.createElement("p");
     if(id != null){
@@ -38,14 +57,23 @@ function createParagraphWithHTML(htmlContent, id) {
     return paragraph;
 }
 
-//vytvoří nadpis Zvládáš převody mezi soustavami?
+/**
+ * Funkce vytvoří nadpis Zvládáš převody mezi soustavami?
+ * @returns {HTMLHeadingElement} nadpis "Zvládáš převody mezi soustavami?"
+ */
 function createTitle(){
     var heading = document.createElement("h3");
     heading.textContent = "Zvládáš převody mezi soustavami?";
     return heading;
 }
 
-//vytvoří tlačítko s daným id a textem
+/**
+ * Funkce vytvoří tlačítko s daným id a textem, které spustí zadanou funkci při kliknutí
+ * @param {string} id ID tlačítka
+ * @param {string} text Text zobrazený na tlačítku
+ * @param {function} clickHandler Funkce, která se spustí při kliknutí na tlačítko
+ * @returns {HTMLButtonElement} Nově vytvořené tlačítko
+ */
 function createButton(id, text, clickHandler) {
     var button = document.createElement("button");
     button.id = id;
@@ -54,17 +82,28 @@ function createButton(id, text, clickHandler) {
     return button;
 }
 
-//převede číslo do dvojkové soustavy
+/**
+ * Funkce převede zadané číslo do dvojkové soustavy.
+ * @param {number} dec Číslo, které chceme převést do dvojkové soustavy
+ * @returns {string} Číslo v dvojkové soustavě jako řetězec
+ */
 function dec2bin(dec) {
     return (dec >>> 0).toString(2);
 }
 
-//převede string na list
+/**
+ * Funcke převede string na list
+ * @param {string} str String, který chceme převést na list
+ * @returns {Array} Pole vytvořené ze stringu
+ */
 function string2list(str){
     return Array.from(str);
 }
 
-//zkontroluje zda element existuje a pokud ano, tak ho smaže
+/**
+ * Funkce zkontroluje zda element existuje a pokud ano, tak ho smaže
+ * @param {string} id ID elementu, který chceme smazat 
+ */
 function ifExistsRemove(id){
     var element = document.getElementById(id);
     if(element != null) {
@@ -72,14 +111,22 @@ function ifExistsRemove(id){
     }
 }
 
-//vrátí náhodné celé číslo z daného rozsahu
+/**
+ * Funkce vrátí náhodné celé číslo z daného rozsahu
+ * @param {number} min Minimum z rozsahu
+ * @param {number} max MAximum z rozsahu
+ * @returns {number} náhodné číslo z rozsahu (min,max)
+ */
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
 
-//spustí celou hru
+/**
+ * funkce spustí celou hru a zobrazí pravidla
+ * @param {boolean} firstStart zda hru spouštíme poprvé, nebo se vracíme, po té co jsme udělali příliš mnoho chyb
+ */
 function startGame(firstStart){
     var bubble = document.getElementById("bubbleNumSysGame");
     bubble.classList.add("bubbleNumSys");
@@ -98,13 +145,14 @@ function startGame(firstStart){
     else {
         buttonNext.parentNode.replaceChild(createButton("buttonNext","Hrát",conversionGame1),buttonNext);
     }
-    
 }
 
-//animace převodu z desítkové sousta do dvojkové soustavy 
+/**
+ * Funkce, která spouští animaci převodu z desítkové sousta do dvojkové soustavy 
+ */
 function animationFrom10To2() {
     mistakes = 0;
-    step = 0;
+    animationStep = 0;
     division = [42,2,(42/2),(42%2)];
 
     bubbleNumSysGame.innerHTML = "";
@@ -122,9 +170,11 @@ function animationFrom10To2() {
     interval = setInterval(animate, 5000);
 }
 
-//jednotlivé kroky animace
+/**
+ * Funkce, která provádí jednotlivé kroky animace
+ */
 function animate(){
-    switch (step) {
+    switch (animationStep) {
         case 0: 
             divisionCalculation(division);
             break;
@@ -132,7 +182,7 @@ function animate(){
             division = changeParametersOfDivision(division);
             divisionCalculation(division);
             if(division[2]>0) {
-                --step;
+                --animationStep;
             }
             break;
         case 2:
@@ -151,10 +201,13 @@ function animate(){
             clearInterval(interval);
             break;
     }
-    ++step;
+    ++animationStep;
 }
 
-//provede další krok dělení a vypíše potřebné informace
+/**
+ * Funkce provede další krok dělení a vypíše potřebné informace
+ * @param {Array} division Pole pro jednotlivé argumenty fělení
+ */
 function divisionCalculation(division) {
     var bubble = document.getElementById("bubbleNumSysGame");
     bubble.innerHTML = "";
@@ -165,20 +218,26 @@ function divisionCalculation(division) {
     addRowToTable(division, document.getElementById("animationTable"));
 }
 
-//vytvoří buňku tabulky s daným obsahem
+/**
+ * Funkce vytvoří buňku tabulky s daným obsahem
+ * @param {string} text Text buňky
+ * @returns {HTMLTableCellElement} buňka se zadaným obsahem
+ */
 function createCellOfTable(text){
     var cell = document.createElement("td");
     cell.textContent = text;
     return cell;
 }
 
-//přidá řádek do tabulky
+/**
+ * Funkce přidá řádek do tabulky
+ * @param {Array} division Pole s parametry dělení 
+ * @param {HTMLTableElement} table Tabulka, do které řádky přidáváme
+ */
 function addRowToTable(division, table) {
-    // Pole s textovými hodnotami pro buňky tabulky
     var cellContents = [division[0] + " : " + division[1] + " = ", division[2], "", "Zbytek", division[3]];
     var newRow = document.createElement("tr");
 
-    // Vytvoření jednotlivých buněk a jejich obsahu v cyklu
     for (var i = 0; i < cellContents.length; i++) {
         var cell = createCellOfTable(cellContents[i]);
         if (i === 4) {
@@ -189,7 +248,11 @@ function addRowToTable(division, table) {
     table.appendChild(newRow);
 }
 
-//změní parametry dělení 
+/**
+ * Funkce, která změní parametry dělení 
+ * @param {Array} args Pole s parametry dělení
+ * @returns {Array} pole s nově nastavenými parametry
+ */
 function changeParametersOfDivision(args) {
     args[0]=args[2];
     args[3]=args[0]%args[1];
@@ -198,7 +261,11 @@ function changeParametersOfDivision(args) {
     return args;
 } 
 
-//vytvoří tlačítko po konci animace, podle toho z jakého stavu jsme animaci spustili
+/**
+ * Funkce vytvoří tlačítko po konci animace, podle toho z jakého stavu jsme animaci spustili
+ * @param {number} gameType Číslo hry, na kterou se po konci animace vrátíme
+ * @returns {function} Funkce, která se provede po stisknutí tlačítka
+ */
 function createAfterAnimationButton(gameType){
     switch (gameType) {
         case 1:
@@ -225,7 +292,9 @@ function createAfterAnimationButton(gameType){
     }
 }
 
-//vrátí uživatel zpátky na hru, tam kde skončil
+/**
+ * Funkce, kterou vrátí uživatel zpátky na hru, tam kde skončil
+ */
 function backToGame(){
     document.getElementById("animationTable").remove();
     var textNumSysGame = document.getElementById("textNumSysGame");
@@ -237,7 +306,9 @@ function backToGame(){
     textNumSysGame.appendChild(createParagraph("","gameMistake"));
 }
 
-//spustí první převod do dvojkové soustavy
+/**
+ * Funkce spustí první převod do dvojkové soustavy
+ */
 function conversionGame1(){
     var num = getRandomInt(16, 31);
     var rest = num % 2;
@@ -263,22 +334,32 @@ function conversionGame1(){
 
 }
 
-//přidá formulář, do kterého uživatel zadává kroky převodu 
+/**
+ * Funkce přidá formulář, do kterého uživatel zadává kroky převodu
+ * @param {number} count Počet míst, které má výsledné číslo ve dvojkové soustavě
+ * @param {Array} correctAns Správná odpověď
+ * @param {string} id ID formuláře
+ * @returns {HTMLFormElement} vytvořený formulář pro převod
+ */ 
 function addConversionForm(count, correctAns, id){
     var form = document.createElement("form");
     form.id = id;
     form.classList.add("conversionForm");
 
-    for (let i = 1; i <= count; i++) {
+    for (var i = 1; i <= count; i++) {
         var idAns = id+i;
         form.innerHTML += `<input type="text" id=`+idAns+` onkeyup="checkConversion(`+correctAns[i-1]+`,'`+idAns+`')">`;
     }
     return form;
 }
 
-//zkontroluje, zda byl převod proveden správně
+/**
+ * Funkce, která zkontroluje, zda byl převod proveden správně
+ * @param {string} correctAns Správná odpověď
+ * @param {string} id ID inputu, který testujeme
+ */
 function checkConversion(correctAns, id) {
-    let value = document.getElementById(id).value;
+    var value = document.getElementById(id).value;
     
     if(value == correctAns) {
         createCheckedStyle(id,"2px solid green","darkgreen");
@@ -295,7 +376,12 @@ function checkConversion(correctAns, id) {
     }
 }
 
-//vytvoří styl pro políčka převodu - podle zadaných parametrů
+/**
+ * Funkce vytvoří styl pro políčka převodu - podle zadaných parametrů
+ * @param {string} id ID elementu, kterému chceme měnit style
+ * @param {string} border Rámeček, který chceme nastavit
+ * @param {string} color Barva, kterou chceme nastavit
+ */
 function createCheckedStyle(id, border, color){
     var element = document.getElementById(id);
     element.style.border = border;
@@ -303,7 +389,10 @@ function createCheckedStyle(id, border, color){
     element.style.color = color;
 }
 
-//spustí druhý převod do dvojkové soustavy
+/**
+ * Funkce spustí druhý převod do dvojkové soustavy
+ * @param {string} lastNum Poslední krok
+ */
 function conversionGame2(lastNum) {
     var ans = true;
     if(lastNum != "0"){
@@ -330,13 +419,17 @@ function conversionGame2(lastNum) {
             conversionGame3(num);
         }),buttonNext);
     }
-    
 }
 
-//zkontrolujeme, zda jsou všechna políčka vyplněna správně a pokud ano, můžeme pokračovat
+/**
+ * Funkce, která zkontroluje, zda jsou všechna políčka vyplněna správně a pokud ano, můžeme pokračovat
+ * @param {string} id ID inputu
+ * @param {number} count Délka čísla ve dvojkové soustavě
+ * @returns {boolean} true, pokud můžeme pokračovat (pokud je vše správně), false pro opak
+ */
 function canContinue(id, count){
     var ans = true;
-    for(let i = 1; i<=count; i++){
+    for(var i = 1; i<=count; i++){
         if(document.getElementById(id+i).style.color != "darkgreen") {
             ans = false;
         }
@@ -344,7 +437,10 @@ function canContinue(id, count){
     return ans;
 }
 
-//spustí třetí převod do dvojkové soustavy
+/**
+ * Funkce spustí třetí převod do dvojkové soustavy
+ * @param {string} lastNum Poslední krok
+ */
 function conversionGame3(lastNum) {
     var ans = true;
     if(lastNum != "0"){
@@ -370,7 +466,10 @@ function conversionGame3(lastNum) {
     
 }
 
-//spustí převod narozenin uživatele do dvojkové soustavy
+/**
+ * Funkce spustí převod narozenin uživatele do dvojkové soustavy
+ * @param {string} lastNum Poslední krok
+ */
 function conversionGameBirthday(lastNum){
     var ans = true;
     if(lastNum != "0"){
@@ -395,7 +494,9 @@ function conversionGameBirthday(lastNum){
     }
 }
 
-//zkontroluje, zda převod narozenin byl proveden správně
+/**
+ * Funkce zkontroluje, zda převod narozenin byl proveden správně
+ */
 function checkBirthdayConversion(){
     var day = dec2bin(document.getElementById("birthDay").value);
     var month = dec2bin(document.getElementById("birthMonth").value);
@@ -422,10 +523,12 @@ function checkBirthdayConversion(){
     }
 }
 
-//pokud uživatel udělal moc chyb, spustí se funkce penalty, která ho donutí pustit si znovu animaci
+/**
+ * Funkce, která pokud uživatel udělal moc chyb, spustí se funkce penalty, která ho donutí pustit si znovu animaci
+ */
 function penalty(){
     var textNumSysGame = document.getElementById("textNumSysGame");
-    textNumSysGame.innerHTML = ''; // Vyčištění obsahu
+    textNumSysGame.innerHTML = ""; 
 
     var bubble = document.createElement("div");
     bubble.id = "bubbleNumSysGame";
@@ -442,7 +545,6 @@ function penalty(){
     var table = document.createElement("table");
     table.id = "animationTable";
 
-    // Přidání prvků na stránku
     textNumSysGame.appendChild(createBack());
     textNumSysGame.appendChild(bubble);
     textNumSysGame.appendChild(table);
@@ -450,11 +552,12 @@ function penalty(){
         animationFrom10To2();
     }), buttonNext);
 
-    // Nastavení obrázku robota
     document.getElementById("robotNumSysGame").src = "../../pictures/number_systems/rob02.png";
 }
 
-//zobrazí poslední stránku hry, s odkazy kam dál
+/**
+ * Funkce zobrazí poslední stránku hry, s odkazy kam dál
+ */
 function createLastPage(){
     var textNumSysGame = document.getElementById("textNumSysGame");
     textNumSysGame.innerHTML = "";
@@ -475,9 +578,9 @@ function createLastPage(){
     bubble.appendChild(createParagraph("Vzhůru na další téma!"));
 
     textNumSysGame.appendChild(createButton("gameAgainButton","Začít znovu",function() {
-        location.href = 'ciselne-soustavy-hra';
+        location.href = "ciselne-soustavy-hra";
     }));
     textNumSysGame.appendChild(createButton("anotherGameButton","Další hry",function() {
-        location.href = 'hry';
+        location.href = "hry";
     }));
 }

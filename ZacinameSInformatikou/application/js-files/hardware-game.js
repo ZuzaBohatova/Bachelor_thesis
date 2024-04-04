@@ -1,9 +1,22 @@
-let lastClick = null;
-let lastIsLabel = false;
-let answers = [];
+/**
+ * Soubor hradware-game.js se spouští na stránce hardware-game.html
+ * Ovládá hru - přiřazování správných názvů ke správným konektorům/místům na základní desce 
+ */
 
-let colors = ["blue", "green", "red", "black", "dodgerblue", "yellow", "mediumvioletred"]; 
+var lastClick = null;   //poslední zakliknuté políčko - ať už na základní desce nebo mezi názvy
+var lastIsLabel = false;    //zda je poslední zakliknutý název
+var answers = [];   //již přiřazené odpovědi
+const buttonIds = [70, 10, 20, 50, 60, 40, 30]; // ID jednotlivých labelů pro talčítka s názvy, která přiřazujeme na základní desku
+const buttonNames = ['Ethernet, USB, ...', 'Síťové, zvukové, grafické karty', 'Procesor (CPU)', 'North-South bridge chipset', 'RAM', 'HDD nebo SSD', 'Bios']; // texty jednotlivých tlačítek
 
+var colors = ["blue", "green", "red", "black", "dodgerblue", "yellow", "mediumvioletred"]; // barvy pro jednotlivé rámce zaškrtnutí
+
+/**
+ * Funkce, která vytvoří div 
+ * @param {string} id ID divu
+ * @param {string} divClass Class, do které chceme div přiřadit
+ * @returns {HTMLDivElement} Nově vytvořený div
+ */
 function createDiv(id, divClass){
     var div = document.createElement("div");
     if(id != null){
@@ -15,6 +28,13 @@ function createDiv(id, divClass){
     return div;
 }
 
+/**
+ * Funkce, která vytvoří obrázek se zadanými parametry 
+ * @param {string} id ID obrázku 
+ * @param {string} src Cesta k obrázku
+ * @param {string} alt Alternativní název, pokud se obrázek nezobrází
+ * @returns {HTMLImageElement} nově vytvořený obrázek
+ */
 function createImage(id, src, alt){
     var image = document.createElement('img');
     image.id = id;
@@ -23,6 +43,9 @@ function createImage(id, src, alt){
     return image;
 }
 
+/**
+ * Funkce, která načte a spustí hru - smaže elementy z úvodní stránky a načte nové pro hru
+ */
 function startGame(){
     document.getElementById("bubbleHardware").remove();
     document.getElementById("startGameButton").remove();
@@ -47,10 +70,8 @@ function startGame(){
         sidebar.appendChild(button);
     }
 
-    // Přidání postranního panelu
     document.getElementById('sidebar').appendChild(sidebar);
 
-    // Vytvoření tlačítka pro kontrolu
     var checkButton = document.createElement('button');
     checkButton.id = 'checkGame';
     checkButton.textContent = 'Zkontroluj';
@@ -60,30 +81,41 @@ function startGame(){
     document.getElementById("sidebar").style.margin = "50px 20px 0px 0px ";
 }
 
+/**
+ * Funkce vygeneruje tlačítka s labely, abychom mohli klikat na základní desku a označovat dané komponenty
+ * @returns {innerHTML} innerHTML s vytvořenými tlačítky
+ */
 function generateLabelButtons(){
     var buttons = "";
-    for(let i = 1; i < 8; i++){
+    for(var i = 1; i < 8; i++){
         buttons += `<button id="hra4`+i+`" onclick="choose(`+i+`)">`+i+`</buttons>`;
     }
     return buttons;
 }
 
-function createItemButton(i){
-    var buttonIds = [70, 10, 20, 50, 60, 40, 30];
-    var buttonNames = ['Ethernet, USB, ...', 'Síťové, zvukové, grafické karty', 'Procesor (CPU)', 'North-South bridge chipset', 'RAM', 'HDD nebo SSD', 'Bios'];
+/**
+ * Funkce, která vytvoří tlačítko pro sidebar, s názvem, a id podle indexu 
+ * @param {number} index Index, který určuje, jaké tlačítko se má vytvořit
+ * @returns {HTMLButtonElement} Nově vytvořené tlačítko pro sidebar
+ */
+function createItemButton(index){
     var button = document.createElement('button');
-    button.id = "hra4"+buttonIds[i];
-    button.textContent = buttonNames[i];
-    button.setAttribute('onclick', 'choose(' + buttonIds[i] + ')');
+    button.id = "hra4"+buttonIds[index];
+    button.textContent = buttonNames[index];
+    button.setAttribute('onclick', 'choose(' + buttonIds[index] + ')');
     return button;
 }
 
+/**
+ * Funkce, která provede odpovídající reakci podle toho, na jaké jsme klikli tlačítko
+ * @param {string} choice ID tlačítka, na které jsme klikli
+ */
 function choose(choice){
     if(lastClick == null){
         if(choice < 10){
             if(answers[choice] == null){
                 lastIsLabel = true;
-                document.getElementById("hra4"+choice).style.border = "3px solid #FFCC99"; //click
+                document.getElementById("hra4"+choice).style.border = "3px solid #FFCC99"; 
                 lastClick = choice;
             }
             else {
@@ -96,7 +128,7 @@ function choose(choice){
             }
             else{
                 lastClick = choice;
-                document.getElementById("hra4"+choice).style.border = "3px solid #FF4F00"; //click
+                document.getElementById("hra4"+choice).style.border = "3px solid #FF4F00"; 
             }
         }
     }
@@ -105,14 +137,14 @@ function choose(choice){
             if(choice < 10){
                 removeColor(choice);
                 removeColor(lastClick);
-                document.getElementById("hra4"+choice).style.border = "3px solid #FFCC99"; //click
+                document.getElementById("hra4"+choice).style.border = "3px solid #FFCC99"; 
                 lastClick = choice;
             }
             else {
                 removeColor(choice);
                 removeColor(lastClick);
                 answers[lastClick] = choice;
-                checkColors();
+                setColors();
                 lastIsLabel = false;
                 lastClick = null;
             }
@@ -122,14 +154,14 @@ function choose(choice){
                 removeColor(choice);
                 removeColor(lastClick);
                 answers[choice] = lastClick;
-                checkColors();
+                setColors();
                 lastIsLabel = false;
                 lastClick = null;
             }
             else{
                 removeColor(choice);
                 removeColor(lastClick);
-                document.getElementById("hra4"+choice).style.border = "3px solid #FF4F00";  //click
+                document.getElementById("hra4"+choice).style.border = "3px solid #FF4F00"; 
                 lastClick = choice;
                 lastIsLabel = false;
             }
@@ -137,8 +169,11 @@ function choose(choice){
     }     
 }
 
-function checkColors(){
-    for(let i = 1; i < answers.length; i++){
+/**
+ * Funkce, která nastaví barvu písma a rámečky u zadaných tlačítek
+ */
+function setColors(){
+    for(var i = 1; i < answers.length; i++){
         if(answers[i] != null){
             document.getElementById("hra4"+i).style.border = "2px solid "+colors[i-1];
             document.getElementById("hra4"+answers[i]).style.border = "2px solid "+colors[i-1];
@@ -148,6 +183,10 @@ function checkColors(){
 
 }
 
+/**
+ * Funkce, která nastaví barvy a rámečky do defaultního modu
+ * @param {string} choice ID stisknutého tlačítka
+ */
 function removeColor(choice){
     if(choice < 10){
         document.getElementById("hra4"+choice).style.border = "none";
@@ -167,9 +206,12 @@ function removeColor(choice){
     }
 }
 
+/**
+ * Funkce, která zkontroluje, zda uživatel vytvořil správné páry, případně vyřadí chybné páry
+ */
 function check(){
     var right = true;
-    for(let i = 1; i < 8; ++i){
+    for(var i = 1; i < 8; ++i){
         if((answers[i]/10) != i){
             removeColor(i);
             right = false;
@@ -183,6 +225,9 @@ function check(){
     }
 }
 
+/**
+ * Zobrazí stránku s vyhodnocením celé hry - robota s bublinoua  tlačítka s přechodem na další hry a zopakovaní celé hry od začátku
+ */
 function vyhodnoceni(){
     var hardwareContainer = document.getElementById('hardwareGame');
     hardwareContainer.innerHTML = '';
@@ -227,6 +272,13 @@ function vyhodnoceni(){
     hardwareContainer.appendChild(sidebarDiv);
 }
 
+/**
+ * Funkce, která vytvoří tlačítko, které odkazuje na jinou stránku
+ * @param {string} id ID tlačítka
+ * @param {string} text Text tlačítka 
+ * @param {string} location URL, na kterou odkazujeme 
+ * @returns {HTMLButtonElement} nově vytvořené tlačítko
+ */
 function createLocationButton(id,text,location){
     var locationButton = document.createElement('button');
     locationButton.id = id;

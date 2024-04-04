@@ -1,10 +1,20 @@
-var flippedButtons = 0; // Proměnná pro uchování počtu aktuálně otočených tlačítek
-var firstFlippedButtonID = ""; // Proměnná pro uchování ID prvního otočeného tlačítka
-var countOfButtons = 12;
+/**
+ * Soubor data-storage-game.js obsahuje veškeré funkce a proměnné používané v data-storage-game.html.
+ * Funkce spouští a ovládají pexeso, které se skládá vždy z dvojice obrázek-popis.
+ */
 
-const cards = ["SDKarta_img", "HDD_text", "SSD_img", "USB_text","HDD_img", "USB_img", "MagPas_text", "MagPas_img","SSD_text", "CD_text", "CD_img", "SDKarta_text"];
-const pexesoCards = [];
+var flippedCard = 0; // Počet aktuálně otočených kartiček
+var firstFlippedCardID = ""; // První otočená kartička
+var actualCountOfCards = 12; // Počet aktuálně zbývajících karet
 
+const cards = ["SDKarta_img", "HDD_text", "SSD_img", "USB_text","HDD_img", "USB_img", "MagPas_text", "MagPas_img","SSD_text", "CD_text", "CD_img", "SDKarta_text"]; // ID jednotlivých kartiček
+const pexesoCards = []; // Pole pro pexeso 
+
+/**
+ * Slovník string:string obsahující vždy ID a pak hodnotu podle toho, zda je ID _text nebo _img.
+ * Pro text je hodnota popis konkrétního zařízení.
+ * Pro img je hodnota cesta k danému obrázku.
+ */
 const dictionary = {
     "SDKarta_text": "Uvnitř fotoaparátů a mobilní telefonů, Elektronický zápis dat",
     "SDKarta_img": "../../pictures/data_storage/sdCard.png",
@@ -22,7 +32,11 @@ const dictionary = {
 
 
 
-// Zamíchání pole cards
+/**
+ * Funkce pro zamíchání ID
+ * @param {Array} array Pole obsahující ID, která chceme zamíchat
+ * @returns {Array} 
+ */
 function shuffle(array) {
     for (var i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -31,6 +45,9 @@ function shuffle(array) {
     return array;
 }
 
+/**
+ * Funkce spustí hru - rozdá kartičky pexesa
+ */
 function startGame(){
     var gameContainer = document.getElementById("dataStorageGame");
     gameContainer.innerHTML = "";
@@ -48,31 +65,35 @@ function startGame(){
     }
 
     gameContainer.appendChild(title);
-    gameContainer.appendChild(loadpexeso());
-    }
+    gameContainer.appendChild(loadAndManagePexeso());
+}
 
-function loadpexeso() {
-    var table = document.createElement('table');
+/**
+ * Funkce načte kartičky a řídí celou hru - mazání kartiček, nalezení dvojic, otáčení kartiček zpět
+ * @returns {HTMLTableElement} Tabulka obsahující pexeso
+ */
+function loadAndManagePexeso() {
+    var table = document.createElement("table");
     table.id = "pexesoTable";
 
     for (var i = 0; i < 3; i++) {
         const row = table.insertRow();
         for (var j = 0; j < 4; j++) {
         const cell = row.insertCell();
-        const button = document.createElement('button');
+        const button = document.createElement("button");
         button.id = pexesoCards[i][j];
-        setDefaultButton(button);
+        setDefaultButtonStyle(button);
 
-        button.addEventListener('click', function () {
+        button.addEventListener("click", function () {
             if (button.dataset.clicked === "true") {
-                setDefaultButton(button);
+                setDefaultButtonStyle(button);
                 button.dataset.clicked = "false";
                 button.textContent = "";
-                flippedButtons--; // Snížíme počet otočených tlačítek
+                flippedCard--; // Snížíme počet otočených tlačítek
             } 
             else {
-                if(flippedButtons == 0){
-                    firstFlippedButtonID = button.id;
+                if(flippedCard == 0){
+                    firstFlippedCardID = button.id;
                 }
 
                 if (pexesoCards[i][j].includes("text")) {
@@ -83,14 +104,14 @@ function loadpexeso() {
                     button.style.backgroundImage = "url(" + dictionary[pexesoCards[i][j]] + ")";
                 }
                 button.dataset.clicked = "true";
-                flippedButtons++; // Zvýšíme počet otočených tlačítek
+                flippedCard++; // Zvýšíme počet otočených tlačítek
             }
 
             // Pokud jsou otočeny již dvě tlačítka, zablokujeme další klikání
-            if(flippedButtons == 1){
-                firstFlippedButtonID = button.id;
+            if(flippedCard == 1){
+                firstFlippedCardID = button.id;
             }
-            else if (flippedButtons === 2) {
+            else if (flippedCard === 2) {
                 checkMatchingCards(button);
                 disableAllButtons();
             }
@@ -104,53 +125,73 @@ function loadpexeso() {
     return table;
 }
 
+/**
+ * Funkce nastaví všechna neotočná tlačítka (kartičky) na disable true, nelze je otočit
+ */
 function disableAllButtons() {
-    const buttons = document.querySelectorAll('#pexesoTable button');
+    const buttons = document.querySelectorAll("#pexesoTable button");
     buttons.forEach(button => {
         if (button.dataset.clicked !== "true") {
-        button.disabled = true;
+            button.disabled = true;
         }
     });
 }
 
+
+/**
+ * Funkce zpřístupní všechna tlačítka (kartičky), tak že je lze opět otáčet - lze na ně kliknout
+ */
 function enableAllButtons() {
-    const buttons = document.querySelectorAll('#pexesoTable button');
+    const buttons = document.querySelectorAll("#pexesoTable button");
     buttons.forEach(button => {
         button.disabled = false;
     });
 }
 
-function setDefaultButton(button) {
+/**
+ * Funkce nastaví defaultní styl tlačítka - styl neotočené kartičky pexesa
+ * @param {HTMLButtonElement} button Tlačítko, pro které daný styl nastavujeme
+ */
+function setDefaultButtonStyle(button) {
     button.style.background = "white";
-    button.style.backgroundImage = 'url(../../pictures/data_storage/rob03mini.jpg)';
+    button.style.backgroundImage = "url(../../pictures/data_storage/rob03mini.jpg)";
     button.style.backgroundSize = "contain";
     button.style.backgroundRepeat = "no-repeat";
     button.style.backgroundPosition = "center";
     button.dataset.clicked = "false"; // přidáváme data atribut pro uchování stavu tlačítka
 }
 
+/**
+ * Funkce zkontroluje, zda tlačítka (kartičky), která jsou otočena, jsou pár,
+ * v případě, že jsou pár, tak se zeleně zarámují a poté smažou
+ * @param {HTMLButtonElement} secondButton Druhé otočené tlačítko (kartička)
+ */
 function checkMatchingCards(secondButton) {
-    const firstButtonIDParts = firstFlippedButtonID.split("_");
+    const firstButtonIDParts = firstFlippedCardID.split("_");
     const secondButtonIDParts = secondButton.id.split("_");
 
     if (firstButtonIDParts[0] == secondButtonIDParts[0] && firstButtonIDParts[1] != secondButtonIDParts[1]) {
-        var firstButton = document.getElementById(firstFlippedButtonID);
+        var firstButton = document.getElementById(firstFlippedCardID);
         firstButton.style.border = "2px solid green";
         secondButton.style.border = "2px solid green";
         setTimeout(()=> {
             firstButton.remove();
             secondButton.remove();
             enableAllButtons();
-            countOfButtons = countOfButtons - 2;
-            if(countOfButtons == 0){
+            actualCountOfCards = actualCountOfCards - 2;
+            if(actualCountOfCards == 0){
                 loadEvaluation();
                 return;
             }
-            flippedButtons = 0;
+            flippedCard = 0;
         },1000);
     }
 }
 
+/**
+ *  Funkce načte vyhodnocení celé hry, zruší kontejner pro hru a načte robota s bublinou 
+ *  a tlačítka, odkazující na další hry nebo na zopakování hry
+ */
 function loadEvaluation(){
     document.getElementById("pexesoTable").remove();
     var dataStorageGameDiv = document.getElementById("pexeso");
