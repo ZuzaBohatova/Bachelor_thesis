@@ -1,12 +1,12 @@
 # Programátorská dokumentace
 Celá aplikace je rozčleněna na sedm kapitol: 
-    - úvod (prologue)
-    - grafy (graphs)
-    - číselné soustavy (number systems)
-    - ukládání dat (data storage)
-    - hardware (hardware)
-    - informační systémy (information systems)
-    - hry (games)
+- úvod (prologue)
+- grafy (graphs)
+- číselné soustavy (number systems)
+- ukládání dat (data storage)
+- hardware (hardware)
+- informační systémy (information systems)
+- hry (games)
 
 Kapitoly Úvod a Hry jsou pouze statické, a skládají se tak pouze z HTML stránky (v ./ZacinameSInformatikou/application/pages/) a styl u nich upravuje společná šablona main.css (naleznete v ./ZacinameSInformatikou/application/css-files/).
 Kapitola Úvod obsahuje seznámení s aplikací, její účel a další dodatečné informace.
@@ -28,7 +28,7 @@ Program se skládá z několika do sebe zanořených adresářů, základní str
         - pages - html a php stránky, hlavní kostra aplikace
         - index.php
         - router.php
-    - csv-files
+    - csv-files - uložené tabulky
     - json-files - json soubory reprezentující jednotlivé grafy pro kapitolu s grafy
     - pictures
         - data_storage
@@ -37,4 +37,5 @@ Program se skládá z několika do sebe zanořených adresářů, základní str
         - information_systems
         - number_systems
 
-Stránku spustíme pomocí odkazu: https://www.ms.mff.cuni.cz/~bohatovz/bohatova/ZacinameSInformatikou/application/ , která nás přesměruje na soubor index.php
+Stránku spustíme pomocí odkazu: https://www.ms.mff.cuni.cz/~bohatovz/bohatova/ZacinameSInformatikou/application/ , která nás přesměruje na soubor index.php . Ten složí výslednou podobu aplikace - hlavičku (header), tělo (body) a patičku (footer).
+Tělo vybí
