@@ -20,7 +20,7 @@ Hra se skládá ze své vlastní HTML šablony, s kterou ovšem manipulujeme pom
 Každá kapitola obsahuje nespočet obrázků. Ty nalezenete uloženy ve složce pictures, která je dále rozdělena na jednotlivé kapitoly odpovídající tématům.
 
 ## Architektura
-Program se skládá z několika do sebe zanořených adresářů, základní struktura vypadá takto:
+Samotný program se skládá z několika do sebe zanořených adresářů, základní struktura vypadá takto:
 - ZacinameSInformatikou
     - application
         - css-files - pro každou kapitolu aplikace jeden styl, a jeden obecný styl pro všechny
@@ -38,4 +38,5 @@ Program se skládá z několika do sebe zanořených adresářů, základní str
         - number_systems
 
 Stránku spustíme pomocí odkazu: https://www.ms.mff.cuni.cz/~bohatovz/bohatova/ZacinameSInformatikou/application/ , která nás přesměruje na soubor index.php . Ten složí výslednou podobu aplikace - hlavičku (header), tělo (body) a patičku (footer).
-Tělo vybí
+Tělo vygenerujeme pomocí funkce main() ze souboru router.php, který podle url rozděluje, na kterou stránku budeme přesměrováni.
+
