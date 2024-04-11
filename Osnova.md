@@ -6,11 +6,14 @@
     - seznámení se vzdělávacím plánem "Nová informatika"
     - seznámení s cílem práce 
     - struktura práce
-## Related Work
+## Nová informatika
+    - detailnější seznámení s novou informatikou
+    - obsah a změny proti původnímu plánu
+## Interaktivní výukové weby
     - další podobné aplikace a výukové materiály
         - https://www.umimeinformatiku.cz/
         - https://pracesdaty.zcu.cz/
-        - https://teoriegrafu.cz/
+        - https://www.csfieldguide.org.nz/en/
         - https://decko.ceskatelevize.cz/datova-lhota
 ## Analýza řešení
     - seznámení s jednotlivými kapitolami aplikace
