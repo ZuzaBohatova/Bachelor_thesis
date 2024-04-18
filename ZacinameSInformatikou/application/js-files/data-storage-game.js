@@ -8,7 +8,7 @@ var firstFlippedCardID = ""; // První otočená kartička
 var actualCountOfCards = 12; // Počet aktuálně zbývajících karet
 
 const cards = ["SDKarta_img", "HDD_text", "SSD_img", "USB_text","HDD_img", "USB_img", "MagPas_text", "MagPas_img","SSD_text", "CD_text", "CD_img", "SDKarta_text"]; // ID jednotlivých kartiček
-const pexesoCards = []; // Pole pro pexeso 
+var pexesoCards = []; // Pole pro pexeso 
 
 /**
  * Slovník string:string obsahující vždy ID a pak hodnotu podle toho, zda je ID _text nebo _img.
@@ -76,49 +76,49 @@ function loadAndManagePexeso() {
     var table = document.createElement("table");
     table.id = "pexesoTable";
 
-    for (var i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
         const row = table.insertRow();
-        for (var j = 0; j < 4; j++) {
-        const cell = row.insertCell();
-        const button = document.createElement("button");
-        button.id = pexesoCards[i][j];
-        setDefaultButtonStyle(button);
+        for (let j = 0; j < 4; j++) {
+            const cell = row.insertCell();
+            const button = document.createElement("button");
+            button.id = pexesoCards[i][j];
+            setDefaultButtonStyle(button);
 
-        button.addEventListener("click", function () {
-            if (button.dataset.clicked === "true") {
-                setDefaultButtonStyle(button);
-                button.dataset.clicked = "false";
-                button.textContent = "";
-                flippedCard--; // Snížíme počet otočených tlačítek
-            } 
-            else {
-                if(flippedCard == 0){
-                    firstFlippedCardID = button.id;
-                }
-
-                if (pexesoCards[i][j].includes("text")) {
-                    button.style.backgroundImage = "";
-                    button.textContent = dictionary[pexesoCards[i][j]];
+            button.addEventListener("click", function () {
+                if (button.dataset.clicked === "true") {
+                    setDefaultButtonStyle(button);
+                    button.dataset.clicked = "false";
+                    button.textContent = "";
+                    flippedCard--; // Snížíme počet otočených tlačítek
                 } 
                 else {
-                    button.style.backgroundImage = "url(" + dictionary[pexesoCards[i][j]] + ")";
+                    if(flippedCard == 0){
+                        firstFlippedCardID = button.id;
+                    }
+                    
+                    if (pexesoCards[i][j].includes("text")) {
+                        button.style.backgroundImage = "";
+                        button.textContent = dictionary[pexesoCards[i][j]];
+                    } 
+                    else {
+                        button.style.backgroundImage = "url(" + dictionary[pexesoCards[i][j]] + ")";
+                    }
+                    button.dataset.clicked = "true";
+                    flippedCard++; // Zvýšíme počet otočených tlačítek
                 }
-                button.dataset.clicked = "true";
-                flippedCard++; // Zvýšíme počet otočených tlačítek
-            }
 
-            // Pokud jsou otočeny již dvě tlačítka, zablokujeme další klikání
-            if(flippedCard == 1){
-                firstFlippedCardID = button.id;
-            }
-            else if (flippedCard === 2) {
-                checkMatchingCards(button);
-                disableAllButtons();
-            }
-            else {
-                enableAllButtons()
-            }
-        });
+                // Pokud jsou otočeny již dvě tlačítka, zablokujeme další klikání
+                if(flippedCard == 1){
+                    firstFlippedCardID = button.id;
+                }
+                else if (flippedCard === 2) {
+                    checkMatchingCards(button);
+                    disableAllButtons();
+                }
+                else {
+                    enableAllButtons()
+                }
+            });
         cell.appendChild(button);
         }
     }
@@ -154,7 +154,7 @@ function enableAllButtons() {
  */
 function setDefaultButtonStyle(button) {
     button.style.background = "white";
-    button.style.backgroundImage = "url(../../pictures/data_storage/rob03mini.jpg)";
+    button.style.backgroundImage = "url(../../pictures/data_storage/rob03mini.png)";
     button.style.backgroundSize = "contain";
     button.style.backgroundRepeat = "no-repeat";
     button.style.backgroundPosition = "center";

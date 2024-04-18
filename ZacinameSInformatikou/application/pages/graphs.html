@@ -13,7 +13,7 @@
     </div>
     <img class="robotGraphs" src="../../pictures/graphs/rob01.png" alt="Robot1">
     <div id="definition">
-        <p><strong>Graf</strong> je tvořen <strong>hranami a vrcholy</strong>. Hrana musí být zakončena vrcholy z obou stran. 
+        <p><strong>Graf</strong> je tvořen <strong>hranami a vrcholy</strong>. Hrana musí být zakončena vrcholy z obou stran. Hrany propojují vrcholy.
             Můžeme si to představit jako puntíky spojené čarami.
         </p>
         <h4><strong>Co můžeme grafy modelovat?</strong></h4>
@@ -26,6 +26,7 @@
         <ul>
             <li><strong>Nejkratší cesty</strong> - hledáme nejkratší cestu mezi vrcholy A a B</li>
             <li><strong>Izomorfní grafy</strong> - hledáme grafy, kde mají vrcholy stejná spojení</li>
+            <li>a mnoho dalších</li>
         </ul>
         <h4><strong>Orientované vs. Neorientované grafy</strong></h4>
         <ol>
@@ -35,15 +36,15 @@
         <h4><strong>Jaké máme typy grafů?</strong></h4>
         <ol>
             <li><strong>Cesta</strong> - posloupnost vrcholů, kde je jen jeden způsob jako se dostat z vrcholu A do vrcholu B</li>
-            <li><strong>Kružnice (cyklus)</strong> - graf se skládá z uzavřené posloupnosti vrcholů </li>
+            <img class="graphImg" src="../../pictures/graphs/cesta.png" alt="Graf typu cesta">
+            <li><strong>Kružnice (cyklus)</strong> - vrcholy grafu jsou spojeny dokola </li>
+            <img class="graphImg" src="../../pictures/graphs/kruznice.png" alt="Graf typu kružnice">
             <li><strong>Strom</strong> - graf bez kružnic, kde mezi každými dvěma vrcholy existuje cesta
                 <ul>
-                    <li>Stěžejní struktura - reprezentuje např. adresáře</li>
-                    <li>Existuje zde jeden kořen - nemá žádného předka a může obsahovat potomky</li>
-                    <li>List - poslední vrchol, který nemá žádného potomka</li>
-                    <li>Více stromů = les</li>
+                    <li>Důležitý typ grafu - reprezentuje např. strukturu adresářů (složek v počítači)</li>
                 </ul>
-            </li>            
+            </li>      
+            <img class="graphImg" src="../../pictures/graphs/strom.png" alt="Graf typu strom">      
         </ol>
     </div>
     <a id="linkGame" class="linkGame" href="grafy-hra">Vyzkoušej svojí představivost a zahraj si hru!</a>

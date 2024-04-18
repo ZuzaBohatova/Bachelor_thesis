@@ -99,7 +99,7 @@ nav a {
   text-align: center;
   font-size:  20px;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .linkGame:hover {

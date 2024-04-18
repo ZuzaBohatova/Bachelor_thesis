@@ -66,10 +66,14 @@ button:hover {
     margin: 40px auto;
 }
 
+#to10img {
+   width: 700px;
+}
+
 #squaresImg {
     grid-area:squares;
-    width: 100px;
-    margin:auto;
+    width: 180px;
+    margin: 0 auto;
 }
 
 #from10 {

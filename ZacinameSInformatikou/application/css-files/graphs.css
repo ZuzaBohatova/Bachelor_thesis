@@ -68,6 +68,10 @@ button:hover {
     background: var(--lightColor);
 }
 
+.graphImg {
+   margin: 10px;
+}
+
 /*grafy hra*/
 #graphsGame
 {
