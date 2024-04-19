@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../css-files/graphs.css" type="text/css">
-<script src="../js-files/graphs-create-own-graph.js"></script>
+<script src="../js-files/graphs-creating-own-graph.js"></script>
 <div id="writeJSON" class="mainPage">
     <div id="infoJSON">
         <h4><a id="backGame" href="grafy-hra">Zpět na hru</a></h4>
