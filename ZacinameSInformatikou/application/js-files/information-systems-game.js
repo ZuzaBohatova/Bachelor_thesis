@@ -205,7 +205,7 @@ function createDialogueButtons(){
         var back = addBackToTheory();
         dialogue.innerHTML = "";
         dialogue.appendChild(back);
-        loadCsvAndCreateTable("../../csv-files/IS_objednani.csv", dialogue);
+        loadCsvAndCreateTable("../../csv-files/IS-objednani.csv", dialogue);
     });
 
     buttonPanel.appendChild(buttonNext);

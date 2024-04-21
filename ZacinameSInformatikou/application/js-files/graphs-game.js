@@ -22,10 +22,10 @@ function createDiv(id){
  */
 function loadGraphsButtons(){
     var div = createDiv("graphButtonsDiv");
-    div.appendChild(createGraphButton("Lehký","./../../json-files/easy_graph.json"));
-    div.appendChild(createGraphButton("Střední","./../../json-files/middle_graph.json"));
-    div.appendChild(createGraphButton("Těžký","./../../json-files/hard_graph.json"));
-    div.appendChild(createGraphButton("Extrém","./../../json-files/extreme_graph.json"));
+    div.appendChild(createGraphButton("Lehký","./../../json-files/easy-graph.json"));
+    div.appendChild(createGraphButton("Střední","./../../json-files/middle-graph.json"));
+    div.appendChild(createGraphButton("Těžký","./../../json-files/hard-graph.json"));
+    div.appendChild(createGraphButton("Extrém","./../../json-files/extreme-graph.json"));
 
     var space = document.createElement("br");
 
