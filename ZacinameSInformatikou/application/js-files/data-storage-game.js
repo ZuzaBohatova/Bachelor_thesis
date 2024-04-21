@@ -17,17 +17,17 @@ var pexesoCards = []; // Pole pro pexeso
  */
 const dictionary = {
     "SDKarta_text": "Uvnitř fotoaparátů a mobilní telefonů, Elektronický zápis dat",
-    "SDKarta_img": "../../pictures/data_storage/sdCard.png",
+    "SDKarta_img": "../../pictures/data-storage/sdCard.png",
     "HDD_text": "Skládá se z několika kotoučů, Zápis dat pomocí magnetického pole",
-    "HDD_img": "../../pictures/data_storage/hdd.jpg",
+    "HDD_img": "../../pictures/data-storage/hdd.jpg",
     "SSD_text": "Hlavně u notebooků, elektronický zápis dat, Uložení většího množství dat",
-    "SSD_img": "../../pictures/data_storage/ssd.jpg",
+    "SSD_img": "../../pictures/data-storage/ssd.jpg",
     "USB_text": "Malé datové úložiště, Uložení dat pomocí elektrických obvodů",
-    "USB_img": "../../pictures/data_storage/usb.jpg",
+    "USB_img": "../../pictures/data-storage/usb.jpg",
     "CD_text": "Přehrání hudby, Zápis dat pomocí laserového paprsku",
-    "CD_img": "../../pictures/data_storage/cd.png",
+    "CD_img": "../../pictures/data-storage/cd.png",
     "MagPas_text": "Magnetický zápis, Archivace velkého množství dat, Zastaralé",
-    "MagPas_img": "../../pictures/data_storage/magPaska.png", 
+    "MagPas_img": "../../pictures/data-storage/magPaska.png", 
 };
 
 
@@ -154,7 +154,7 @@ function enableAllButtons() {
  */
 function setDefaultButtonStyle(button) {
     button.style.background = "white";
-    button.style.backgroundImage = "url(../../pictures/data_storage/rob03mini.png)";
+    button.style.backgroundImage = "url(../../pictures/data-storage/rob03mini.png)";
     button.style.backgroundSize = "contain";
     button.style.backgroundRepeat = "no-repeat";
     button.style.backgroundPosition = "center";
@@ -243,7 +243,7 @@ function loadEvaluation(){
 
     var imgElement = document.createElement("img");
     imgElement.id = "robotDataStorageGame";
-    imgElement.src = "../../pictures/data_storage/rob03.png";
+    imgElement.src = "../../pictures/data-storage/rob03.png";
     imgElement.alt = "Robot3";
     imgElement.classList.add("robotDataStorage");
 

@@ -109,7 +109,7 @@ button:hover  {
     grid-area: person2;
     margin: 20px auto;
     width: 180px;
-    content:url("../../pictures/information_systems/ringing_phone.gif");
+    content:url("../../pictures/information-systems/ringing_phone.gif");
 }
 
 #bubbleRobot {
@@ -142,14 +142,14 @@ button:hover  {
     margin: auto;
     border: 1px solid black;
     border-radius: 50%;
-    content:url("../../pictures/information_systems/mechanic_profile.png");
+    content:url("../../pictures/information-systems/mechanic_profile.png");
 }
 
 #timeTableDialogue {
     grid-area: bubbleMechanic;
     margin: auto;
     width: 300px;
-    content:url("../../pictures/information_systems/time_table.png");
+    content:url("../../pictures/information-systems/time_table.png");
 }
 
 #buttonPanel  {

@@ -133,7 +133,7 @@ function startGame(firstStart){
     bubble.classList.add("second");
     bubble.innerHTML = "";
 
-    document.getElementById("robotNumSysGame").src = "../../pictures/number_systems/rob02.png";
+    document.getElementById("robotNumSysGame").src = "../../pictures/number-systems/rob02.png";
     bubble.appendChild(createParagraph("Pravidla jsou jednoduchá. Dám ti číslo, které máš převést do dvojkové soustavy."
         +" Ty ho postupně převedeš, číslici po číslici."));
     document.getElementById("animationTable").remove();
@@ -163,7 +163,7 @@ function animationFrom10To2() {
     ifExistsRemove("startAnimationButton");
     ifExistsRemove("buttonNext");
 
-    document.getElementById("robotNumSysGame").src = "../../pictures/number_systems/rob02.png";
+    document.getElementById("robotNumSysGame").src = "../../pictures/number-systems/rob02.png";
     document.getElementById("bubbleNumSysGame").classList.add("second");
     bubbleNumSysGame.appendChild(createParagraphWithHTML(`My budeme do dvojkové soustavy převádět číslo <strong>`+division[0]+"</strong>"));
     
@@ -368,7 +368,7 @@ function checkConversion(correctAns, id) {
         createCheckedStyle(id,"2px solid red","darkred");
         ++mistakes;
         if(mistakes <= 7){
-            document.getElementById("robotNumSysGame").src = "../../pictures/number_systems/rob02"+mistakes+".png";
+            document.getElementById("robotNumSysGame").src = "../../pictures/number-systems/rob02"+mistakes+".png";
         }
         else {
             penalty();
@@ -552,7 +552,7 @@ function penalty(){
         animationFrom10To2();
     }), buttonNext);
 
-    document.getElementById("robotNumSysGame").src = "../../pictures/number_systems/rob02.png";
+    document.getElementById("robotNumSysGame").src = "../../pictures/number-systems/rob02.png";
 }
 
 /**

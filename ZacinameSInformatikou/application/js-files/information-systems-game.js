@@ -45,7 +45,7 @@ var conversationStep = 0; // krok konverzace
  */
 function createElementsOfDialogue(game){
     robot.id = "robotDialogue";
-    robot.src = "../../pictures/information_systems/rob05_profile_square.png";
+    robot.src = "../../pictures/information-systems/rob05_profile_square.png";
     robot.alt = "Robot";
     robot.style.visibility = "hidden";
 
@@ -231,7 +231,7 @@ function addMechanicBubble(dataTable){
 
     var mechanic = document.createElement("img");
     mechanic.id = "mechanic";
-    mechanic.src = "../../pictures/information_systems/mechanic.png";
+    mechanic.src = "../../pictures/information-systems/mechanic.png";
     mechanic.alt = "Mechanik";
     
     dataTable.appendChild(bubble);
@@ -319,7 +319,7 @@ function checkAnswers(graph){
             allRight = false;
             var bubble = document.getElementById("textBubble");
             var robotTable = document.getElementById("mechanic");
-            robotTable.src = "../../pictures/information_systems/rob05_move_profile.png";
+            robotTable.src = "../../pictures/information-systems/rob05_move_profile.png";
             robotTable.alt = "Robot";
             robotTable.style.width = "200px";
             if(input.id == "duvod_navstevy"){
@@ -379,7 +379,7 @@ function createGraphFromTable(graph){
     imgDiv.style.textAlign = "center";
     var timeTable = document.createElement("img");
     timeTable.id = "timeTable";
-    timeTable.src = "../../pictures/information_systems/time_table_add_robot.png";
+    timeTable.src = "../../pictures/information-systems/time_table_add_robot.png";
     timeTable.alt = "Časový rozvrh";
     imgDiv.appendChild(timeTable);
     
@@ -392,7 +392,7 @@ function createGraphFromTable(graph){
             Zde můžeme vidět graf průměrné návštěvnosti na jednotlivý den v týdnu. Takový graf nám ukáže, kdy je lepší navštívit např. danou restauraci nebo obchod.`;
         var graphImg = timeTable;
         graphImg.id = "grafNumbersOfVisitors";
-        graphImg.src = "../../pictures/information_systems/graph_numberOfVisits.png";
+        graphImg.src = "../../pictures/information-systems/graph_numberOfVisits.png";
         graphImg.alt = "Graf průměrné návštěvnosti";
         graphImg.style.width = "600px";     
         buttonNext.addEventListener("click", function() {
@@ -458,7 +458,7 @@ function createEndPage(){
 
     var robotImg = document.createElement("img");
     robotImg.id = "robotInfoSysGame";
-    robotImg.src = "../../pictures/information_systems/rob05_move.png";
+    robotImg.src = "../../pictures/information-systems/rob05_move.png";
     robotImg.alt = "Robot5";
     robotImg.classList.add("robotInfoSys");
     game.appendChild(robotImg);
