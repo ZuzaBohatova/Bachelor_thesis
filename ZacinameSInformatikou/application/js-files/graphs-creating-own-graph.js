@@ -29,7 +29,7 @@ function createJSONLink() {
     var jsonString = document.getElementById("jsonInput").value;
     try {
         var encodedData = jsonValidation(jsonString);
-        var url = "https://www.ms.mff.cuni.cz/~bohatovz/bohatova/ZacinameSInformatikou/aplikace/index.php/hra1?json=" + encodedData;
+        var url = "https://www.ms.mff.cuni.cz/~bohatovz/bohatova/ZacinameSInformatikou/application/index.php/grafy-hra?json=" + encodedData;
         if(url.length > 2000){
             throw new Error(`Váš graf je bohužel příliš veliký, nezvládneme ho zpracovat`);
         }
@@ -121,6 +121,6 @@ function jsonValidation(jsonString){
     var jsonString = JSON.stringify(jsonData);
 
     // Zakódování řetězce do URL-safe formátu
-    var encodedData = btoa(unescape(encodeURIComponent(jsonString)));;
+    var encodedData = btoa(unescape(encodeURIComponent(jsonString)));
     return encodedData;
 }
