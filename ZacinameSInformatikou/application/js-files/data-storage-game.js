@@ -16,11 +16,11 @@ var pexesoCards = []; // Pole pro pexeso
  * Pro img je hodnota cesta k danému obrázku.
  */
 const dictionary = {
-    "SDKarta_text": "Uvnitř fotoaparátů a mobilní telefonů, Elektronický zápis dat",
+    "SDKarta_text": "Uvnitř fotoaparátů a mobilní telefonů, Elektrický zápis dat",
     "SDKarta_img": "../../pictures/data-storage/sdCard.png",
     "HDD_text": "Skládá se z několika kotoučů, Zápis dat pomocí magnetického pole",
     "HDD_img": "../../pictures/data-storage/hdd.jpg",
-    "SSD_text": "Hlavně u notebooků, elektronický zápis dat, Uložení většího množství dat",
+    "SSD_text": "V notebooku, Elektrický zápis dat, Uložení většího množství dat",
     "SSD_img": "../../pictures/data-storage/ssd.jpg",
     "USB_text": "Malé datové úložiště, Uložení dat pomocí elektrických obvodů",
     "USB_img": "../../pictures/data-storage/usb.jpg",
@@ -49,6 +49,10 @@ function shuffle(array) {
  * Funkce spustí hru - rozdá kartičky pexesa
  */
 function startGame(){
+    var backToTheory = document.getElementById("backToTheory");
+    var h4 = document.createElement("h4");
+    h4.appendChild(backToTheory);
+
     var gameContainer = document.getElementById("dataStorageGame");
     gameContainer.innerHTML = "";
     gameContainer.id = "pexeso";
@@ -64,6 +68,7 @@ function startGame(){
         pexesoCards.push(row);
     }
 
+    gameContainer.appendChild(h4);
     gameContainer.appendChild(title);
     gameContainer.appendChild(loadAndManagePexeso());
 }

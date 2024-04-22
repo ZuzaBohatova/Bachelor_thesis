@@ -11,7 +11,7 @@ var robot = document.createElement("img"); // element image s obrázkem robota
 var phonePickUp = true; //zda byl již zobraze zvonící telefon
 
 const columnNames = ["vyrobni_cislo","datum_vyroby","datum_cas_navstevy","duvod_navstevy","akutni_problemy","datum_posledni_kontroly"]; // názvy sloupců tabulky
-const rightAnswers = ["ZI05T","15.4.2010","12.6.2024 14:00","technická kontrola","ne","5.5.2023"]; // správné odpovědi do tabulky
+const rightAnswers = ["ZB25T","15.4.2010","12.6.2024 14:00","technická kontrola","ne","5.5.2023"]; // správné odpovědi do tabulky
 const selectOptions = ["uvolněné šrouby", "technická kontrola","motor","pohyb ramene","prohnutý plech","přehřívání"]; // možnosti pro element select
 
 /**
@@ -21,13 +21,13 @@ const conversation = [
     { speaker: "Mechanic", text: "Zdravím, servisní oddělení. Jak vám mohu pomoci?" },
     { speaker: "Robot", text: "Dobrý den, potřeboval bych se objednat na technickou kontrolu." },
     { speaker: "Mechanic", text: "Výborně, uveďte prosím své výrobní číslo. " },
-    { speaker: "Robot", text: "ZI05T." },
+    { speaker: "Robot", text: "ZB25T." },
     { speaker: "Mechanic", text: "Jaké je vaše datum výroby? " },
     { speaker: "Robot", text: "15. dubna 2010" },
     { speaker: "Mechanic", text: "Máte nějaké akutní problémy?" },
     { speaker: "Robot", text: "Nemám." },
     { speaker: "Mechanic", text: "Kdy jste byl na poslední technické kontrole?" },
-    { speaker: "Robot", text: "Minulý rok páteho května." },
+    { speaker: "Robot", text: "Páteho května 2023." },
     { speaker: "Mechanic", text: "Výborně, vyhovoval by vám termín desátého června v deset hodin?" },
     { speaker: "TimeTable", text: ""},
     { speaker: "Robot", text: "Šlo by to spíš někdy odpoledne?" },
@@ -226,7 +226,7 @@ function addMechanicBubble(dataTable){
 
     const textBubble = document.createElement("p");
     textBubble.id = "textBubble";
-    textBubble.textContent = "Bohužel jsem ztratil formulář, kde jsem měl uvedené údaje o zákazníkovi z předchozího rozhovoru. Pomůžeš mi je správně doplnit do tabulky?";
+    textBubble.textContent = "Bohužel jsem ztratil papír, kam jsem si zapsal údaje o zákazníkovi z předchozího rozhovoru. Pomůžeš mi je správně doplnit do tabulky?";
     bubble.appendChild(textBubble);
 
     var mechanic = document.createElement("img");
