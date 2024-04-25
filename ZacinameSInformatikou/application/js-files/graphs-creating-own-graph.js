@@ -29,7 +29,9 @@ function createJSONLink() {
     var jsonString = document.getElementById("jsonInput").value;
     try {
         var encodedData = jsonValidation(jsonString);
-        var url = "https://www.ms.mff.cuni.cz/~bohatovz/bohatova/ZacinameSInformatikou/application/index.php/grafy-hra?json=" + encodedData;
+        var currentUrl = window.location.href;
+        var baseUrl = currentUrl.replace('grafy-napis-json', 'grafy-hra');
+        var url = baseUrl + "?json=" + encodedData;
         if(url.length > 2000){
             throw new Error(`Váš graf je bohužel příliš veliký, nezvládneme ho zpracovat`);
         }
