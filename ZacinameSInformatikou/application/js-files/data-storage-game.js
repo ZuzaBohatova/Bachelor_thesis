@@ -26,7 +26,7 @@ const dictionary = {
     "USB_img": "../../pictures/data-storage/usb.jpg",
     "CD_text": "Přehrání hudby, Zápis dat pomocí laserového paprsku",
     "CD_img": "../../pictures/data-storage/cd.png",
-    "MagPas_text": "Magnetický zápis, Archivace velkého množství dat, Zastaralé",
+    "MagPas_text": "Magnetický zápis, Archivace velkého množství dat, Videokazety",
     "MagPas_img": "../../pictures/data-storage/magPaska.png", 
 };
 
