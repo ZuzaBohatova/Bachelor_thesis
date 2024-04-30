@@ -123,6 +123,6 @@ function jsonValidation(jsonString){
     var jsonString = JSON.stringify(jsonData);
 
     // Zakódování řetězce do URL-safe formátu
-    var encodedData = btoa(unescape(encodeURIComponent(jsonString)));
+    var encodedData = encodeURIComponent(jsonString);
     return encodedData;
 }

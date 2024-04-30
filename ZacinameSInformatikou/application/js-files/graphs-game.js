@@ -73,7 +73,7 @@ function loadGraphFromParams(){
 
     if (jsonDataParam) {
         try {
-            var jsonData = JSON.parse(atob(decodeURIComponent(jsonDataParam)));
+            var jsonData = JSON.parse(decodeURIComponent(jsonDataParam));
             graph = jsonData;
             prepareAndPlayGame();
         } catch (error) {
