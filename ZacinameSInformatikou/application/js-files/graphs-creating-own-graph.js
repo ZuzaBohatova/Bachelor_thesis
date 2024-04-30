@@ -114,7 +114,7 @@ function jsonValidation(jsonString){
         for (var j = 0; j < jsonData.countEdges; j++) {
             var edgeKey = String.fromCharCode("A".charCodeAt(0) + j);
             if (!vertex.hasOwnProperty(edgeKey) || typeof vertex[edgeKey] !== "number") {
-                throw new Error(`Vrchol ${i} musí mít vlastnost ${edgeKey} typu number.`);
+                throw new Error(`Cesta ${edgeKey} u vrcholu ${i} musí být číslo a nesmí být napsaná v uvozovkách.`);
             }
         }
     }

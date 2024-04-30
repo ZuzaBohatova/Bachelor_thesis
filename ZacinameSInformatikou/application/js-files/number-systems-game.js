@@ -481,7 +481,7 @@ function conversionGameBirthday(lastNum){
     else{
         lastEx = 4;
         gameMistake.textContent = "";
-        gameQuestion.textContent = "To nejtěžší máš za sebou, teď si spolu spočítám, jak vypadají tvé narozeniny ve dvojkové soustavě.";
+        gameQuestion.textContent = "To nejtěžší máš za sebou, teď si spolu spočítáme, jak vypadají tvé narozeniny ve dvojkové soustavě.";
         var form = document.createElement("form");
         form.id = "formBirthday";
         form.innerHTML = `<input type="number" id="birthDay" min="1" max="31" placeholder="den" required>.
@@ -540,7 +540,7 @@ function penalty(){
     bubble.appendChild(heading);
     
     bubble.appendChild(createParagraph(" Protože jsi v převodech nadělal moc chyb a nakonec mě úplně vymazal, " +
-                            "tak se musíš za trest podívat znovu na animaci. Příště ti to jistě půjde lépe!"));
+                            "tak se musíš podívat znovu na animaci. Příště ti to jistě půjde lépe!"));
 
     var table = document.createElement("table");
     table.id = "animationTable";

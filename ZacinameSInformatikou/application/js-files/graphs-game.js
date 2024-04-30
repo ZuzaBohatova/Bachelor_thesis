@@ -223,7 +223,7 @@ function changePosition(actualPosition, direction){
     buttonDiv.innerHTML = "";
     
     if(graph.end == actualPosition){
-        document.getElementById("graphGoal").innerHTML = "<strong>Gratulace, jsi v cíly!</strong>";
+        document.getElementById("graphGoal").innerHTML = "<strong>Gratulace, jsi v cíli!</strong>";
         createEndButtons(buttonDiv);
         return;
     }
