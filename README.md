@@ -10,3 +10,6 @@ Cílem projektu je vytvořit webovou aplikaci pro děti v rozsahu 2. stupně ZŠ
 3. testování Aplikace ve škole - dotazník pro zpětnou vazbu: https://docs.google.com/forms/d/e/1FAIpQLSffkQmpI7XFnMWUdxqiEvMOmW83BDXAQhAdranWlIrpwc4DzA/viewform?usp=sf_link
 4. revize Aplikace
 5. konečná verze
+
+## Odkaz na stránku
+https://www.ms.mff.cuni.cz/~bohatovz/bohatova/ZacinameSInformatikou/
